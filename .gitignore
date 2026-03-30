@@ -1,2 +1,8 @@
 .claude
 .specify
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+specs
+CLAUDE.md

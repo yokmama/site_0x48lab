@@ -218,6 +218,77 @@ body {
     line-height: 1.8;
 }
 
+/* Service Section */
+.service {
+    background: white;
+}
+
+.service-banner {
+    max-width: 800px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #1a3a5c 0%, #2c3e50 40%, #2490F3 100%);
+    border-radius: 16px;
+    padding: 48px 40px;
+    color: white;
+    text-align: center;
+}
+
+.service-banner-label {
+    display: inline-block;
+    padding: 4px 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+}
+
+.service-banner h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.service-banner p {
+    font-size: 0.95rem;
+    opacity: 0.85;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.service-banner-link {
+    display: inline-block;
+    padding: 12px 32px;
+    background: #e67e22;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.service-banner-link:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .service-banner {
+        padding: 32px 24px;
+    }
+
+    .service-banner h3 {
+        font-size: 1.25rem;
+    }
+
+    .service-banner p {
+        font-size: 0.9rem;
+    }
+}
+
 /* Team Section */
 .team {
     background: #f5f6f7;
