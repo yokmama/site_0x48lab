@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI活用型受託開発サービス | 株式会社ハックラボ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="slide-counter"><span id="currentSlide">1</span> / <span id="totalSlides">12</span></div>
+
+        <!-- Slide 1: 表紙 -->
+        <section class="slide active" data-slide="1">
+            <div class="slide-content slide-cover">
+                <img src="../../docs/logo.svg" alt="HackLab" class="cover-logo">
+                <h1 class="cover-title">システム開発コストを<br><span class="highlight">1/5</span>にする<br>新しい選択肢</h1>
+                <p class="cover-subtitle">生成AI × 20年の受託開発実績</p>
+                <p class="cover-company">株式会社ハックラボ</p>
+            </div>
+        </section>
+
+        <!-- Slide 2: 問題提起 -->
+        <section class="slide" data-slide="2">
+            <div class="slide-content">
+                <h2 class="slide-title">こんな経験、ありませんか？</h2>
+                <div class="problems-grid">
+                    <div class="problem-card">
+                        <div class="problem-icon">×</div>
+                        <h3>見積もりを見て、断念した</h3>
+                        <p>業務をシステム化したかったが<br>500万円以上と言われて諦めた</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">×</div>
+                        <h3>自社で作ろうとして、失敗した</h3>
+                        <p>ノーコードやExcelで頑張ったが<br>結局使われないシステムに</p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">×</div>
+                        <h3>開発費が年々高くなっている</h3>
+                        <p>エンジニア不足で人件費高騰<br>同じ仕様でも見積もりが倍に</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 3: 現状の構造 -->
+        <section class="slide" data-slide="3">
+            <div class="slide-content">
+                <h2 class="slide-title">なぜ、システム開発は高いのか？</h2>
+                <div class="structure-diagram">
+                    <div class="structure-item">
+                        <div class="structure-label">従来の開発モデル</div>
+                        <div class="structure-box structure-old">
+                            <div class="structure-point"><strong>人月ベース</strong>の料金体系</div>
+                            <div class="structure-point">エンジニア<strong>1人あたり月80〜120万円</strong></div>
+                            <div class="structure-point">5人 × 3ヶ月 = <strong>1,500万円〜</strong></div>
+                        </div>
+                    </div>
+                    <div class="structure-arrow">↓</div>
+                    <div class="structure-conclusion">
+                        人が増えるほど、期間が延びるほど、<br><strong>コストが膨らむ構造</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: 解決策 -->
+        <section class="slide" data-slide="4">
+            <div class="slide-content">
+                <h2 class="slide-title">この構造を、変えられる時代になりました。</h2>
+                <div class="solution-points">
+                    <div class="solution-card">
+                        <div class="solution-number">01</div>
+                        <h3>生成AIで開発工数を圧縮</h3>
+                        <p>設計・実装・テストをAIが高速化<br>人件費を大幅に削減</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-number">02</div>
+                        <h3>必要な部分だけ構築</h3>
+                        <p>大きなパッケージは不要<br>本当に必要な機能だけを最小コストで</p>
+                    </div>
+                    <div class="solution-card">
+                        <div class="solution-number">03</div>
+                        <h3>スピード開発</h3>
+                        <p>数ヶ月かかっていた開発が<br>数週間で完了</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 5: 比較 -->
+        <section class="slide" data-slide="5">
+            <div class="slide-content">
+                <h2 class="slide-title">従来の開発会社との違い</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th class="comp-old">従来のSI企業</th>
+                            <th class="comp-new">当社（AI活用）</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="comp-label">価格</td>
+                            <td class="comp-old">500万円〜</td>
+                            <td class="comp-new"><strong>50万円〜</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">納期</td>
+                            <td class="comp-old">3〜6ヶ月</td>
+                            <td class="comp-new"><strong>2〜4週間</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">柔軟性</td>
+                            <td class="comp-old">仕様変更に弱い</td>
+                            <td class="comp-new"><strong>小さく作って改善</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="comp-label">品質</td>
+                            <td class="comp-old">人手による開発</td>
+                            <td class="comp-new"><strong>AI + 人による検証</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="comparison-note">例：顧客管理システム <span class="old-price">500万円</span> → <span class="new-price">80万円</span>（84%削減）</p>
+            </div>
+        </section>
+
+        <!-- Slide 6: なぜ実現できるか -->
+        <section class="slide" data-slide="6">
+            <div class="slide-content">
+                <h2 class="slide-title">なぜ、私たちにはそれができるのか</h2>
+                <div class="why-grid">
+                    <div class="why-card">
+                        <div class="why-number">20年</div>
+                        <h3>受託開発の実績</h3>
+                        <p>2010年創業。数百件の開発実績。<br>設計・品質管理のノウハウが<br>AIを正しく活用する土台に。</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-number">1/5</div>
+                        <h3>AIによる効率化</h3>
+                        <p>生成AIが設計・実装・テストを<br>高速化。人件費を圧縮し<br>その分を価格に反映。</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-number">最適</div>
+                        <h3>プロセスの最適化</h3>
+                        <p>AI時代に合わせた開発プロセス。<br>無駄な工程を省き<br>本質的な価値に集中。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 7: 提供サービス -->
+        <section class="slide" data-slide="7">
+            <div class="slide-content">
+                <h2 class="slide-title">提供できるもの</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h3>業務管理システム</h3>
+                        <p>顧客管理・案件管理・営業進捗管理</p>
+                        <span class="service-price">50万円〜</span>
+                    </div>
+                    <div class="service-item">
+                        <h3>顧客管理（CRM）</h3>
+                        <p>顧客データベース・対応履歴・分析</p>
+                        <span class="service-price">50万円〜</span>
+                    </div>
+                    <div class="service-item">
+                        <h3>予約・対応システム</h3>
+                        <p>予約管理・LINE連携・自動対応</p>
+                        <span class="service-price">80万円〜</span>
+                    </div>
+                    <div class="service-item">
+                        <h3>業務自動化</h3>
+                        <p>データ入力自動化・レポート生成</p>
+                        <span class="service-price">30万円〜</span>
+                    </div>
+                </div>
+                <p class="services-note">※ 価格は参考です。ご要件に応じてお見積もりいたします。</p>
+            </div>
+        </section>
+
+        <!-- Slide 8: 事例 -->
+        <section class="slide" data-slide="8">
+            <div class="slide-content">
+                <h2 class="slide-title">導入実績</h2>
+                <div class="cases-grid">
+                    <div class="case-card">
+                        <span class="case-badge">製造業</span>
+                        <h3>顧客管理システム</h3>
+                        <div class="case-comparison">
+                            <div class="case-before">
+                                <span class="case-label">従来</span>
+                                <span class="case-value case-old">500万円</span>
+                                <span class="case-sub">5ヶ月</span>
+                            </div>
+                            <div class="case-arrow">→</div>
+                            <div class="case-after">
+                                <span class="case-label">当社</span>
+                                <span class="case-value case-new">80万円</span>
+                                <span class="case-sub">3週間</span>
+                            </div>
+                        </div>
+                        <span class="case-savings">84%削減</span>
+                    </div>
+                    <div class="case-card">
+                        <span class="case-badge">サービス業</span>
+                        <h3>予約管理システム</h3>
+                        <div class="case-comparison">
+                            <div class="case-before">
+                                <span class="case-label">従来</span>
+                                <span class="case-value case-old">300万円</span>
+                                <span class="case-sub">4ヶ月</span>
+                            </div>
+                            <div class="case-arrow">→</div>
+                            <div class="case-after">
+                                <span class="case-label">当社</span>
+                                <span class="case-value case-new">60万円</span>
+                                <span class="case-sub">2週間</span>
+                            </div>
+                        </div>
+                        <span class="case-savings">80%削減</span>
+                    </div>
+                    <div class="case-card">
+                        <span class="case-badge">卸売業</span>
+                        <h3>在庫・発注管理</h3>
+                        <div class="case-comparison">
+                            <div class="case-before">
+                                <span class="case-label">従来</span>
+                                <span class="case-value case-old">800万円</span>
+                                <span class="case-sub">6ヶ月</span>
+                            </div>
+                            <div class="case-arrow">→</div>
+                            <div class="case-after">
+                                <span class="case-label">当社</span>
+                                <span class="case-value case-new">120万円</span>
+                                <span class="case-sub">4週間</span>
+                            </div>
+                        </div>
+                        <span class="case-savings">85%削減</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 9: 導入の流れ -->
+        <section class="slide" data-slide="9">
+            <div class="slide-content">
+                <h2 class="slide-title">導入の流れ</h2>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <h3>ヒアリング</h3>
+                        <p>課題をお伺い<br>オンライン30分</p>
+                    </div>
+                    <div class="flow-connector">→</div>
+                    <div class="flow-step">
+                        <div class="flow-number">2</div>
+                        <h3>簡易設計・見積もり</h3>
+                        <p>機能整理と概算<br><strong>ここまで無料</strong></p>
+                    </div>
+                    <div class="flow-connector">→</div>
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <h3>開発</h3>
+                        <p>AI + エンジニアが開発<br>進捗は随時報告</p>
+                    </div>
+                    <div class="flow-connector">→</div>
+                    <div class="flow-step">
+                        <div class="flow-number">4</div>
+                        <h3>納品</h3>
+                        <p>検証を経て納品<br>改修にも対応</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 10: よくある質問 -->
+        <section class="slide" data-slide="10">
+            <div class="slide-content">
+                <h2 class="slide-title">よくある質問</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3>Q. なぜそんなに安いのですか？</h3>
+                        <p>生成AIで設計・実装・テストの工数を大幅削減。人件費が下がった分を価格に反映しています。「安かろう悪かろう」ではなく、生産性向上による適正価格です。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Q. 品質は大丈夫ですか？</h3>
+                        <p>20年の設計・検証ノウハウがあります。生成AIが書いたコードも、経験豊富なエンジニアが必ずレビュー・テストを行います。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Q. AIに任せて問題ないですか？</h3>
+                        <p>AIは「道具」として活用。要件定義・設計判断・品質管理はすべて人間が行います。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 11: リスクと品質 -->
+        <section class="slide" data-slide="11">
+            <div class="slide-content">
+                <h2 class="slide-title">品質を守る仕組み</h2>
+                <div class="risk-points">
+                    <div class="risk-card">
+                        <div class="risk-icon">👤</div>
+                        <h3>完全自動ではありません</h3>
+                        <p>AIはあくまで開発支援ツール。<br>最終判断はすべて人間が行います。</p>
+                    </div>
+                    <div class="risk-card">
+                        <div class="risk-icon">🔍</div>
+                        <h3>人による検証あり</h3>
+                        <p>AIが生成したコードは100%、<br>エンジニアがレビューします。</p>
+                    </div>
+                    <div class="risk-card">
+                        <div class="risk-icon">✅</div>
+                        <h3>品質担保プロセス</h3>
+                        <p>設計レビュー → 実装 → テスト → 検収。<br>20年で培った品質管理を適用。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 12: CTA -->
+        <section class="slide" data-slide="12">
+            <div class="slide-content slide-cta">
+                <h2 class="cta-title">まずは、お話しましょう。</h2>
+                <p class="cta-lead">「こんなシステム、いくらでできる？」<br>そんなご相談で構いません。</p>
+                <div class="cta-actions">
+                    <div class="cta-action">
+                        <h3>無料相談</h3>
+                        <p>オンラインで30分。<br>御社の課題をお伺いします。</p>
+                    </div>
+                    <div class="cta-action">
+                        <h3>概算見積もり</h3>
+                        <p>ヒアリング後、<br>概算費用と納期をご提示。</p>
+                    </div>
+                </div>
+                <div class="cta-contact">
+                    <p>株式会社ハックラボ</p>
+                    <p>https://0x48lab.com</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="nav-hint">← → キーでスライド切り替え</div>
+
+    <script>
+    (function() {
+        var slides = document.querySelectorAll('.slide');
+        var current = 0;
+        var total = slides.length;
+        var counterCurrent = document.getElementById('currentSlide');
+        var counterTotal = document.getElementById('totalSlides');
+        counterTotal.textContent = total;
+
+        function showSlide(n) {
+            if (n < 0 || n >= total) return;
+            slides[current].classList.remove('active');
+            current = n;
+            slides[current].classList.add('active');
+            counterCurrent.textContent = current + 1;
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                showSlide(current + 1);
+            } else if (e.key === 'ArrowLeft' || e.key === 'Backspace') {
+                e.preventDefault();
+                showSlide(current - 1);
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.slide-counter')) return;
+            var rect = document.body.getBoundingClientRect();
+            if (e.clientX > rect.width / 2) {
+                showSlide(current + 1);
+            } else {
+                showSlide(current - 1);
+            }
+        });
+
+        // Hide nav hint after first interaction
+        document.addEventListener('keydown', function() {
+            document.querySelector('.nav-hint').style.opacity = '0';
+        }, { once: true });
+    })();
+    </script>
+</body>
+</html>

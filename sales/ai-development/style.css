@@ -1,0 +1,518 @@
+/* ===========================
+   Sales Deck: AI活用型受託開発
+   =========================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f5f5f5;
+    color: #2c3e50;
+    overflow: hidden;
+}
+
+/* Slide Container */
+.slide-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 60px 80px;
+}
+
+.slide.active {
+    display: flex;
+}
+
+.slide-content {
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* Counter */
+.slide-counter {
+    position: fixed;
+    bottom: 20px; right: 30px;
+    font-size: 0.85rem;
+    color: #999;
+    z-index: 100;
+}
+
+/* Nav Hint */
+.nav-hint {
+    position: fixed;
+    bottom: 20px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #bbb;
+    transition: opacity 1s ease;
+    z-index: 100;
+}
+
+/* ===========================
+   Typography
+   =========================== */
+.slide-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 48px;
+    line-height: 1.4;
+}
+
+h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+.highlight {
+    color: #2490F3;
+}
+
+/* ===========================
+   Slide 1: Cover
+   =========================== */
+.slide-cover {
+    text-align: center;
+}
+
+.cover-logo {
+    height: 48px;
+    margin-bottom: 40px;
+}
+
+.cover-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: #2c3e50;
+}
+
+.cover-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    font-weight: 400;
+    margin-bottom: 48px;
+    letter-spacing: 0.05em;
+}
+
+.cover-company {
+    font-size: 1rem;
+    color: #999;
+}
+
+/* ===========================
+   Slide 2: Problems
+   =========================== */
+.problems-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.problem-card {
+    text-align: center;
+    padding: 32px 20px;
+    background: #fafafa;
+    border-radius: 12px;
+    border-left: 4px solid #e74c3c;
+}
+
+.problem-icon {
+    font-size: 2rem;
+    color: #e74c3c;
+    font-weight: 900;
+    margin-bottom: 16px;
+}
+
+/* ===========================
+   Slide 3: Structure
+   =========================== */
+.structure-diagram {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.structure-label {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 12px;
+}
+
+.structure-box {
+    padding: 32px;
+    border-radius: 12px;
+    text-align: left;
+}
+
+.structure-old {
+    background: #fff5f5;
+    border: 2px solid #e74c3c;
+}
+
+.structure-point {
+    padding: 8px 0;
+    font-size: 1.1rem;
+    color: #444;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.structure-point:last-child { border-bottom: none; }
+
+.structure-arrow {
+    font-size: 2rem;
+    color: #ccc;
+    margin: 20px 0;
+}
+
+.structure-conclusion {
+    font-size: 1.15rem;
+    color: #e74c3c;
+    font-weight: 500;
+    line-height: 1.8;
+}
+
+/* ===========================
+   Slide 4: Solution
+   =========================== */
+.solution-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.solution-card {
+    padding: 32px 24px;
+    background: #f0f7ff;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.solution-number {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #2490F3;
+    margin-bottom: 12px;
+}
+
+/* ===========================
+   Slide 5: Comparison
+   =========================== */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 20px 24px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+}
+
+.comparison-table thead th {
+    background: #2c3e50;
+    color: white;
+    font-weight: 600;
+}
+
+.comparison-table thead th:first-child { background: #34495e; }
+.comp-label { font-weight: 600; text-align: left; background: #f8f9fa; }
+.comp-old { color: #999; }
+.comp-new { color: #2490F3; font-size: 1.2rem; }
+.comparison-note { text-align: center; font-size: 1.05rem; color: #444; }
+.old-price { text-decoration: line-through; color: #999; }
+.new-price { font-weight: 700; color: #2490F3; font-size: 1.2rem; }
+
+/* ===========================
+   Slide 6: Why
+   =========================== */
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.why-card {
+    text-align: center;
+    padding: 32px 20px;
+}
+
+.why-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #2490F3;
+    margin-bottom: 12px;
+}
+
+/* ===========================
+   Slide 7: Services
+   =========================== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.service-item {
+    padding: 28px 24px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #2490F3;
+}
+
+.service-price {
+    display: inline-block;
+    margin-top: 8px;
+    color: #2490F3;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.services-note {
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 20px;
+}
+
+/* ===========================
+   Slide 8: Cases
+   =========================== */
+.cases-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.case-card {
+    text-align: center;
+    padding: 24px 16px;
+    background: #fafafa;
+    border-radius: 12px;
+}
+
+.case-badge {
+    display: inline-block;
+    padding: 2px 12px;
+    background: #2c3e50;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.case-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.case-label { display: block; font-size: 0.7rem; color: #999; }
+.case-value { display: block; font-size: 1.3rem; font-weight: 700; }
+.case-old { color: #999; text-decoration: line-through; }
+.case-new { color: #2490F3; }
+.case-sub { display: block; font-size: 0.7rem; color: #999; }
+.case-arrow { color: #ccc; font-weight: 700; font-size: 1.2rem; }
+.case-savings {
+    display: inline-block;
+    padding: 2px 12px;
+    background: #27ae60;
+    color: white;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ===========================
+   Slide 9: Flow
+   =========================== */
+.flow-steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.flow-step {
+    text-align: center;
+    padding: 24px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    flex: 1;
+    max-width: 200px;
+}
+
+.flow-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    background: #2490F3;
+    color: white;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.flow-connector {
+    color: #ccc;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ===========================
+   Slide 10: FAQ
+   =========================== */
+.faq-list {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.faq-item {
+    padding: 24px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #2490F3;
+}
+
+.faq-item h3 {
+    font-size: 1.05rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+}
+
+.faq-item p {
+    font-size: 0.9rem;
+}
+
+/* ===========================
+   Slide 11: Risk
+   =========================== */
+.risk-points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.risk-card {
+    text-align: center;
+    padding: 32px 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+}
+
+.risk-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+/* ===========================
+   Slide 12: CTA
+   =========================== */
+.slide-cta {
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.cta-lead {
+    font-size: 1.15rem;
+    color: #666;
+    margin-bottom: 48px;
+    line-height: 1.8;
+}
+
+.cta-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    max-width: 600px;
+    margin: 0 auto 48px;
+}
+
+.cta-action {
+    padding: 32px 24px;
+    background: #f0f7ff;
+    border-radius: 12px;
+    border: 2px solid #2490F3;
+}
+
+.cta-action h3 {
+    color: #2490F3;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.cta-contact {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.cta-contact p { margin-bottom: 4px; color: #999; }
+
+/* ===========================
+   Print Styles (PDF Export)
+   =========================== */
+@media print {
+    body { overflow: visible; }
+
+    .slide-container { width: auto; height: auto; position: static; }
+
+    .slide {
+        position: static;
+        display: flex !important;
+        width: 100%;
+        height: 100vh;
+        page-break-after: always;
+        page-break-inside: avoid;
+        padding: 40px 60px;
+    }
+
+    .slide:last-child { page-break-after: auto; }
+
+    .slide-counter,
+    .nav-hint { display: none; }
+
+    .cover-title { font-size: 2.2rem; }
+    .slide-title { font-size: 1.8rem; }
+
+    @page {
+        size: landscape;
+        margin: 0;
+    }
+}
