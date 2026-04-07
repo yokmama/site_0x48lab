@@ -335,7 +335,7 @@
     .lp-cta-button { padding: 14px 32px; font-size: 1rem; }
     .lp-problem-item { padding: 20px 16px; }
     .lp-problem-icon { width: 36px; height: 36px; }
-    .lp-solution-lead { font-size: 0.95rem; }
+    .lp-solution-lead { font-size: 0.95rem; text-align: left; }
     .lp-solution-number { width: 40px; height: 40px; }
     .lp-comparison-table th, .lp-comparison-table td { padding: 12px 10px; font-size: 0.88rem; }
     .lp-result-value { font-size: 1.2rem; }
@@ -344,6 +344,7 @@
     .lp-flow-step { max-width: 100%; width: 100%; }
     .lp-flow-arrow { transform: rotate(90deg); padding-top: 0; }
     .lp-message-content { flex-direction: column; text-align: center; gap: 24px; }
+    .lp-message-text p { text-align: left; }
     .lp-message-img { width: 120px; height: 120px; }
     .lp-faq-question { font-size: 0.95rem; padding: 16px 0; }
     .lp-contact-lead { font-size: 0.9rem; }
