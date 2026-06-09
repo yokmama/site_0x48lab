@@ -5,35 +5,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-dark);
+  background-color: #0f1e2e;
   overflow: hidden;
   padding: 80px var(--container-padding) 80px;
 }
 
-/* ── video background ── */
-.videoBg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  pointer-events: none;
-}
-
-/* subtle grid texture on top of the overlay */
+/* Fine grid sitting above the canvas */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
   pointer-events: none;
   z-index: 1;
 }
 
+/* Bottom divider line */
 .hero::after {
   content: '';
   position: absolute;
@@ -41,15 +31,16 @@
   left: 0;
   right: 0;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.08);
-  z-index: 2;
+  background: linear-gradient(90deg, transparent, rgba(36, 144, 243, 0.3), transparent);
+  z-index: 3;
 }
 
+/* Content sits above canvas + grid */
 .content {
   position: relative;
   z-index: 2;
   text-align: center;
-  max-width: 760px;
+  max-width: 780px;
   width: 100%;
 }
 
@@ -62,7 +53,7 @@
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .eyebrow::before,
@@ -71,11 +62,11 @@
   display: block;
   width: 32px;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(36, 144, 243, 0.4);
 }
 
 .companyJa {
-  font-size: clamp(32px, 5vw, 52px);
+  font-size: clamp(32px, 5vw, 54px);
   font-weight: 700;
   color: #ffffff;
   line-height: 1.2;
@@ -86,23 +77,23 @@
 .companyEn {
   font-size: clamp(13px, 2vw, 16px);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  margin-bottom: 40px;
+  margin-bottom: 36px;
 }
 
 .divider {
   width: 40px;
   height: 1px;
-  background-color: var(--color-accent);
-  margin: 0 auto 32px;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  margin: 0 auto 28px;
 }
 
 .tagline {
   font-size: clamp(15px, 2.2vw, 19px);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.68);
   letter-spacing: 0.06em;
   line-height: 1.7;
   margin-bottom: 16px;
@@ -123,10 +114,11 @@
 
 .ctaOrange:hover {
   background-color: var(--color-orange-dark);
-  box-shadow: 0 4px 16px rgba(230, 126, 34, 0.4);
+  box-shadow: 0 4px 20px rgba(230, 126, 34, 0.45);
   transform: translateY(-2px);
 }
 
+/* Scroll indicator */
 .scrollIndicator {
   position: absolute;
   bottom: 36px;
@@ -143,13 +135,13 @@
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.28);
 }
 
 .scrollArrow {
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   position: relative;
   overflow: hidden;
 }
@@ -161,12 +153,12 @@
   left: 0;
   width: 100%;
   height: 40px;
-  background: rgba(255, 255, 255, 0.5);
+  background: linear-gradient(to bottom, transparent, rgba(36, 144, 243, 0.8));
   animation: scrollDrop 1.8s ease-in-out infinite;
 }
 
 @keyframes scrollDrop {
-  0% { top: -40px; }
+  0%   { top: -40px; }
   100% { top: 40px; }
 }
 

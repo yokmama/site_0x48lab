@@ -1,7 +1,6 @@
-import { useRef, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import heroPosterSrc from '../../assets/hero.png'
+import { Link } from 'react-router-dom'
+import HeroCanvas from '../HeroCanvas/HeroCanvas'
 import styles from './Hero.module.css'
 
 const containerVariants = {
@@ -15,33 +14,9 @@ const itemVariants = {
 }
 
 export default function Hero() {
-  const videoRef = useRef(null)
-  const [videoError, setVideoError] = useState(false)
-
-  useEffect(() => {
-    const vid = videoRef.current
-    if (vid) vid.playbackRate = 0.3
-  }, [])
-
   return (
     <section className={styles.hero} id="hero">
-      {!videoError ? (
-        <video
-          ref={videoRef}
-          src="/hero.mp4"
-          className={styles.videoBg}
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden="true"
-          preload="auto"
-          onError={() => setVideoError(true)}
-          poster={heroPosterSrc}
-        />
-      ) : (
-        <img src={heroPosterSrc} className={styles.videoBg} alt="" aria-hidden="true" />
-      )}
+      <HeroCanvas />
 
       <motion.div
         className={styles.content}

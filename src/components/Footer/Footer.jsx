@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import logoSrc from '../../assets/logo.svg'
 import styles from './Footer.module.css'
 
 const YEAR = new Date().getFullYear()
@@ -42,7 +41,7 @@ export default function Footer() {
         <div className={styles.top}>
           <div className={styles.brand}>
             <div className={styles.logo}>
-              <img src={logoSrc} alt="株式会社ハックラボ" />
+              <img src="/logo-footer.svg" alt="株式会社ハックラボ" />
             </div>
             <p className={styles.tagline}>テクノロジーで未来を創造する</p>
             <p className={styles.address}>
