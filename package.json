@@ -23,5 +23,10 @@
     "eslint": "^9.39.1",
     "eslint-config-next": "latest",
     "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "auditConfig": {
+      "minimumReleaseAge": 0
+    }
   }
 }
