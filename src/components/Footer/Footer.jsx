@@ -1,36 +1,8 @@
 import { Link } from 'react-router-dom'
+import { FOOTER_NAV } from '../../lib/data'
 import styles from './Footer.module.css'
 
 const YEAR = new Date().getFullYear()
-
-const FOOTER_NAV = [
-  {
-    title: 'Services',
-    links: [
-      { label: 'AI活用型受託開発', to: '/services/ai-development' },
-      { label: 'モバイルアプリ開発', to: '/services/mobile' },
-      { label: 'Webシステム開発', to: '/services/web' },
-      { label: 'プログラミング教育', to: '/services/education' },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { label: '会社概要', to: '/company' },
-      { label: '実績・事例', to: '/works' },
-      { label: 'ブログ', to: '/blog' },
-      { label: '採用情報', to: '/careers' },
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      { label: 'お問い合わせ', to: '/contact' },
-      { label: 'プライバシーポリシー', to: '/privacy' },
-      { label: '8x9.jp', href: 'https://8x9.jp/', external: true },
-    ],
-  },
-]
 
 export default function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })

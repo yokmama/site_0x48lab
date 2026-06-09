@@ -1,7 +1,12 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { SERVICES } from '../lib/data'
+import {
+  SERVICES,
+  SERVICES_PAGE_ICON_BG,
+  SERVICES_PAGE_PROCESS_STEPS,
+  SERVICES_PAGE_WHY_ITEMS,
+} from '../lib/data'
 import { reveal, stagger, viewportOnce } from '../lib/animations'
 import ServiceIcon from '../components/ui/ServiceIcon'
 import s from './ServicesPage.module.css'
@@ -21,41 +26,6 @@ function useTitleInView() {
   }, [])
   return [ref, inView]
 }
-
-const ICON_BG = {
-  'ai-development': 'var(--color-accent)',
-  mobile: '#7c3aed',
-  web: '#0891b2',
-  education: 'var(--color-orange)',
-}
-
-const WHY_ITEMS = [
-  {
-    num: '1/5〜1/10',
-    unit: 'コスト',
-    title: 'コスト1/5〜1/10',
-    desc: 'AI活用と20年の設計ノウハウにより、従来比大幅なコスト削減を実現。削減分はそのままお客様に還元します。',
-  },
-  {
-    num: '最大1/10',
-    unit: '納期',
-    title: '最大1/10の納期',
-    desc: 'AI活用で設計・実装・QAを加速。数ヶ月かかっていた開発が数週間で完了します。',
-  },
-  {
-    num: '20年',
-    unit: '実績',
-    title: '20年の実績と品質',
-    desc: '2010年の創業以来、製造業・サービス業・小売など幅広い業種で300件超のプロジェクトを手がけてきました。',
-  },
-]
-
-const PROCESS_STEPS = [
-  { num: '1', title: 'ヒアリング', desc: '課題・要件をお伺いします。オンライン30分、無料。', free: true },
-  { num: '2', title: '設計・見積もり', desc: '機能の整理とコスト・納期をご提示。ここまで無料。', free: true },
-  { num: '3', title: '開発', desc: 'AI＋経験豊富なエンジニアで開発。進捗を随時共有します。', free: false },
-  { num: '4', title: '納品・運用', desc: '検証後に納品。修正・機能追加も低コストで対応します。', free: false },
-]
 
 export default function ServicesPage() {
   const [gridRef, gridIn] = useTitleInView()
@@ -100,7 +70,7 @@ export default function ServicesPage() {
               <motion.div key={svc.slug} className={s.serviceCard} variants={reveal}>
                 <div
                   className={s.cardIconArea}
-                  style={{ backgroundColor: ICON_BG[svc.slug] || 'var(--color-accent)' }}
+                  style={{ backgroundColor: SERVICES_PAGE_ICON_BG[svc.slug] || 'var(--color-accent)' }}
                 >
                   <ServiceIcon type={svc.icon} size={32} color="#fff" />
                 </div>
@@ -168,10 +138,10 @@ export default function ServicesPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {PROCESS_STEPS.map((step, idx) => (
+            {SERVICES_PAGE_PROCESS_STEPS.map((step, idx) => (
               <motion.div key={step.num} className={s.processStep} variants={reveal}>
                 <div className={s.processNum}>{step.num}</div>
-                {idx < PROCESS_STEPS.length - 1 && (
+                {idx < SERVICES_PAGE_PROCESS_STEPS.length - 1 && (
                   <div className={s.processConnector} aria-hidden="true" />
                 )}
                 <h3 className={s.processTitle}>{step.title}</h3>
@@ -201,7 +171,7 @@ export default function ServicesPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {WHY_ITEMS.map((item) => (
+            {SERVICES_PAGE_WHY_ITEMS.map((item) => (
               <motion.div key={item.title} className={s.whyCard} variants={reveal}>
                 <div className={s.whyNum}>
                   <span className={s.whyNumValue}>{item.num}</span>

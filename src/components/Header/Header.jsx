@@ -1,23 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { HEADER_NAV } from '../../lib/data'
 import logoSrc from '../../assets/logo.svg'
 import s from './Header.module.css'
-
-const SERVICES_DROPDOWN = [
-  { label: 'AI活用型受託開発', sub: 'コスト1/5〜1/10', path: '/services/ai-development' },
-  { label: 'モバイルアプリ開発', sub: 'Flutter / iOS / Android', path: '/services/mobile' },
-  { label: 'Webシステム開発', sub: 'React / Next.js / Java', path: '/services/web' },
-  { label: 'プログラミング教育', sub: '8x9 Kids スクール', path: '/services/education' },
-]
-
-const NAV = [
-  { label: 'サービス', path: '/services', dropdown: SERVICES_DROPDOWN },
-  { label: '実績', path: '/works' },
-  { label: '会社概要', path: '/company' },
-  { label: 'ブログ', path: '/blog' },
-  { label: '採用', path: '/careers' },
-]
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -34,8 +20,11 @@ export default function Header() {
   }, [])
 
   useEffect(() => {
-    setMenuOpen(false)
-    setOpenDropdown(null)
+    const id = window.setTimeout(() => {
+      setMenuOpen(false)
+      setOpenDropdown(null)
+    }, 0)
+    return () => window.clearTimeout(id)
   }, [location])
 
   useEffect(() => {
@@ -61,7 +50,7 @@ export default function Header() {
         </Link>
 
         <nav className={s.nav} ref={dropdownRef} aria-label="グローバルナビゲーション">
-          {NAV.map((item) => (
+          {HEADER_NAV.map((item) => (
             <div key={item.path} className={s.navItem}>
               {item.dropdown ? (
                 <button
@@ -131,7 +120,7 @@ export default function Header() {
             transition={{ duration: 0.28, ease: 'easeInOut' }}
           >
             <nav className={s.mobileNavInner} aria-label="モバイルナビゲーション">
-              {NAV.map((item) => (
+              {HEADER_NAV.map((item) => (
                 <div key={item.path}>
                   <Link to={item.path} className={`${s.mobileNavLink}${isActive(item.path) ? ` ${s.mobileNavActive}` : ''}`}>
                     {item.label}

@@ -37,7 +37,7 @@
   border-radius: 999px;
 }
 
-.saving {
+.impact {
   font-size: 12px;
   font-weight: 700;
   color: var(--color-success);
@@ -73,11 +73,11 @@
   text-align: center;
 }
 
-.compareAfter .compareCost {
+.compareAfter .comparePeriod {
   color: var(--color-accent);
 }
 
-.compareAfter .comparePeriod {
+.compareAfter .compareQuality {
   color: var(--color-accent);
 }
 
@@ -89,14 +89,14 @@
   margin-bottom: 3px;
 }
 
-.compareCost {
+.comparePeriod {
   font-size: 16px;
   font-weight: 700;
   color: var(--color-dark-2);
   line-height: 1.2;
 }
 
-.comparePeriod {
+.compareQuality {
   font-size: 11px;
   color: var(--color-body-muted);
   margin-top: 2px;

@@ -141,6 +141,74 @@
   font-weight: 600;
 }
 
+/* Examples */
+.examplesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.exampleCard {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 220px;
+  transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.exampleHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.exampleIndustry {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background-color: var(--color-bg-alt);
+  color: var(--color-body-muted);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.exampleDelivery {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+.exampleTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.45;
+}
+
+.exampleDesc {
+  font-size: 13px;
+  color: var(--color-body);
+  line-height: 1.7;
+  flex: 1;
+}
+
+.exampleQuality {
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border-light);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-accent);
+  line-height: 1.6;
+}
+
 /* Pricing */
 .pricingGrid {
   display: grid;
@@ -174,6 +242,8 @@
 }
 
 .pricingPrice span {
+  display: inline-block;
+  margin-left: 6px;
   font-size: 13px;
   font-weight: 400;
   color: var(--color-body-light);
@@ -395,6 +465,10 @@
 }
 
 @media (max-width: 900px) {
+  .examplesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .processSteps {
     grid-template-columns: repeat(2, 1fr);
     gap: 28px;
@@ -408,6 +482,7 @@
 @media (max-width: 768px) {
   .problemsGrid,
   .solutionGrid,
+  .examplesGrid,
   .pricingGrid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -427,6 +502,7 @@
 @media (min-width: 481px) and (max-width: 768px) {
   .problemsGrid,
   .solutionGrid,
+  .examplesGrid,
   .pricingGrid {
     grid-template-columns: repeat(2, 1fr);
   }

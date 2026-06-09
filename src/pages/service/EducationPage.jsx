@@ -1,7 +1,9 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { EDUCATION_PAGE_BUSINESS_ITEMS, EDUCATION_PAGE_FEATURES } from '../../lib/data'
 import { reveal, stagger, viewportOnce } from '../../lib/animations'
+import ServiceIcon from '../../components/ui/ServiceIcon'
 import logoSrc from '../../assets/8x9-logo.png'
 import s from './EducationPage.module.css'
 
@@ -20,55 +22,6 @@ function useTitleInView() {
   }, [])
   return [ref, inView]
 }
-
-const FEATURES = [
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polygon points="5 3 19 12 5 21 5 3" />
-      </svg>
-    ),
-    title: 'マインクラフトを使った体験型学習',
-    desc: '子どもたちが大好きなマインクラフトを題材に、ゲームを作りながらプログラミングの基礎から応用まで自然に身につけます。',
-  },
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-    title: '小学生〜中学生対応',
-    desc: '年齢・習熟度に合わせたクラス分けで、はじめてプログラミングに触れる子どもから発展的な学習を望む子どもまで幅広く対応。',
-  },
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-        <path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" />
-      </svg>
-    ),
-    title: 'オリジナル教材・カリキュラム',
-    desc: '株式会社ハックラボが独自に開発した教材とカリキュラムを使用。プログラミング的思考力と創造性を同時に育みます。',
-  },
-]
-
-const BUSINESS_ITEMS = [
-  {
-    title: '教材・カリキュラム開発受託',
-    desc: 'プログラミング教育向けの教材やカリキュラムの設計・開発をお受けします。学習目標・対象年齢に合わせてカスタマイズします。',
-  },
-  {
-    title: 'Mod・プラグイン開発',
-    desc: 'マインクラフト向けのMod・プラグインの受託開発に対応。学習用コンテンツから独自ゲーム体験まで幅広く対応できます。',
-  },
-  {
-    title: '教育システム開発',
-    desc: '受講管理・進捗トラッキング・保護者向けポータルなど、教育事業者向けのWebシステム開発を承ります。',
-  },
-]
 
 export default function EducationPage() {
   const [featRef, featIn] = useTitleInView()
@@ -143,7 +96,7 @@ export default function EducationPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {FEATURES.map((feat) => (
+            {EDUCATION_PAGE_FEATURES.map((feat) => (
               <motion.div
                 key={feat.title}
                 className={s.featureCard}
@@ -151,7 +104,9 @@ export default function EducationPage() {
                 whileHover={{ y: -4, boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.3)' }}
                 transition={{ type: 'tween', duration: 0.2 }}
               >
-                <div className={s.featureIcon}>{feat.icon}</div>
+                <div className={s.featureIcon}>
+                  <ServiceIcon type={feat.icon} size={28} />
+                </div>
                 <h3 className={s.featureTitle}>{feat.title}</h3>
                 <p className={s.featureDesc}>{feat.desc}</p>
               </motion.div>
@@ -181,7 +136,7 @@ export default function EducationPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {BUSINESS_ITEMS.map((item) => (
+            {EDUCATION_PAGE_BUSINESS_ITEMS.map((item) => (
               <motion.div key={item.title} className={s.bizCard} variants={reveal}>
                 <div className={s.bizCheckMark} aria-hidden="true">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

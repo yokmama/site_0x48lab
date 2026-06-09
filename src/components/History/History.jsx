@@ -1,34 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { HOME_HISTORY_EVENTS } from '../../lib/data'
 import styles from './History.module.css'
-
-const EVENTS = [
-  {
-    year: '2010年',
-    title: '株式会社Re.Kayo-System 設立',
-    desc: '神戸にてWebシステム開発会社として創業。JavaサーバーサイドやXML、Androidアプリ開発を中心に事業展開。',
-  },
-  {
-    year: '2012年',
-    title: '技術書を出版',
-    desc: '翔泳社より「10日でおぼえるAndroidアプリ開発入門教室」を出版。教育事業へ本格参入。',
-  },
-  {
-    year: '2016年1月',
-    title: '8x9 Kids プログラミングスクール 開校',
-    desc: 'マインクラフトを題材にした独自カリキュラムの子ども向けプログラミングスクールを開校。教材・教育システムの開発も開始。',
-  },
-  {
-    year: '2021年1月',
-    title: '株式会社ハックラボへ商号変更',
-    desc: '神戸・灘区への移転を機に商号を変更。AI活用開発・モバイル開発へ事業を拡張。',
-  },
-  {
-    year: '2025年7月',
-    title: '東京・渋谷へ本社移転',
-    desc: '東京渋谷に本社を移転。首都圏での事業基盤を強化し、さらなる成長を推進。',
-  },
-]
 
 export default function History() {
   const titleRef = useRef(null)
@@ -66,7 +39,7 @@ export default function History() {
             />
           </div>
 
-          {EVENTS.map((event, i) => (
+          {HOME_HISTORY_EVENTS.map((event, i) => (
             <motion.div
               key={event.year}
               className={styles.entry}

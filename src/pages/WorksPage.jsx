@@ -1,29 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { stagger, reveal, viewportOnce } from '../lib/animations'
-import { WORKS } from '../lib/data'
+import { WORKS, WORKS_INDUSTRIES, WORKS_SERVICE_FILTERS, WORKS_SERVICE_LABEL_MAP } from '../lib/data'
 import s from './WorksPage.module.css'
-
-const INDUSTRIES = ['all', '製造業', 'サービス業', '卸売業', '小売業', '教育業']
-const SERVICES = ['all', 'AI活用開発', 'モバイル', 'Web']
-
-const SERVICE_LABEL_MAP = {
-  'ai-development': 'AI活用開発',
-  'mobile': 'モバイル',
-  'web': 'Web',
-}
-
-const FILTER_LABELS = {
-  all: 'すべて',
-  '製造業': '製造業',
-  'サービス業': 'サービス業',
-  '卸売業': '卸売業',
-  '小売業': '小売業',
-  '教育業': '教育業',
-  'AI活用開発': 'AI活用開発',
-  'モバイル': 'モバイル',
-  'Web': 'Web',
-}
 
 function useTitleInView() {
   const ref = useRef(null)
@@ -55,15 +34,15 @@ function WorkCard({ work }) {
     >
       <div className={s.cardHead}>
         <span className={s.industryTag}>{work.industry}</span>
-        <span className={s.savingBadge}>{work.saving}</span>
+        <span className={s.impactBadge}>{work.impact}</span>
       </div>
       <h3 className={s.cardTitle}>{work.title}</h3>
       <p className={s.cardSummary}>{work.summary}</p>
       <div className={s.compare}>
         <div className={s.compareItem}>
           <p className={s.compareLabel}>従来</p>
-          <p className={s.compareCost}>{work.before.cost}</p>
           <p className={s.comparePeriod}>{work.before.period}</p>
+          <p className={s.compareQuality}>{work.before.quality}</p>
         </div>
         <div className={s.compareArrow} aria-hidden="true">
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -72,8 +51,8 @@ function WorkCard({ work }) {
         </div>
         <div className={`${s.compareItem} ${s.compareAfter}`}>
           <p className={s.compareLabel}>当社</p>
-          <p className={s.compareCost}>{work.after.cost}</p>
           <p className={s.comparePeriod}>{work.after.period}</p>
+          <p className={s.compareQuality}>{work.after.quality}</p>
         </div>
       </div>
       <div className={s.techList}>
@@ -88,12 +67,12 @@ function WorkCard({ work }) {
 export default function WorksPage() {
   const [activeIndustry, setActiveIndustry] = useState('all')
   const [activeService, setActiveService] = useState('all')
-  const [statsRef, statsIn] = useTitleInView()
+  const [statsRef] = useTitleInView()
   const [worksRef, worksIn] = useTitleInView()
 
   const filtered = WORKS.filter((w) => {
     const industryMatch = activeIndustry === 'all' || w.industry === activeIndustry
-    const serviceMatch = activeService === 'all' || SERVICE_LABEL_MAP[w.service] === activeService
+    const serviceMatch = activeService === 'all' || WORKS_SERVICE_LABEL_MAP[w.service] === activeService
     return industryMatch && serviceMatch
   })
 
@@ -123,7 +102,7 @@ export default function WorksPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] }}
           >
-            AI×専門知識で実現した、コスト削減・納期短縮の実例。
+            AI×専門知識で実現した、短納期・高品質な開発の実例。
           </motion.p>
         </div>
       </div>
@@ -141,7 +120,7 @@ export default function WorksPage() {
             <div className={s.filterGroup}>
               <span className={s.filterGroupLabel}>業種</span>
               <div className={s.filterPills}>
-                {INDUSTRIES.map((ind) => (
+                {WORKS_INDUSTRIES.map((ind) => (
                   <button
                     key={ind}
                     className={`${s.filterPill}${activeIndustry === ind ? ` ${s.active}` : ''}`}
@@ -155,7 +134,7 @@ export default function WorksPage() {
             <div className={s.filterGroup}>
               <span className={s.filterGroupLabel}>サービス</span>
               <div className={s.filterPills}>
-                {SERVICES.map((svc) => (
+                {WORKS_SERVICE_FILTERS.map((svc) => (
                   <button
                     key={svc}
                     className={`${s.filterPill}${activeService === svc ? ` ${s.active}` : ''}`}
@@ -204,12 +183,12 @@ export default function WorksPage() {
             viewport={viewportOnce}
           >
             <motion.div className={s.statItem} variants={reveal}>
-              <p className={s.statNum}>平均82%</p>
-              <p className={s.statLabel}>累計コスト削減率</p>
+              <p className={s.statNum}>2〜4週間</p>
+              <p className={s.statLabel}>主要案件の納品期間</p>
             </motion.div>
             <motion.div className={s.statItem} variants={reveal}>
-              <p className={s.statNum}>2週間</p>
-              <p className={s.statLabel}>最短納期</p>
+              <p className={s.statNum}>全案件</p>
+              <p className={s.statLabel}>設計・品質レビュー</p>
             </motion.div>
             <motion.div className={s.statItem} variants={reveal}>
               <p className={s.statNum}>10+</p>

@@ -1,10 +1,8 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { BLOG_POSTS } from '../lib/data'
-import { stagger, reveal, viewportOnce } from '../lib/animations'
+import { BLOG_CATEGORIES, BLOG_POSTS } from '../lib/data'
+import { stagger, reveal } from '../lib/animations'
 import s from './BlogPage.module.css'
-
-const CATEGORIES = ['全て', '開発事例', '技術', '開発手法', '教育', 'ビジネス', 'お知らせ']
 
 function formatDate(dateStr) {
   const [y, m, d] = dateStr.split('-')
@@ -13,20 +11,6 @@ function formatDate(dateStr) {
 
 export default function BlogPage() {
   const [active, setActive] = useState('全て')
-  const titleRef = useRef(null)
-  const [inView, setInView] = useState(false)
-
-  useEffect(() => {
-    const el = titleRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect() } },
-      { threshold: 0.5 }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
-
   const filtered = active === '全て' ? BLOG_POSTS : BLOG_POSTS.filter((p) => p.category === active)
 
   return (
@@ -53,7 +37,7 @@ export default function BlogPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           >
-            {CATEGORIES.map((cat) => (
+            {BLOG_CATEGORIES.map((cat) => (
               <button
                 key={cat}
                 className={`${s.pill}${active === cat ? ` ${s.pillActive}` : ''}`}
@@ -85,7 +69,7 @@ export default function BlogPage() {
                 <h2 className={s.cardTitle}>{post.title}</h2>
                 <p className={s.excerpt}>{post.excerpt}</p>
                 <div className={s.cardFooter}>
-                  <span className={s.readMin}>{post.readMin} min read</span>
+                  <span className={s.readCount}>{post.readCount}人が読みました</span>
                   <span className={s.readMore}>
                     続きを読む
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" width="12" height="12">

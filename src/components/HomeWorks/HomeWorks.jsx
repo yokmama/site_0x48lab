@@ -31,7 +31,7 @@ export default function HomeWorks() {
           <h2 ref={titleRef} className={`section-title${inView ? ' in-view' : ''}`}>
             導入実績
           </h2>
-          <p className="section-desc">AIと20年の専門知識が生み出す、圧倒的なコスト削減と納期短縮。</p>
+          <p className="section-desc">AIと20年の専門知識が生み出す、短納期で高品質な導入実績。</p>
         </div>
 
         <motion.div
@@ -45,23 +45,23 @@ export default function HomeWorks() {
             <motion.div key={work.slug} className={s.card} variants={reveal}>
               <div className={s.cardHead}>
                 <span className={s.industry}>{work.industry}</span>
-                <span className={s.saving}>{work.saving}</span>
+                <span className={s.impact}>{work.impact}</span>
               </div>
               <h3 className={s.cardTitle}>{work.title}</h3>
               <p className={s.summary}>{work.summary}</p>
               <div className={s.compare}>
                 <div className={s.compareItem}>
                   <p className={s.compareLabel}>従来</p>
-                  <p className={s.compareCost}>{work.before.cost}</p>
                   <p className={s.comparePeriod}>{work.before.period}</p>
+                  <p className={s.compareQuality}>{work.before.quality}</p>
                 </div>
                 <div className={s.arrow}>
                   <ServiceIcon type="arrow" size={18} />
                 </div>
                 <div className={`${s.compareItem} ${s.compareAfter}`}>
                   <p className={s.compareLabel}>当社</p>
-                  <p className={s.compareCost}>{work.after.cost}</p>
                   <p className={s.comparePeriod}>{work.after.period}</p>
+                  <p className={s.compareQuality}>{work.after.quality}</p>
                 </div>
               </div>
             </motion.div>

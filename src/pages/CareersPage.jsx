@@ -1,56 +1,10 @@
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { JOB_OPENINGS } from '../lib/data'
+import { CAREERS_BENEFITS, CAREERS_CULTURE, CAREERS_STEPS, JOB_OPENINGS } from '../lib/data'
 import { stagger, reveal, viewportOnce } from '../lib/animations'
+import ServiceIcon from '../components/ui/ServiceIcon'
 import s from './CareersPage.module.css'
-
-const CULTURE = [
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <path d="M8 21h8M12 17v4" />
-      </svg>
-    ),
-    title: 'フルリモート対応',
-    desc: '渋谷オフィス常駐・フルリモート・ハイブリッドから選択可。働き方はあなたが決める。',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
-    title: 'AI活用の最前線',
-    desc: '最新の生成AIツールを積極活用した開発環境。常に時代の先端で働ける。',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="9" cy="7" r="4" />
-        <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.87" />
-      </svg>
-    ),
-    title: '少数精鋭チーム',
-    desc: '少人数チームで裁量を持って働ける環境。一人ひとりの影響力が大きい。',
-  },
-]
-
-const BENEFITS = [
-  { icon: '📅', label: '完全週休2日', sub: '土日祝・年間休日120日以上' },
-  { icon: '🏥', label: '各種社会保険完備', sub: '健康・厚生年金・雇用・労災' },
-  { icon: '📚', label: '書籍・学習費補助', sub: '年間上限あり。技術書・資格取得費用' },
-  { icon: '🏠', label: 'リモートワーク手当', sub: '在宅勤務時の通信・光熱費補助' },
-]
-
-const STEPS = [
-  { num: '01', label: '書類選考', desc: '履歴書・職務経歴書をご提出ください。' },
-  { num: '02', label: 'オンライン面接 1〜2回', desc: 'カジュアル面談を含む場合があります。' },
-  { num: '03', label: '内定', desc: '条件面談の上、内定となります。' },
-]
 
 function SectionTitle({ label, title }) {
   const ref = useRef(null)
@@ -100,9 +54,11 @@ export default function CareersPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {CULTURE.map((item) => (
+            {CAREERS_CULTURE.map((item) => (
               <motion.div key={item.title} className={s.cultureCard} variants={reveal}>
-                <div className={s.cultureIcon}>{item.icon}</div>
+                <div className={s.cultureIcon}>
+                  <ServiceIcon type={item.icon} />
+                </div>
                 <h3 className={s.cultureTitle}>{item.title}</h3>
                 <p className={s.cultureDesc}>{item.desc}</p>
               </motion.div>
@@ -164,7 +120,7 @@ export default function CareersPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {BENEFITS.map((b) => (
+            {CAREERS_BENEFITS.map((b) => (
               <motion.div key={b.label} className={s.benefitCard} variants={reveal}>
                 <span className={s.benefitIcon}>{b.icon}</span>
                 <div>
@@ -187,11 +143,11 @@ export default function CareersPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {STEPS.map((step, i) => (
+            {CAREERS_STEPS.map((step, i) => (
               <motion.div key={step.num} className={s.step} variants={reveal}>
                 <div className={s.stepConnector}>
                   <div className={s.stepNum}>{step.num}</div>
-                  {i < STEPS.length - 1 && <div className={s.stepLine} aria-hidden="true" />}
+                  {i < CAREERS_STEPS.length - 1 && <div className={s.stepLine} aria-hidden="true" />}
                 </div>
                 <div className={s.stepBody}>
                   <p className={s.stepLabel}>{step.label}</p>

@@ -1,21 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { ABOUT_ROWS } from '../../lib/data'
 import styles from './About.module.css'
-
-const ROWS = [
-  { label: '会社名', value: '株式会社ハックラボ（HackLab Inc.）' },
-  { label: '法人番号', value: '8140001033003' },
-  { label: '設立', value: '2010年（商号変更：2021年1月12日）' },
-  { label: '代表取締役', value: '寺園聖文' },
-  {
-    label: '所在地',
-    value: '〒150-0002 東京都渋谷区渋谷2丁目19-19 和光宮益坂ビル5F',
-  },
-  {
-    label: '事業内容',
-    value: 'システム開発・受託開発 / プログラミング教育事業 / 教材開発',
-  },
-]
 
 export default function About() {
   const titleRef = useRef(null)
@@ -54,7 +40,7 @@ export default function About() {
         >
           <table className={styles.table}>
             <tbody>
-              {ROWS.map((row) => (
+              {ABOUT_ROWS.map((row) => (
                 <tr key={row.label}>
                   <th scope="row">{row.label}</th>
                   <td>{row.value}</td>

@@ -1,12 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { NOT_FOUND_QUICK_LINKS } from '../lib/data'
 import s from './NotFoundPage.module.css'
-
-const QUICK_LINKS = [
-  { label: 'サービス', to: '/#services' },
-  { label: '実績', to: '/#works' },
-  { label: '会社概要', to: '/#about' },
-]
 
 export default function NotFoundPage() {
   return (
@@ -33,7 +28,7 @@ export default function NotFoundPage() {
         <div className={s.quickLinks}>
           <p className={s.quickLinksLabel}>よく見られているページ</p>
           <div className={s.quickLinksRow}>
-            {QUICK_LINKS.map((lk) => (
+            {NOT_FOUND_QUICK_LINKS.map((lk) => (
               <Link key={lk.label} to={lk.to} className={s.quickLink}>
                 {lk.label}
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" width="11" height="11">

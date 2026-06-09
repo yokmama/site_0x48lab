@@ -1,22 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { TEAM_MEMBERS } from '../../lib/data'
 import representativeImg from '../../assets/representative.jpg'
 import styles from './Team.module.css'
-
-const MEMBERS = [
-  {
-    name: '寺園 聖文',
-    role: 'Representative Director / CEO',
-    photo: representativeImg,
-    initials: null,
-  },
-  {
-    name: 'Maciej Nowakiewicz',
-    role: 'CTO',
-    photo: null,
-    initials: 'MN',
-  },
-]
 
 const containerVariants = {
   hidden: {},
@@ -26,6 +12,10 @@ const containerVariants = {
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+}
+
+const PHOTO_MAP = {
+  representative: representativeImg,
 }
 
 export default function Team() {
@@ -63,7 +53,9 @@ export default function Team() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          {MEMBERS.map((member) => (
+          {TEAM_MEMBERS.map((member) => {
+            const photo = member.photo ? PHOTO_MAP[member.photo] : null
+            return (
             <motion.div
               key={member.name}
               className={styles.card}
@@ -71,9 +63,9 @@ export default function Team() {
               whileHover={{ boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.25)' }}
               transition={{ type: 'tween', duration: 0.22 }}
             >
-              {member.photo ? (
+              {photo ? (
                 <div className={styles.avatar}>
-                  <img src={member.photo} alt={member.name} />
+                  <img src={photo} alt={member.name} />
                 </div>
               ) : (
                 <div className={styles.avatarInitials} aria-label={member.name}>
@@ -85,7 +77,8 @@ export default function Team() {
                 <p className={styles.role}>{member.role}</p>
               </div>
             </motion.div>
-          ))}
+            )
+          })}
         </motion.div>
       </div>
     </section>

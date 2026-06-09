@@ -1,6 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import {
+  LP_COMPARISON_ROWS,
+  LP_FAQ_ITEMS,
+  LP_PRICING,
+  LP_PROBLEMS,
+  LP_RESULTS,
+  LP_SOLUTIONS,
+} from '../lib/data'
 import logoSrc from '../assets/logo.svg'
 import representativeImg from '../assets/representative.jpg'
 import s from './LPPage.module.css'
@@ -35,126 +43,6 @@ const stagger = {
 function scrollToContact() {
   document.getElementById('lp-contact')?.scrollIntoView({ behavior: 'smooth' })
 }
-
-/* ─── Data ─────────────────────────────────────────────────── */
-const PROBLEMS = [
-  '見積もりを取ったら500万円以上になり、諦めてしまった',
-  'ノーコードツールで自作を試みたが、機能の限界で頓挫した',
-  'エンジニア不足で年々開発コストが上がり、困っている',
-]
-
-const SOLUTIONS = [
-  {
-    num: '01',
-    title: 'コスト1/5〜1/10',
-    desc: 'AIが設計・実装・テストを加速し、人件費を大幅削減。削減分をそのままお客様に還元します。',
-  },
-  {
-    num: '02',
-    title: '納期最大1/10',
-    desc: '数ヶ月かかっていた案件が数週間に。ビジネスのスピードに合わせた開発が実現します。',
-  },
-  {
-    num: '03',
-    title: '必要なものだけを作る',
-    desc: '大きなパッケージを買わなくていい。最小限のコストで要件にぴったりのシステムを構築します。',
-  },
-]
-
-const COMPARISON_ROWS = [
-  {
-    item: '費用',
-    traditional: '500万円以上',
-    ours: '50万円〜（1/5〜1/10）',
-  },
-  {
-    item: '期間',
-    traditional: '3〜6ヶ月',
-    ours: '2〜4週間（最大1/10）',
-  },
-  {
-    item: '柔軟性',
-    traditional: '変更に弱い',
-    ours: '小規模イテレーション・低コスト修正',
-  },
-  {
-    item: '品質保証',
-    traditional: '手動QAが中心',
-    ours: 'AI＋人間の20年QA知識',
-  },
-]
-
-const PRICING = [
-  {
-    title: '業務管理システム',
-    price: '¥500,000',
-    from: true,
-    items: ['CRM・顧客管理', '案件・プロジェクト管理', '営業パイプライン管理'],
-  },
-  {
-    title: '予約・顧客対応システム',
-    price: '¥800,000',
-    from: true,
-    items: ['予約管理', 'LINE連携', '自動返信・通知'],
-  },
-  {
-    title: '業務効率化・自動化',
-    price: '¥300,000',
-    from: true,
-    items: ['データ入力自動化', 'レポート自動生成', '社内業務の効率化'],
-  },
-]
-
-const RESULTS = [
-  {
-    industry: '製造業',
-    title: 'CRM構築',
-    before: { cost: '500万円', period: '5ヶ月' },
-    after: { cost: '80万円', period: '3週間' },
-    saving: 'コスト84%削減',
-  },
-  {
-    industry: 'サービス業',
-    title: '予約システム',
-    before: { cost: '300万円', period: '4ヶ月' },
-    after: { cost: '60万円', period: '2週間' },
-    saving: 'コスト80%削減',
-  },
-  {
-    industry: '卸売業',
-    title: '在庫・受発注管理',
-    before: { cost: '800万円', period: '6ヶ月' },
-    after: { cost: '120万円', period: '4週間' },
-    saving: 'コスト85%削減',
-  },
-]
-
-const FAQ_ITEMS = [
-  {
-    q: 'なぜこんなに安くできるのですか？',
-    a: 'AIが設計・実装・テストの工数を大幅に削減するため、従来比1/5〜1/10のコストが実現できます。その削減分をそのままお客様に還元しています。',
-  },
-  {
-    q: '品質は大丈夫ですか？',
-    a: '20年の設計・検証ノウハウを持つシニアエンジニアがAIの出力をすべてレビューします。AI任せにせず、人間の経験と組み合わせることで高品質を担保しています。',
-  },
-  {
-    q: 'AIを使うことで安全性は問題ありませんか？',
-    a: 'AIはあくまでもツールです。要件定義・設計・QAはすべて人間が主導します。機密情報はAIに入力しない運用ルールを徹底しています。',
-  },
-  {
-    q: '納期はどのくらいですか？',
-    a: '規模によりますが、標準的なシステムで2〜4週間を想定しています。従来の開発と比べて最大1/10の期間で納品が可能です。',
-  },
-  {
-    q: '納品後のサポートはありますか？',
-    a: 'はい。修正・機能追加も低コストで対応します。継続的なサポートも承りますのでご相談ください。',
-  },
-  {
-    q: 'どんな業種・業態でも対応できますか？',
-    a: '製造業・サービス業・小売・卸売など多様な業種の実績があります。業種・規模を問わず、まずはお気軽にご相談ください。',
-  },
-]
 
 /* ─── Sub-components ────────────────────────────────────────── */
 function FaqItem({ item, index }) {
@@ -318,7 +206,6 @@ function ContactForm() {
 
 /* ─── Page ──────────────────────────────────────────────────── */
 export default function LPPage() {
-  const [heroRef, heroIn] = useSectionTitle()
   const [problemsRef, problemsIn] = useSectionTitle()
   const [solutionRef, solutionIn] = useSectionTitle()
   const [compRef, compIn] = useSectionTitle()
@@ -403,7 +290,7 @@ export default function LPPage() {
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
           >
-            {PROBLEMS.map((text, i) => (
+            {LP_PROBLEMS.map((text, i) => (
               <motion.div key={i} className={s.problemCard} variants={reveal}>
                 <div className={s.problemIcon}>
                   <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
@@ -445,7 +332,7 @@ export default function LPPage() {
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
           >
-            {SOLUTIONS.map((item) => (
+            {LP_SOLUTIONS.map((item) => (
               <motion.div key={item.num} className={s.solutionCard} variants={reveal}
                 whileHover={{ y: -4, boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.3)' }}
                 transition={{ type: 'tween', duration: 0.2 }}
@@ -486,7 +373,7 @@ export default function LPPage() {
                 </tr>
               </thead>
               <tbody>
-                {COMPARISON_ROWS.map((row) => (
+                {LP_COMPARISON_ROWS.map((row) => (
                   <tr key={row.item}>
                     <th scope="row">{row.item}</th>
                     <td className={s.compBad}>{row.traditional}</td>
@@ -518,7 +405,7 @@ export default function LPPage() {
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
           >
-            {PRICING.map((card) => (
+            {LP_PRICING.map((card) => (
               <motion.div key={card.title} className={s.pricingCard} variants={reveal}
                 whileHover={{ y: -4, boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.3)' }}
                 transition={{ type: 'tween', duration: 0.2 }}
@@ -560,7 +447,7 @@ export default function LPPage() {
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
           >
-            {RESULTS.map((r) => (
+            {LP_RESULTS.map((r) => (
               <motion.div key={r.title} className={s.resultCard} variants={reveal}>
                 <p className={s.resultIndustry}>{r.industry}</p>
                 <p className={s.resultTitle}>{r.title}</p>
@@ -673,7 +560,7 @@ export default function LPPage() {
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6 }}
           >
-            {FAQ_ITEMS.map((item, i) => (
+            {LP_FAQ_ITEMS.map((item, i) => (
               <FaqItem key={i} item={item} index={i} />
             ))}
           </motion.div>

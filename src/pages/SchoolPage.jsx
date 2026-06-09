@@ -1,59 +1,11 @@
 import { useRef, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { SCHOOL_PAGE_BUSINESS_ITEMS, SCHOOL_PAGE_FEATURES } from '../lib/data'
 import { stagger, reveal, revealLeft, revealRight, viewportOnce } from '../lib/animations'
+import ServiceIcon from '../components/ui/ServiceIcon'
 import schoolLogo from '../assets/8x9-logo.png'
 import s from './SchoolPage.module.css'
-
-const FEATURES = [
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <path d="M8 21h8M12 17v4" />
-        <path d="M7 8l3 3-3 3M13 14h4" />
-      </svg>
-    ),
-    title: 'マインクラフト題材',
-    desc: '子どもたちが熱中するマインクラフトを教材に使用。楽しみながら自然にプログラミング的思考を習得できます。',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-    title: '小学生〜中学生対象',
-    desc: '年齢・習熟度に合わせたクラス分けで、初心者から上級者まで無理なく学べる環境を整えています。',
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
-    title: '独自カリキュラム',
-    desc: '2016年の開校以来培ってきた独自のカリキュラムで、論理的思考からプログラミングの基礎まで体系的に学習。',
-  },
-]
-
-const BUSINESS_ITEMS = [
-  {
-    title: '教材・カリキュラム開発受託',
-    desc: '企業・学校向けにオリジナルのプログラミング教材およびカリキュラムの設計・開発を承ります。',
-  },
-  {
-    title: 'Mod・プラグイン開発',
-    desc: 'マインクラフト用のカスタムMod・プラグインの受託開発。教育目的のゲーム改造にも対応します。',
-  },
-  {
-    title: '教育システム開発',
-    desc: 'eラーニングプラットフォーム・進捗管理システムなど、教育領域に特化したWebシステムを開発します。',
-  },
-]
 
 function SectionTitle({ label, title }) {
   const ref = useRef(null)
@@ -150,9 +102,11 @@ export default function SchoolPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {FEATURES.map((f) => (
+            {SCHOOL_PAGE_FEATURES.map((f) => (
               <motion.div key={f.title} className={s.featureCard} variants={reveal}>
-                <div className={s.featureIcon}>{f.icon}</div>
+                <div className={s.featureIcon}>
+                  <ServiceIcon type={f.icon} />
+                </div>
                 <h3 className={s.featureTitle}>{f.title}</h3>
                 <p className={s.featureDesc}>{f.desc}</p>
               </motion.div>
@@ -171,7 +125,7 @@ export default function SchoolPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {BUSINESS_ITEMS.map((item) => (
+            {SCHOOL_PAGE_BUSINESS_ITEMS.map((item) => (
               <motion.div key={item.title} className={s.businessCard} variants={reveal}>
                 <div className={s.businessAccent} aria-hidden="true" />
                 <h3 className={s.businessTitle}>{item.title}</h3>

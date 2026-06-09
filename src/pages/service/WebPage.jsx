@@ -1,7 +1,14 @@
 import { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import {
+  WEB_PAGE_PROCESS_STEPS,
+  WEB_PAGE_SERVICE_CARDS,
+  WEB_PAGE_STRENGTHS,
+  WEB_PAGE_TECH_TAGS,
+} from '../../lib/data'
 import { reveal, stagger, viewportOnce } from '../../lib/animations'
+import ServiceIcon from '../../components/ui/ServiceIcon'
 import s from './WebPage.module.css'
 
 function useTitleInView() {
@@ -19,98 +26,6 @@ function useTitleInView() {
   }, [])
   return [ref, inView]
 }
-
-const SERVICES_CARDS = [
-  {
-    color: '#0891b2',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
-    title: 'フロントエンド開発',
-    desc: 'React・Next.js・Vue.js などのモダンフレームワークで、高速・高品質なUIを構築します。SEO・パフォーマンス最適化も対応。',
-    tags: ['React', 'Next.js', 'Vue.js', 'TypeScript'],
-  },
-  {
-    color: 'var(--color-accent)',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M5 12h14" />
-        <path d="M12 5l7 7-7 7" />
-        <rect x="2" y="4" width="5" height="16" rx="1" />
-      </svg>
-    ),
-    title: 'バックエンドAPI開発',
-    desc: 'Node.js・Java・Python など幅広いバックエンド技術に対応。RESTful API・GraphQL・マイクロサービスまで設計から実装します。',
-    tags: ['Node.js', 'Java', 'Python', 'PostgreSQL'],
-  },
-  {
-    color: 'var(--color-orange)',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-        <polyline points="9 22 9 12 15 12 15 22" />
-      </svg>
-    ),
-    title: 'クラウドインフラ',
-    desc: 'AWS・GCP・Vercel など主要クラウドに対応。スケーラブルで安全なインフラを設計・構築します。CI/CD パイプラインの整備も支援します。',
-    tags: ['AWS', 'GCP', 'Vercel', 'Docker'],
-  },
-]
-
-const STRENGTHS = [
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M9 11l3 3L22 4" />
-        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-      </svg>
-    ),
-    title: '要件定義から一貫対応',
-    desc: '要件定義・設計・開発・保守まですべてお任せ。窓口を一本化することでコミュニケーションコストを削減します。',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5" />
-        <path d="M2 12l10 5 10-5" />
-      </svg>
-    ),
-    title: 'AI活用でコスト削減',
-    desc: '生成AIを設計・実装・テストに積極活用。従来比1/5〜1/10のコストで同品質のシステムを届けます。',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
-    title: '長期保守を見据えた設計',
-    desc: 'リリースがゴールではありません。運用・保守・機能追加を想定したアーキテクチャで、長く使えるシステムを構築します。',
-  },
-  {
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-      </svg>
-    ),
-    title: 'アジャイル開発で柔軟対応',
-    desc: '小さく始めて素早く改善。要件変更にも柔軟に対応できるアジャイルな開発スタイルで、ビジネスの変化に追従します。',
-  },
-]
-
-const TECH_TAGS = ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Node.js', 'Java', 'Python', 'AWS', 'PostgreSQL', 'MySQL', 'Docker']
-
-const PROCESS_STEPS = [
-  { num: '1', title: '要件定義・設計', desc: '要件をヒアリングし、システム設計書・画面設計を作成します。' },
-  { num: '2', title: 'フロントエンド開発', desc: 'UI/UXデザインをもとに、高品質なフロントエンドを実装します。' },
-  { num: '3', title: 'バックエンド開発', desc: 'APIサーバー・データベース・インフラを構築します。' },
-  { num: '4', title: 'テスト・リリース', desc: '総合テスト後、本番環境へデプロイ。運用移行をサポートします。' },
-]
 
 export default function WebPage() {
   const [svcRef, svcIn] = useTitleInView()
@@ -152,7 +67,7 @@ export default function WebPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {SERVICES_CARDS.map((card) => (
+            {WEB_PAGE_SERVICE_CARDS.map((card) => (
               <motion.div
                 key={card.title}
                 className={s.serviceCard}
@@ -167,7 +82,7 @@ export default function WebPage() {
                     color: card.color,
                   }}
                 >
-                  {card.icon}
+                  <ServiceIcon type={card.icon} size={28} />
                 </div>
                 <h3 className={s.serviceTitle}>{card.title}</h3>
                 <p className={s.serviceDesc}>{card.desc}</p>
@@ -200,9 +115,11 @@ export default function WebPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {STRENGTHS.map((item) => (
+            {WEB_PAGE_STRENGTHS.map((item) => (
               <motion.div key={item.title} className={s.strengthItem} variants={reveal}>
-                <div className={s.strengthIcon}>{item.icon}</div>
+                <div className={s.strengthIcon}>
+                  <ServiceIcon type={item.icon} size={22} />
+                </div>
                 <div className={s.strengthBody}>
                   <h3 className={s.strengthTitle}>{item.title}</h3>
                   <p className={s.strengthDesc}>{item.desc}</p>
@@ -231,7 +148,7 @@ export default function WebPage() {
             viewport={viewportOnce}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            {TECH_TAGS.map((t) => (
+            {WEB_PAGE_TECH_TAGS.map((t) => (
               <span key={t} className={s.techTag}>{t}</span>
             ))}
           </motion.div>
@@ -256,10 +173,10 @@ export default function WebPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            {PROCESS_STEPS.map((step, idx) => (
+            {WEB_PAGE_PROCESS_STEPS.map((step, idx) => (
               <motion.div key={step.num} className={s.processStep} variants={reveal}>
                 <div className={s.processNum}>{step.num}</div>
-                {idx < PROCESS_STEPS.length - 1 && (
+                {idx < WEB_PAGE_PROCESS_STEPS.length - 1 && (
                   <div className={s.processConnector} aria-hidden="true" />
                 )}
                 <h3 className={s.processTitle}>{step.title}</h3>

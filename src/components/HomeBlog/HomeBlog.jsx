@@ -49,7 +49,7 @@ export default function HomeBlog() {
               <h3 className={s.title}>{post.title}</h3>
               <p className={s.excerpt}>{post.excerpt}</p>
               <div className={s.footer}>
-                <span className={s.readMin}>{post.readMin} min read</span>
+                <span className={s.readCount}>{post.readCount}人が読みました</span>
               </div>
             </motion.article>
           ))}

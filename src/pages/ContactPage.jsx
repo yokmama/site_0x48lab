@@ -1,25 +1,8 @@
 import { motion } from 'framer-motion'
-import { reveal, revealLeft, revealRight, viewportOnce } from '../lib/animations'
+import { CONTACT_PROCESS } from '../lib/data'
+import { revealLeft, revealRight, viewportOnce } from '../lib/animations'
 import ContactForm from '../components/ContactForm/ContactForm'
 import s from './ContactPage.module.css'
-
-const PROCESS = [
-  {
-    num: '01',
-    label: 'お問い合わせ',
-    desc: 'フォームに必要事項をご記入のうえ送信してください。',
-  },
-  {
-    num: '02',
-    label: 'ヒアリング（30分・無料）',
-    desc: '担当者よりご連絡し、オンラインにてヒアリングを実施します。',
-  },
-  {
-    num: '03',
-    label: '簡易見積もり提示（無料）',
-    desc: 'ヒアリング内容をもとに、概算のお見積もりをご提示します。',
-  },
-]
 
 export default function ContactPage() {
   return (
@@ -51,11 +34,11 @@ export default function ContactPage() {
               <div className={s.infoBlock}>
                 <h2 className={s.infoTitle}>無料相談の流れ</h2>
                 <ol className={s.processList}>
-                  {PROCESS.map((step, i) => (
+                  {CONTACT_PROCESS.map((step, i) => (
                     <li key={step.num} className={s.processItem}>
                       <div className={s.processConnector}>
                         <div className={s.processNum}>{step.num}</div>
-                        {i < PROCESS.length - 1 && <div className={s.processLine} aria-hidden="true" />}
+                        {i < CONTACT_PROCESS.length - 1 && <div className={s.processLine} aria-hidden="true" />}
                       </div>
                       <div className={s.processBody}>
                         <p className={s.processLabel}>{step.label}</p>
