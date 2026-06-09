@@ -99,13 +99,55 @@ jobs:
 
             const failedJobs = jobsData.jobs.filter(j => j.conclusion === 'failure');
 
-            const failedJobsSection = failedJobs.map(job => {
+            async function fetchErrorLog(job) {
+              try {
+                const resp = await github.request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  job_id: job.id,
+                });
+                const raw = typeof resp.data === 'string' ? resp.data : '';
+                const lines = raw.split('\n')
+                  .map(l => l.replace(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z /, ''))
+                  .filter(l => l.trim());
+
+                const seen = new Set();
+                const errorLines = [];
+                for (let i = 0; i < lines.length; i++) {
+                  if (/##\[error\]|error TS\d+|\bError\b|ERR_/.test(lines[i])) {
+                    for (let j = Math.max(0, i - 1); j <= Math.min(lines.length - 1, i + 5); j++) {
+                      if (!seen.has(j)) { seen.add(j); errorLines.push(lines[j]); }
+                    }
+                  }
+                }
+
+                return (errorLines.length ? errorLines : lines.slice(-20)).slice(0, 60).join('\n');
+              } catch (e) {
+                return `(could not fetch logs: ${e.message})`;
+              }
+            }
+
+            const failedJobsSection = (await Promise.all(failedJobs.map(async (job) => {
               const failedSteps = (job.steps ?? []).filter(s => s.conclusion === 'failure');
               const stepsText = failedSteps.length
                 ? failedSteps.map(s => `  - Step **${s.name}** (step ${s.number})`).join('\n')
                 : '  - *(no specific step identified)*';
-              return `### :x: ${job.name}\n${stepsText}\n[View job logs](${job.html_url})`;
-            }).join('\n\n');
+
+              const errorLog = await fetchErrorLog(job);
+
+              return [
+                `### :x: ${job.name}`,
+                stepsText,
+                ``,
+                `<details>`,
+                `<summary>Error output</summary>`,
+                ``,
+                '```',
+                errorLog,
+                '```',
+                `</details>`,
+              ].join('\n');
+            }))).join('\n\n');
 
             const title = `CI failure on PR #${prNumber}: ${branch}`;
             const body = [
