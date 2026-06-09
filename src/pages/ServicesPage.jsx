@@ -1,0 +1,240 @@
+import { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { SERVICES } from '../lib/data'
+import { reveal, stagger, viewportOnce } from '../lib/animations'
+import ServiceIcon from '../components/ui/ServiceIcon'
+import s from './ServicesPage.module.css'
+
+function useTitleInView() {
+  const ref = useRef(null)
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect() } },
+      { threshold: 0.5 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  return [ref, inView]
+}
+
+const ICON_BG = {
+  'ai-development': 'var(--color-accent)',
+  mobile: '#7c3aed',
+  web: '#0891b2',
+  education: 'var(--color-orange)',
+}
+
+const WHY_ITEMS = [
+  {
+    num: '1/5〜1/10',
+    unit: 'コスト',
+    title: 'コスト1/5〜1/10',
+    desc: 'AI活用と20年の設計ノウハウにより、従来比大幅なコスト削減を実現。削減分はそのままお客様に還元します。',
+  },
+  {
+    num: '最大1/10',
+    unit: '納期',
+    title: '最大1/10の納期',
+    desc: 'AI活用で設計・実装・QAを加速。数ヶ月かかっていた開発が数週間で完了します。',
+  },
+  {
+    num: '20年',
+    unit: '実績',
+    title: '20年の実績と品質',
+    desc: '2010年の創業以来、製造業・サービス業・小売など幅広い業種で300件超のプロジェクトを手がけてきました。',
+  },
+]
+
+const PROCESS_STEPS = [
+  { num: '1', title: 'ヒアリング', desc: '課題・要件をお伺いします。オンライン30分、無料。', free: true },
+  { num: '2', title: '設計・見積もり', desc: '機能の整理とコスト・納期をご提示。ここまで無料。', free: true },
+  { num: '3', title: '開発', desc: 'AI＋経験豊富なエンジニアで開発。進捗を随時共有します。', free: false },
+  { num: '4', title: '納品・運用', desc: '検証後に納品。修正・機能追加も低コストで対応します。', free: false },
+]
+
+export default function ServicesPage() {
+  const [gridRef, gridIn] = useTitleInView()
+  const [processRef, processIn] = useTitleInView()
+  const [whyRef, whyIn] = useTitleInView()
+
+  return (
+    <div>
+      <div className="page-hero">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="page-hero-label">Services</span>
+            <h1 className="page-hero-title">サービス一覧</h1>
+            <p className="page-hero-sub">受託開発からモバイルアプリ、プログラミング教育まで。</p>
+          </motion.div>
+        </div>
+      </div>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">All Services</span>
+            <h2
+              ref={gridRef}
+              className={`section-title${gridIn ? ' in-view' : ''}`}
+            >
+              提供サービス
+            </h2>
+          </div>
+          <motion.div
+            className={s.servicesGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {SERVICES.map((svc) => (
+              <motion.div key={svc.slug} className={s.serviceCard} variants={reveal}>
+                <div
+                  className={s.cardIconArea}
+                  style={{ backgroundColor: ICON_BG[svc.slug] || 'var(--color-accent)' }}
+                >
+                  <ServiceIcon type={svc.icon} size={32} color="#fff" />
+                </div>
+                <div className={s.cardBody}>
+                  <span className={s.cardTitleEn}>{svc.titleEn}</span>
+                  <h3 className={s.cardTitle}>{svc.title}</h3>
+                  <p className={s.cardTagline}>{svc.tagline}</p>
+                  <p className={s.cardDesc}>{svc.desc}</p>
+                  <ul className={s.featureList}>
+                    {svc.features.map((f) => (
+                      <li key={f} className={s.featureItem}>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className={s.checkIcon}>
+                          <path d="M20 6L9 17l-5-5" />
+                        </svg>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className={s.cardCta}>
+                    {svc.externalPath ? (
+                      <a
+                        href={svc.externalPath}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn--outline"
+                      >
+                        スクールサイトへ
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <Link to={svc.path} className="btn btn--primary">
+                        詳細を見る
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="section section--alt">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Process</span>
+            <h2
+              ref={processRef}
+              className={`section-title${processIn ? ' in-view' : ''}`}
+            >
+              開発の流れ
+            </h2>
+          </div>
+          <motion.div
+            className={s.processSteps}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {PROCESS_STEPS.map((step, idx) => (
+              <motion.div key={step.num} className={s.processStep} variants={reveal}>
+                <div className={s.processNum}>{step.num}</div>
+                {idx < PROCESS_STEPS.length - 1 && (
+                  <div className={s.processConnector} aria-hidden="true" />
+                )}
+                <h3 className={s.processTitle}>{step.title}</h3>
+                <p className={s.processDesc}>{step.desc}</p>
+                {step.free && <span className={s.processFree}>無料</span>}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Why HackLab</span>
+            <h2
+              ref={whyRef}
+              className={`section-title${whyIn ? ' in-view' : ''}`}
+            >
+              選ばれる理由
+            </h2>
+          </div>
+          <motion.div
+            className={s.whyGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {WHY_ITEMS.map((item) => (
+              <motion.div key={item.title} className={s.whyCard} variants={reveal}>
+                <div className={s.whyNum}>
+                  <span className={s.whyNumValue}>{item.num}</span>
+                  <span className={s.whyNumUnit}>{item.unit}</span>
+                </div>
+                <h3 className={s.whyTitle}>{item.title}</h3>
+                <p className={s.whyDesc}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className={s.ctaSection}>
+        <div className="container">
+          <motion.div
+            className={s.ctaInner}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={viewportOnce}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className={s.ctaTitle}>まずは無料相談から。</h2>
+            <p className={s.ctaSub}>ヒアリング・簡易見積もりまで費用はかかりません。お気軽にご相談ください。</p>
+            <Link to="/contact" className="btn btn--orange btn--lg">
+              無料相談を申し込む
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  )
+}

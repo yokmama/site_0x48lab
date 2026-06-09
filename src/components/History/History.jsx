@@ -4,12 +4,12 @@ import styles from './History.module.css'
 
 const EVENTS = [
   {
-    year: '2010',
+    year: '2010年',
     title: '株式会社Re.Kayo-System 設立',
     desc: '神戸にてWebシステム開発会社として創業。JavaサーバーサイドやXML、Androidアプリ開発を中心に事業展開。',
   },
   {
-    year: '2012',
+    year: '2012年',
     title: '技術書を出版',
     desc: '翔泳社より「10日でおぼえるAndroidアプリ開発入門教室」を出版。教育事業へ本格参入。',
   },
@@ -50,10 +50,7 @@ export default function History() {
       <div className="container">
         <div className="section-header">
           <span className="section-label">History</span>
-          <h2
-            ref={titleRef}
-            className={`section-title${inView ? ' in-view' : ''}`}
-          >
+          <h2 ref={titleRef} className={`section-title${inView ? ' in-view' : ''}`}>
             沿革
           </h2>
         </div>
@@ -79,9 +76,11 @@ export default function History() {
               transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className={styles.dot} aria-hidden="true" />
-              <p className={styles.year}>{event.year}</p>
-              <h3 className={styles.entryTitle}>{event.title}</h3>
-              <p className={styles.entryDesc}>{event.desc}</p>
+              <div className={styles.entryCard}>
+                <p className={styles.year}>{event.year}</p>
+                <h3 className={styles.entryTitle}>{event.title}</h3>
+                <p className={styles.entryDesc}>{event.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>

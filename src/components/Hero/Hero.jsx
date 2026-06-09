@@ -1,28 +1,48 @@
+import { useRef, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import heroPosterSrc from '../../assets/hero.png'
 import styles from './Hero.module.css'
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.18,
-      delayChildren: 0.3,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.3 } },
 }
 
 const itemVariants = {
   hidden: { opacity: 0, y: 22 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 }
 
 export default function Hero() {
+  const videoRef = useRef(null)
+  const [videoError, setVideoError] = useState(false)
+
+  useEffect(() => {
+    const vid = videoRef.current
+    if (vid) vid.playbackRate = 0.3
+  }, [])
+
   return (
     <section className={styles.hero} id="hero">
+      {!videoError ? (
+        <video
+          ref={videoRef}
+          src="/hero.mp4"
+          className={styles.videoBg}
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          preload="auto"
+          onError={() => setVideoError(true)}
+          poster={heroPosterSrc}
+        />
+      ) : (
+        <img src={heroPosterSrc} className={styles.videoBg} alt="" aria-hidden="true" />
+      )}
+
       <motion.div
         className={styles.content}
         variants={containerVariants}
@@ -46,6 +66,15 @@ export default function Hero() {
         <motion.p className={styles.tagline} variants={itemVariants}>
           テクノロジーで未来を創造する
         </motion.p>
+
+        <motion.div className={styles.heroCtas} variants={itemVariants}>
+          <Link to="/services" className="btn btn--ghost">
+            サービスを見る
+          </Link>
+          <Link to="/contact" className={`btn ${styles.ctaOrange}`}>
+            無料相談する
+          </Link>
+        </motion.div>
       </motion.div>
 
       <motion.div

@@ -1,0 +1,215 @@
+.aboutLayout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.logoWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.since {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-body-muted);
+  text-transform: uppercase;
+}
+
+.aboutBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.aboutTitle {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.aboutDesc {
+  font-size: 14.5px;
+  color: var(--color-body);
+  line-height: 1.9;
+}
+
+.extLink {
+  margin-top: 8px;
+  align-self: flex-start;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.featureCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.featureCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.featureIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.featureIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.featureTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.featureDesc {
+  font-size: 13.5px;
+  color: var(--color-body-light);
+  line-height: 1.8;
+}
+
+.businessGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.businessCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.businessCard:hover {
+  box-shadow: var(--shadow-md);
+  border-color: rgba(36, 144, 243, 0.25);
+}
+
+.businessAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--color-accent), rgba(36, 144, 243, 0.3));
+  border-radius: 4px 0 0 4px;
+}
+
+.businessTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.businessDesc {
+  font-size: 13.5px;
+  color: var(--color-body-light);
+  line-height: 1.8;
+}
+
+.ctaSection {
+  background: var(--color-bg-dark);
+  padding: 96px 0;
+}
+
+.ctaInner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ctaTitle {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.ctaSub {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 500px;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.ctaActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 960px) {
+  .aboutLayout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .logoWrap {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .logo {
+    max-width: 160px;
+  }
+
+  .featuresGrid,
+  .businessGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .extLink {
+    align-self: stretch;
+    justify-content: center;
+  }
+}

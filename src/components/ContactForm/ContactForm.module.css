@@ -1,0 +1,189 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-dark);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.labelDark {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.required {
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--color-accent);
+  padding: 1px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--color-dark);
+  background-color: var(--color-bg-card);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.inputDark {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.inputDark::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-light);
+}
+
+.inputDark:focus {
+  border-color: rgba(36, 144, 243, 0.6);
+  box-shadow: 0 0 0 3px rgba(36, 144, 243, 0.15);
+}
+
+.inputError {
+  border-color: var(--color-error) !important;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.7;
+}
+
+.errorMsg {
+  font-size: 12px;
+  color: var(--color-error);
+  margin-top: 2px;
+}
+
+.serverError {
+  font-size: 13px;
+  color: var(--color-error);
+  text-align: center;
+  padding: 10px;
+  background: rgba(229, 62, 62, 0.08);
+  border-radius: var(--radius-md);
+}
+
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--color-orange);
+  border-radius: var(--radius-md);
+  letter-spacing: 0.04em;
+  transition: background-color var(--transition), transform var(--transition), box-shadow var(--transition);
+  min-height: 52px;
+}
+
+.submit:hover:not(:disabled) {
+  background-color: var(--color-orange-dark);
+  box-shadow: 0 4px 16px rgba(230, 126, 34, 0.4);
+  transform: translateY(-2px);
+}
+
+.submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.note {
+  font-size: 12px;
+  color: var(--color-body-muted);
+  text-align: center;
+  line-height: 1.7;
+}
+
+.noteDark {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* Thank you */
+.thankYou {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px 24px;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.thankYouIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.thankYouIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.thankYouTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.thankYouDesc {
+  font-size: 14px;
+  color: var(--color-body-light);
+  line-height: 1.8;
+}

@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import styles from './Contact.module.css'
-
-const FORM_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLScvRv7GRD_amzFjgmpO6VWGWyy5f1K6HuIdd3wyqVnsyZiBgA/viewform?embedded=true'
+import ContactForm from '../ContactForm/ContactForm'
+import s from './Contact.module.css'
 
 export default function Contact() {
   const titleRef = useRef(null)
@@ -12,44 +10,37 @@ export default function Contact() {
   useEffect(() => {
     const el = titleRef.current
     if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect() } },
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect() } },
       { threshold: 0.5 }
     )
-    observer.observe(el)
-    return () => observer.disconnect()
+    obs.observe(el)
+    return () => obs.disconnect()
   }, [])
 
   return (
-    <section id="contact" className={`section ${styles.section}`}>
+    <section id="contact" className={`section ${s.section}`}>
       <div className="container">
         <div className="section-header">
-          <span className="section-label">Contact</span>
+          <span className={`section-label section-label--light`}>Contact</span>
           <h2
             ref={titleRef}
-            className={`${styles.sectionTitle}${inView ? ` ${styles.inView}` : ''}`}
+            className={`${s.sectionTitle}${inView ? ` ${s.inView}` : ''}`}
           >
             お問い合わせ
           </h2>
-          <p className={styles.lead}>
-            お気軽にお問い合わせください
+          <p className={s.lead}>
+            ヒアリング・簡易見積もりまで無料です。お気軽にご相談ください。
           </p>
         </div>
 
         <motion.div
-          className={styles.formWrap}
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-60px' }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <iframe
-            src={FORM_URL}
-            title="お問い合わせフォーム"
-            loading="lazy"
-          >
-            読み込んでいます…
-          </iframe>
+          <ContactForm dark />
         </motion.div>
       </div>
     </section>

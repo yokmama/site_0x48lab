@@ -215,12 +215,26 @@ function ContactForm() {
     return e
   }
 
-  const handleSubmit = (e) => {
+  const [serverError, setServerError] = useState(false)
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length) { setErrors(errs); return }
     setLoading(true)
-    setTimeout(() => { setLoading(false); setSubmitted(true) }, 800)
+    setServerError(false)
+    try {
+      const res = await fetch('https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(fields),
+      })
+      if (res.ok) { setSubmitted(true) } else { setServerError(true) }
+    } catch {
+      setServerError(true)
+    } finally {
+      setLoading(false)
+    }
   }
 
   const set = (key) => (e) => {
@@ -290,6 +304,11 @@ function ContactForm() {
         {errors.message && <p className={s.formError}>{errors.message}</p>}
       </div>
 
+      {serverError && (
+        <p style={{ fontSize: 13, color: '#e53e3e', textAlign: 'center', padding: '10px', background: 'rgba(229,62,62,0.08)', borderRadius: 6 }}>
+          送信に失敗しました。しばらくしてから再度お試しください。
+        </p>
+      )}
       <button type="submit" className={s.formSubmit} disabled={loading}>
         {loading ? '送信中...' : '無料相談を申し込む'}
       </button>

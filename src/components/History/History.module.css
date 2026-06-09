@@ -1,20 +1,28 @@
+/*
+  Geometry proof (all values from .timeline left edge):
+    padding-left : 60px
+    line left    : 19px  → line center = 19 + 1 = 20px
+    dot width    : 20px
+    dot left     : -50px → dot left-edge = 60 - 50 = 10px
+                           dot center    = 10 + 10  = 20px ✓
+*/
+
 .timeline {
   position: relative;
-  padding-left: 52px;
+  padding-left: 60px;
 }
 
-/* Gray track — always visible */
+/* ── vertical bar ── */
 .line {
   position: absolute;
-  left: 15px;
-  top: 10px;
-  bottom: 10px;
+  left: 19px;
+  top: 14px;
+  bottom: 14px;
   width: 2px;
   background-color: var(--color-border);
   overflow: hidden;
 }
 
-/* Blue fill animates scaleY 0→1 */
 .lineInner {
   position: absolute;
   inset: 0;
@@ -22,23 +30,23 @@
   transform-origin: top;
 }
 
+/* ── single entry ── */
 .entry {
   position: relative;
-  margin-bottom: 52px;
+  margin-bottom: 20px;
 }
 
 .entry:last-child {
   margin-bottom: 0;
 }
 
-/* dot center must align with line center: 15 + 1 = 16px from timeline left */
-/* entry starts at 52px, dot left = 52 - 16 - 8 = -40px, center = 52-40+8 = 16px ✓ */
+/* dot: centered on the bar (center = 20px from .timeline left — see proof above) */
 .dot {
   position: absolute;
-  left: -40px;
-  top: 5px;
-  width: 14px;
-  height: 14px;
+  left: -50px;
+  top: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: #ffffff;
   border: 2px solid var(--color-border);
@@ -51,6 +59,21 @@
   background-color: var(--color-accent);
 }
 
+/* card that holds year / title / desc */
+.entryCard {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid transparent;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 20px 24px;
+  transition: border-left-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.entry:hover .entryCard {
+  border-left-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
 .year {
   font-size: 11px;
   font-weight: 700;
@@ -61,33 +84,35 @@
 }
 
 .entryTitle {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--color-dark);
-  margin-bottom: 8px;
-  line-height: 1.4;
+  margin-bottom: 6px;
+  line-height: 1.45;
 }
 
 .entryDesc {
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--color-body);
   line-height: 1.8;
 }
 
 @media (max-width: 480px) {
   .timeline {
-    padding-left: 40px;
+    padding-left: 44px;
   }
 
-  /* line at 11px center */
+  /* recalc for mobile: padding=44, line left=11 (center=12), dot width=16 */
+  /* dot left-edge = 44-32=12, center=12+8=20... actually: left=-(44-12+8)=-40 */
+  /* let's use: left=11 → center=12; dot left=-(44-12+8)=-40, center=44-40+8=12 ✓ */
   .line {
-    left: 10px;
+    left: 11px;
   }
 
-  /* dot: 40 - 11 - 6 = -23... recalc: center=11, dot=12px, left=-(40-11+6)=-35 */
   .dot {
-    left: -30px;
-    width: 12px;
-    height: 12px;
+    left: -40px;
+    width: 16px;
+    height: 16px;
+    top: 18px;
   }
 }

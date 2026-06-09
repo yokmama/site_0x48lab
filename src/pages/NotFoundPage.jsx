@@ -1,0 +1,49 @@
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import s from './NotFoundPage.module.css'
+
+const QUICK_LINKS = [
+  { label: 'サービス', to: '/#services' },
+  { label: '実績', to: '/#works' },
+  { label: '会社概要', to: '/#about' },
+]
+
+export default function NotFoundPage() {
+  return (
+    <div className={s.root}>
+      <motion.div
+        className={s.content}
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <p className={s.code}>404</p>
+        <h1 className={s.title}>ページが見つかりません</h1>
+        <p className={s.sub}>お探しのページは存在しないか、移動した可能性があります。</p>
+
+        <div className={s.actions}>
+          <Link to="/" className="btn btn--primary btn--lg">
+            トップへ戻る
+          </Link>
+          <Link to="/contact" className="btn btn--outline btn--lg">
+            お問い合わせ
+          </Link>
+        </div>
+
+        <div className={s.quickLinks}>
+          <p className={s.quickLinksLabel}>よく見られているページ</p>
+          <div className={s.quickLinksRow}>
+            {QUICK_LINKS.map((lk) => (
+              <Link key={lk.label} to={lk.to} className={s.quickLink}>
+                {lk.label}
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" width="11" height="11">
+                  <path d="M3 8h10M9 4l4 4-4 4" />
+                </svg>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  )
+}

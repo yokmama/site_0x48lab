@@ -10,15 +10,28 @@
   padding: 80px var(--container-padding) 80px;
 }
 
+/* ── video background ── */
+.videoBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+/* subtle grid texture on top of the overlay */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
   background-size: 60px 60px;
   pointer-events: none;
+  z-index: 1;
 }
 
 .hero::after {
@@ -29,11 +42,12 @@
   right: 0;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.08);
+  z-index: 2;
 }
 
 .content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   max-width: 760px;
   width: 100%;
@@ -91,6 +105,26 @@
   color: rgba(255, 255, 255, 0.72);
   letter-spacing: 0.06em;
   line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.ctaOrange {
+  background-color: var(--color-orange);
+  color: #ffffff;
+}
+
+.ctaOrange:hover {
+  background-color: var(--color-orange-dark);
+  box-shadow: 0 4px 16px rgba(230, 126, 34, 0.4);
+  transform: translateY(-2px);
 }
 
 .scrollIndicator {
@@ -102,7 +136,7 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .scrollText {
