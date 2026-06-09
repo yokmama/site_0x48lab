@@ -9,6 +9,8 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    env:
+      pnpm_config_minimum_release_age: 0
     defaults:
       run:
         working-directory: .
@@ -33,6 +35,8 @@ jobs:
   typecheck:
     name: Type Check
     runs-on: ubuntu-latest
+    env:
+      pnpm_config_minimum_release_age: 0
     steps:
       - uses: actions/checkout@v4
 
@@ -54,6 +58,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      pnpm_config_minimum_release_age: 0
     steps:
       - uses: actions/checkout@v4
 
