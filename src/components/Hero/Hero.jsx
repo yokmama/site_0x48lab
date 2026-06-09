@@ -1,0 +1,62 @@
+import { motion } from 'framer-motion'
+import styles from './Hero.module.css'
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.3,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+export default function Hero() {
+  return (
+    <section className={styles.hero} id="hero">
+      <motion.div
+        className={styles.content}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.span className={styles.eyebrow} variants={itemVariants}>
+          Technology for the Future
+        </motion.span>
+
+        <motion.h1 className={styles.companyJa} variants={itemVariants}>
+          株式会社ハックラボ
+        </motion.h1>
+
+        <motion.p className={styles.companyEn} variants={itemVariants}>
+          HackLab Inc.
+        </motion.p>
+
+        <motion.div className={styles.divider} variants={itemVariants} />
+
+        <motion.p className={styles.tagline} variants={itemVariants}>
+          テクノロジーで未来を創造する
+        </motion.p>
+      </motion.div>
+
+      <motion.div
+        className={styles.scrollIndicator}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.6, duration: 0.8 }}
+      >
+        <span className={styles.scrollText}>Scroll</span>
+        <span className={styles.scrollArrow} aria-hidden="true" />
+      </motion.div>
+    </section>
+  )
+}

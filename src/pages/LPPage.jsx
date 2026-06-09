@@ -1,0 +1,699 @@
+import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import logoSrc from '../assets/logo.svg'
+import representativeImg from '../assets/representative.jpg'
+import s from './LPPage.module.css'
+
+/* ─── Helpers ──────────────────────────────────────────────── */
+function useSectionTitle() {
+  const ref = useRef(null)
+  const [inView, setInView] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect() } },
+      { threshold: 0.5 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+  return [ref, inView]
+}
+
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+}
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+}
+
+function scrollToContact() {
+  document.getElementById('lp-contact')?.scrollIntoView({ behavior: 'smooth' })
+}
+
+/* ─── Data ─────────────────────────────────────────────────── */
+const PROBLEMS = [
+  '見積もりを取ったら500万円以上になり、諦めてしまった',
+  'ノーコードツールで自作を試みたが、機能の限界で頓挫した',
+  'エンジニア不足で年々開発コストが上がり、困っている',
+]
+
+const SOLUTIONS = [
+  {
+    num: '01',
+    title: 'コスト1/5〜1/10',
+    desc: 'AIが設計・実装・テストを加速し、人件費を大幅削減。削減分をそのままお客様に還元します。',
+  },
+  {
+    num: '02',
+    title: '納期最大1/10',
+    desc: '数ヶ月かかっていた案件が数週間に。ビジネスのスピードに合わせた開発が実現します。',
+  },
+  {
+    num: '03',
+    title: '必要なものだけを作る',
+    desc: '大きなパッケージを買わなくていい。最小限のコストで要件にぴったりのシステムを構築します。',
+  },
+]
+
+const COMPARISON_ROWS = [
+  {
+    item: '費用',
+    traditional: '500万円以上',
+    ours: '50万円〜（1/5〜1/10）',
+  },
+  {
+    item: '期間',
+    traditional: '3〜6ヶ月',
+    ours: '2〜4週間（最大1/10）',
+  },
+  {
+    item: '柔軟性',
+    traditional: '変更に弱い',
+    ours: '小規模イテレーション・低コスト修正',
+  },
+  {
+    item: '品質保証',
+    traditional: '手動QAが中心',
+    ours: 'AI＋人間の20年QA知識',
+  },
+]
+
+const PRICING = [
+  {
+    title: '業務管理システム',
+    price: '¥500,000',
+    from: true,
+    items: ['CRM・顧客管理', '案件・プロジェクト管理', '営業パイプライン管理'],
+  },
+  {
+    title: '予約・顧客対応システム',
+    price: '¥800,000',
+    from: true,
+    items: ['予約管理', 'LINE連携', '自動返信・通知'],
+  },
+  {
+    title: '業務効率化・自動化',
+    price: '¥300,000',
+    from: true,
+    items: ['データ入力自動化', 'レポート自動生成', '社内業務の効率化'],
+  },
+]
+
+const RESULTS = [
+  {
+    industry: '製造業',
+    title: 'CRM構築',
+    before: { cost: '500万円', period: '5ヶ月' },
+    after: { cost: '80万円', period: '3週間' },
+    saving: 'コスト84%削減',
+  },
+  {
+    industry: 'サービス業',
+    title: '予約システム',
+    before: { cost: '300万円', period: '4ヶ月' },
+    after: { cost: '60万円', period: '2週間' },
+    saving: 'コスト80%削減',
+  },
+  {
+    industry: '卸売業',
+    title: '在庫・受発注管理',
+    before: { cost: '800万円', period: '6ヶ月' },
+    after: { cost: '120万円', period: '4週間' },
+    saving: 'コスト85%削減',
+  },
+]
+
+const FAQ_ITEMS = [
+  {
+    q: 'なぜこんなに安くできるのですか？',
+    a: 'AIが設計・実装・テストの工数を大幅に削減するため、従来比1/5〜1/10のコストが実現できます。その削減分をそのままお客様に還元しています。',
+  },
+  {
+    q: '品質は大丈夫ですか？',
+    a: '20年の設計・検証ノウハウを持つシニアエンジニアがAIの出力をすべてレビューします。AI任せにせず、人間の経験と組み合わせることで高品質を担保しています。',
+  },
+  {
+    q: 'AIを使うことで安全性は問題ありませんか？',
+    a: 'AIはあくまでもツールです。要件定義・設計・QAはすべて人間が主導します。機密情報はAIに入力しない運用ルールを徹底しています。',
+  },
+  {
+    q: '納期はどのくらいですか？',
+    a: '規模によりますが、標準的なシステムで2〜4週間を想定しています。従来の開発と比べて最大1/10の期間で納品が可能です。',
+  },
+  {
+    q: '納品後のサポートはありますか？',
+    a: 'はい。修正・機能追加も低コストで対応します。継続的なサポートも承りますのでご相談ください。',
+  },
+  {
+    q: 'どんな業種・業態でも対応できますか？',
+    a: '製造業・サービス業・小売・卸売など多様な業種の実績があります。業種・規模を問わず、まずはお気軽にご相談ください。',
+  },
+]
+
+/* ─── Sub-components ────────────────────────────────────────── */
+function FaqItem({ item, index }) {
+  const [open, setOpen] = useState(index === 0)
+  return (
+    <div className={s.faqItem}>
+      <button
+        className={s.faqQuestion}
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+      >
+        <span className={s.faqLabel}>Q</span>
+        <span className={s.faqQuestionText}>{item.q}</span>
+        <svg
+          className={`${s.faqIcon}${open ? ` ${s.open}` : ''}`}
+          viewBox="0 0 20 20"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          aria-hidden="true"
+        >
+          <path d="M10 4v12M4 10h12" />
+        </svg>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            className={s.faqAnswer}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: 'easeInOut' }}
+          >
+            <p className={s.faqAnswerInner}>{item.a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+function ContactForm() {
+  const [fields, setFields] = useState({
+    company: '', name: '', email: '', phone: '', message: '',
+  })
+  const [errors, setErrors] = useState({})
+  const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const validate = () => {
+    const e = {}
+    if (!fields.company.trim()) e.company = '会社名・団体名を入力してください'
+    if (!fields.name.trim()) e.name = 'お名前を入力してください'
+    if (!fields.email.trim()) e.email = 'メールアドレスを入力してください'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email)) e.email = '正しいメールアドレスを入力してください'
+    if (!fields.message.trim()) e.message = 'お問い合わせ内容を入力してください'
+    return e
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length) { setErrors(errs); return }
+    setLoading(true)
+    setTimeout(() => { setLoading(false); setSubmitted(true) }, 800)
+  }
+
+  const set = (key) => (e) => {
+    setFields((f) => ({ ...f, [key]: e.target.value }))
+    setErrors((er) => { const n = { ...er }; delete n[key]; return n })
+  }
+
+  if (submitted) {
+    return (
+      <motion.div
+        className={s.thankYou}
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div className={s.thankYouIcon}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </div>
+        <p className={s.thankYouTitle}>送信が完了しました</p>
+        <p className={s.thankYouDesc}>
+          お問い合わせありがとうございます。<br />
+          内容を確認のうえ、担当者よりご連絡いたします。
+        </p>
+      </motion.div>
+    )
+  }
+
+  return (
+    <form className={s.contactForm} onSubmit={handleSubmit} noValidate>
+      {[
+        { key: 'company', label: '会社名・団体名', required: true, placeholder: '例：株式会社〇〇' },
+        { key: 'name', label: 'お名前', required: true, placeholder: '例：山田 太郎' },
+        { key: 'email', label: 'メールアドレス', required: true, placeholder: '例：info@example.com', type: 'email' },
+        { key: 'phone', label: '電話番号', required: false, placeholder: '例：090-1234-5678', type: 'tel' },
+      ].map(({ key, label, required, placeholder, type = 'text' }) => (
+        <div className={s.formGroup} key={key}>
+          <label className={s.formLabel}>
+            {label}
+            {required && <span className={s.formRequired}>必須</span>}
+          </label>
+          <input
+            type={type}
+            className={`${s.formInput}${errors[key] ? ` ${s.error}` : ''}`}
+            value={fields[key]}
+            onChange={set(key)}
+            placeholder={placeholder}
+            maxLength={key === 'company' ? 100 : key === 'name' ? 50 : undefined}
+          />
+          {errors[key] && <p className={s.formError}>{errors[key]}</p>}
+        </div>
+      ))}
+
+      <div className={s.formGroup}>
+        <label className={s.formLabel}>
+          お問い合わせ内容
+          <span className={s.formRequired}>必須</span>
+        </label>
+        <textarea
+          className={`${s.formTextarea}${errors.message ? ` ${s.error}` : ''}`}
+          value={fields.message}
+          onChange={set('message')}
+          placeholder="例：顧客管理システムの開発を検討しています"
+          maxLength={1000}
+        />
+        {errors.message && <p className={s.formError}>{errors.message}</p>}
+      </div>
+
+      <button type="submit" className={s.formSubmit} disabled={loading}>
+        {loading ? '送信中...' : '無料相談を申し込む'}
+      </button>
+    </form>
+  )
+}
+
+/* ─── Page ──────────────────────────────────────────────────── */
+export default function LPPage() {
+  const [heroRef, heroIn] = useSectionTitle()
+  const [problemsRef, problemsIn] = useSectionTitle()
+  const [solutionRef, solutionIn] = useSectionTitle()
+  const [compRef, compIn] = useSectionTitle()
+  const [pricingRef, pricingIn] = useSectionTitle()
+  const [resultsRef, resultsIn] = useSectionTitle()
+  const [messageRef, messageIn] = useSectionTitle()
+  const [processRef, processIn] = useSectionTitle()
+  const [faqRef, faqIn] = useSectionTitle()
+  const [contactRef, contactIn] = useSectionTitle()
+
+  return (
+    <div className={s.page}>
+
+      {/* ── LP Header ── */}
+      <header className={s.lpHeader}>
+        <div className={s.lpHeaderInner}>
+          <Link to="/" className={s.lpLogo}>
+            <img src={logoSrc} alt="株式会社ハックラボ" />
+          </Link>
+          <button className={s.lpHeaderCta} onClick={scrollToContact}>
+            無料相談する
+          </button>
+        </div>
+      </header>
+
+      {/* ── Hero ── */}
+      <section className={s.hero}>
+        <div className={s.heroInner}>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } } }}
+          >
+            <motion.span className={s.heroLabel} variants={reveal}>
+              20年の開発実績 × 生成AI
+            </motion.span>
+            <motion.h1 className={s.heroTitle} variants={reveal}>
+              500万円のシステムが、<br />
+              <em>100万円</em>で実現できる時代へ。
+            </motion.h1>
+            <motion.p className={s.heroCatch} variants={reveal}>
+              AI＋20年の専門知識 ＝ コスト1/5〜1/10、納期を大幅短縮。<br />
+              諦めていたシステムを、今こそ実現しましょう。
+            </motion.p>
+            <motion.div className={s.heroStats} variants={reveal}>
+              {[
+                { num: '1/5〜1/10', label: 'コスト削減' },
+                { num: '最大1/10', label: '納期短縮' },
+                { num: '20年', label: '開発実績' },
+              ].map((stat) => (
+                <div key={stat.label} className={s.heroStat}>
+                  <p className={s.heroStatNum}>{stat.num}</p>
+                  <p className={s.heroStatLabel}>{stat.label}</p>
+                </div>
+              ))}
+            </motion.div>
+            <motion.div variants={reveal}>
+              <button className={s.heroCta} onClick={scrollToContact}>
+                まずは無料相談する
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Problems ── */}
+      <section className={s.section}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Problems</span>
+            <h2
+              ref={problemsRef}
+              className={`${s.sectionTitle}${problemsIn ? ` ${s.inView}` : ''}`}
+            >
+              こんな経験、ありませんか？
+            </h2>
+          </div>
+          <motion.div
+            className={s.problemGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {PROBLEMS.map((text, i) => (
+              <motion.div key={i} className={s.problemCard} variants={reveal}>
+                <div className={s.problemIcon}>
+                  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                    <path d="M15 5L5 15M5 5l10 10" />
+                  </svg>
+                </div>
+                <p className={s.problemText}>{text}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Solution ── */}
+      <section className={s.sectionAlt}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Solution</span>
+            <h2
+              ref={solutionRef}
+              className={`${s.sectionTitle}${solutionIn ? ` ${s.inView}` : ''}`}
+            >
+              その課題、今なら解決できます。
+            </h2>
+          </div>
+          <motion.p
+            className={s.solutionLead}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            AIの進化がシステム開発のパラダイムを変えました。20年の設計ノウハウ × AIの生産性 ＝ コスト1/5〜1/10、納期1/10が現実になっています。
+          </motion.p>
+          <motion.div
+            className={s.solutionGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {SOLUTIONS.map((item) => (
+              <motion.div key={item.num} className={s.solutionCard} variants={reveal}
+                whileHover={{ y: -4, boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.3)' }}
+                transition={{ type: 'tween', duration: 0.2 }}
+              >
+                <span className={s.solutionNum}>{item.num}</span>
+                <h3 className={s.solutionCardTitle}>{item.title}</h3>
+                <p className={s.solutionCardDesc}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Comparison ── */}
+      <section className={s.section}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Comparison</span>
+            <h2
+              ref={compRef}
+              className={`${s.sectionTitle}${compIn ? ` ${s.inView}` : ''}`}
+            >
+              従来の開発会社との違い
+            </h2>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <table className={s.comparisonTable}>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>従来のSI企業</th>
+                  <th>当社（AI活用）</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON_ROWS.map((row) => (
+                  <tr key={row.item}>
+                    <th scope="row">{row.item}</th>
+                    <td className={s.compBad}>{row.traditional}</td>
+                    <td>{row.ours}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Pricing ── */}
+      <section className={s.sectionAlt}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Services &amp; Pricing</span>
+            <h2
+              ref={pricingRef}
+              className={`${s.sectionTitle}${pricingIn ? ` ${s.inView}` : ''}`}
+            >
+              提供サービス
+            </h2>
+          </div>
+          <motion.div
+            className={s.pricingGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {PRICING.map((card) => (
+              <motion.div key={card.title} className={s.pricingCard} variants={reveal}
+                whileHover={{ y: -4, boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.3)' }}
+                transition={{ type: 'tween', duration: 0.2 }}
+              >
+                <h3 className={s.pricingCardTitle}>{card.title}</h3>
+                <p className={s.pricingPrice}>
+                  {card.price}<span>〜（税別）</span>
+                </p>
+                <ul className={s.pricingItems}>
+                  {card.items.map((item) => (
+                    <li key={item} className={s.pricingItem}>{item}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </motion.div>
+          <p style={{ marginTop: 20, fontSize: 12, color: 'var(--color-body-light)', textAlign: 'center' }}>
+            ※ 価格は参考価格です。要件に合わせてお見積もりします。
+          </p>
+        </div>
+      </section>
+
+      {/* ── Results ── */}
+      <section className={s.section}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Results</span>
+            <h2
+              ref={resultsRef}
+              className={`${s.sectionTitle}${resultsIn ? ` ${s.inView}` : ''}`}
+            >
+              導入実績
+            </h2>
+          </div>
+          <motion.div
+            className={s.resultsGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {RESULTS.map((r) => (
+              <motion.div key={r.title} className={s.resultCard} variants={reveal}>
+                <p className={s.resultIndustry}>{r.industry}</p>
+                <p className={s.resultTitle}>{r.title}</p>
+                <div className={s.resultCompare}>
+                  <div className={s.resultBefore}>
+                    <p className={s.resultCompareLabel}>従来</p>
+                    <p className={s.resultCompareVal}>{r.before.cost}</p>
+                    <p className={s.resultCompareVal} style={{ fontSize: 12, fontWeight: 400, color: 'var(--color-body-light)' }}>{r.before.period}</p>
+                  </div>
+                  <div className={s.resultAfter}>
+                    <p className={s.resultCompareLabel}>当社</p>
+                    <p className={s.resultCompareVal}>{r.after.cost}</p>
+                    <p className={s.resultCompareVal} style={{ fontSize: 12, fontWeight: 400, color: 'var(--color-accent)' }}>{r.after.period}</p>
+                  </div>
+                </div>
+                <span className={s.resultSaving}>{r.saving}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── CEO Message ── */}
+      <section className={s.sectionAlt}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Message</span>
+            <h2
+              ref={messageRef}
+              className={`${s.sectionTitle}${messageIn ? ` ${s.inView}` : ''}`}
+            >
+              代表メッセージ
+            </h2>
+          </div>
+          <motion.div
+            className={s.message}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className={s.messagePhoto}>
+              <img src={representativeImg} alt="寺園聖文" />
+            </div>
+            <div className={s.messageBody}>
+              <p className={s.messageName}>寺園 聖文</p>
+              <p className={s.messageRole}>代表取締役 CEO</p>
+              <p className={s.messageText}>
+                2010年の創業以来、Webシステム・モバイル・業務システムと数百件のプロジェクトを手がけてきました。
+                AIの進化によって開発の生産性は劇的に変わりました。20年の設計・QAのノウハウがあるからこそ、AIを正しく活用して低コスト・高品質な開発が実現できます。
+                「費用が高くて諦めた」というシステムをぜひご相談ください。
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Process ── */}
+      <section className={s.section}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Process</span>
+            <h2
+              ref={processRef}
+              className={`${s.sectionTitle}${processIn ? ` ${s.inView}` : ''}`}
+            >
+              導入の流れ
+            </h2>
+          </div>
+          <motion.div
+            className={s.processSteps}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {[
+              { num: '1', title: 'ヒアリング', desc: '課題・要件をお伺いします。オンライン30分、無料。', free: true },
+              { num: '2', title: '簡易設計・見積もり', desc: '機能の整理とコスト・納期をご提示。ここまで無料。', free: true },
+              { num: '3', title: '開発', desc: 'AI＋経験豊富なエンジニアで開発。進捗を随時報告。', free: false },
+              { num: '4', title: '納品・運用開始', desc: '検証後に納品。修正・機能追加も低コストで対応。', free: false },
+            ].map((step) => (
+              <motion.div key={step.num} className={s.processStep} variants={reveal}>
+                <div className={s.processNum}>{step.num}</div>
+                <h3 className={s.processStepTitle}>{step.title}</h3>
+                <p className={s.processStepDesc}>{step.desc}</p>
+                {step.free && <span className={s.processFree}>無料</span>}
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section className={s.sectionAlt}>
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>FAQ</span>
+            <h2
+              ref={faqRef}
+              className={`${s.sectionTitle}${faqIn ? ` ${s.inView}` : ''}`}
+            >
+              よくある質問
+            </h2>
+          </div>
+          <motion.div
+            className={s.faqList}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6 }}
+          >
+            {FAQ_ITEMS.map((item, i) => (
+              <FaqItem key={i} item={item} index={i} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Contact ── */}
+      <section className={s.sectionDark} id="lp-contact">
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={`${s.sectionLabel} ${s.sectionLabelDark}`}>Contact</span>
+            <h2
+              ref={contactRef}
+              className={`${s.sectionTitle} ${s.sectionTitleDark}${contactIn ? ` ${s.inView}` : ''}`}
+            >
+              無料相談・お問い合わせ
+            </h2>
+            <p style={{ marginTop: 14, fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.8 }}>
+              まずはお気軽にご相談ください。ヒアリング・簡易見積もりまで無料です。
+            </p>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <ContactForm />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── LP Footer ── */}
+      <footer className={s.lpFooter}>
+        <p className={s.lpFooterText}>
+          © 2025 株式会社ハックラボ All Rights Reserved.&ensp;|&ensp;
+          <Link to="/" style={{ color: 'rgba(255,255,255,0.3)' }}>メインサイトへ</Link>
+        </p>
+      </footer>
+    </div>
+  )
+}

@@ -1,0 +1,120 @@
+.banner {
+  background-color: var(--color-dark-3);
+  border-radius: var(--radius-lg);
+  padding: 60px 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.left {
+  flex: 1;
+  min-width: 0;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid rgba(36, 144, 243, 0.35);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+}
+
+.headline {
+  font-size: clamp(22px, 3.5vw, 34px);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.subhead {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.75;
+  margin-bottom: 20px;
+  max-width: 440px;
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.serviceTag {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 12px;
+  border-radius: 2px;
+}
+
+.right {
+  flex-shrink: 0;
+}
+
+.cta {
+  display: inline-block;
+  position: relative;
+  padding: 14px 32px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  white-space: nowrap;
+  transition: border-color var(--transition);
+  letter-spacing: 0.04em;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(-101%);
+  transition: transform 0.3s ease;
+}
+
+.cta:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.cta:hover::before {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .banner {
+    flex-direction: column;
+    padding: 40px 28px;
+    text-align: center;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .services {
+    justify-content: center;
+  }
+
+  .right {
+    width: 100%;
+    text-align: center;
+  }
+
+  .subhead {
+    max-width: 100%;
+  }
+}

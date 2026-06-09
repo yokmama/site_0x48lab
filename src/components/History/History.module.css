@@ -1,0 +1,93 @@
+.timeline {
+  position: relative;
+  padding-left: 52px;
+}
+
+/* Gray track — always visible */
+.line {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background-color: var(--color-border);
+  overflow: hidden;
+}
+
+/* Blue fill animates scaleY 0→1 */
+.lineInner {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-accent);
+  transform-origin: top;
+}
+
+.entry {
+  position: relative;
+  margin-bottom: 52px;
+}
+
+.entry:last-child {
+  margin-bottom: 0;
+}
+
+/* dot center must align with line center: 15 + 1 = 16px from timeline left */
+/* entry starts at 52px, dot left = 52 - 16 - 8 = -40px, center = 52-40+8 = 16px ✓ */
+.dot {
+  position: absolute;
+  left: -40px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid var(--color-border);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  z-index: 1;
+}
+
+.entry:hover .dot {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+}
+
+.year {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 6px;
+}
+
+.entryTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.entryDesc {
+  font-size: 14px;
+  color: var(--color-body);
+  line-height: 1.8;
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    padding-left: 40px;
+  }
+
+  /* line at 11px center */
+  .line {
+    left: 10px;
+  }
+
+  /* dot: 40 - 11 - 6 = -23... recalc: center=11, dot=12px, left=-(40-11+6)=-35 */
+  .dot {
+    left: -30px;
+    width: 12px;
+    height: 12px;
+  }
+}
