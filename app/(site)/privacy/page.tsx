@@ -1,23 +1,17 @@
 "use client"
 
 import { motion } from 'framer-motion'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 export default function PrivacyPage() {
   return (
-    <div className="page-content">
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Privacy Policy</span>
-            <h1 className="page-hero-title">プライバシーポリシー</h1>
-          </motion.div>
-        </div>
-      </div>
+    <div>
+      <PageVisualHero
+        visualKey="privacy"
+        label="Privacy Policy"
+        title="プライバシーポリシー"
+      />
 
       <section className="section">
         <div className="container">

@@ -89,6 +89,57 @@ body {
   display: block;
 }
 
+.site-shell {
+  --color-accent: #1769aa;
+  --color-accent-dark: #0f4f86;
+  --color-accent-light: rgba(23, 105, 170, 0.1);
+  --color-dark: #101820;
+  --color-dark-2: #1f2a33;
+  --color-dark-3: #0d151c;
+  --color-body: #41515f;
+  --color-body-light: #647482;
+  --color-body-muted: #8a98a5;
+  --color-bg: #f7f4ef;
+  --color-bg-alt: #eef2f5;
+  --color-bg-card: #ffffff;
+  --color-bg-dark: #101820;
+  --color-border: #dce4ea;
+  --color-border-light: rgba(16, 24, 32, 0.08);
+  --color-orange: #d85a3a;
+  --color-orange-dark: #b9452d;
+  --color-success: #2e7d5b;
+  --color-error: #d64545;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.32), transparent 360px),
+    var(--color-bg);
+  min-height: 100svh;
+  color: var(--color-body);
+}
+
+.site-shell :where(a, button, input, textarea, select):focus-visible {
+  outline: 3px solid rgba(42, 157, 143, 0.28);
+  outline-offset: 3px;
+}
+
+.site-shell .section {
+  position: relative;
+}
+
+.site-shell .section--alt {
+  background:
+    linear-gradient(135deg, rgba(23, 105, 170, 0.055), transparent 38%),
+    linear-gradient(315deg, rgba(42, 157, 143, 0.06), transparent 44%),
+    var(--color-bg-alt);
+}
+
+.site-shell .section-title::after {
+  background: linear-gradient(90deg, var(--color-accent), #2a9d8f);
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -200,6 +251,8 @@ button {
   cursor: pointer;
   border: none;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn:active {
@@ -207,24 +260,24 @@ button {
 }
 
 .btn--primary {
-  background-color: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-accent), #2a9d8f);
   color: #ffffff;
 }
 
 .btn--primary:hover {
-  background-color: var(--color-accent-dark);
-  box-shadow: 0 4px 16px rgba(36, 144, 243, 0.35);
+  background: linear-gradient(135deg, var(--color-accent-dark), #21867b);
+  box-shadow: 0 4px 16px rgba(23, 105, 170, 0.28);
   transform: translateY(-2px);
 }
 
 .btn--orange {
-  background-color: var(--color-orange);
+  background: linear-gradient(135deg, var(--color-orange), #c9972e);
   color: #ffffff;
 }
 
 .btn--orange:hover {
-  background-color: var(--color-orange-dark);
-  box-shadow: 0 4px 16px rgba(230, 126, 34, 0.35);
+  background: linear-gradient(135deg, var(--color-orange-dark), #a87922);
+  box-shadow: 0 4px 16px rgba(216, 90, 58, 0.3);
   transform: translateY(-2px);
 }
 

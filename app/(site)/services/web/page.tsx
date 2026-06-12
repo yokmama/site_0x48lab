@@ -11,6 +11,7 @@ import {
 } from '@/lib/data'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
 import ServiceIcon from '@/components/ui/ServiceIcon'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 function useTitleInView() {
@@ -37,19 +38,12 @@ export default function WebPage() {
 
   return (
     <div>
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Web System Development</span>
-            <h1 className="page-hero-title">Webシステム開発</h1>
-            <p className="page-hero-sub">React・Next.js・Javaなど幅広いスタックで、スケールする設計のWebシステムを構築。</p>
-          </motion.div>
-        </div>
-      </div>
+      <PageVisualHero
+        visualKey="web"
+        label="Web System Development"
+        title="Webシステム開発"
+        subtitle="React・Next.js・Javaなど幅広いスタックで、スケールする設計のWebシステムを構築。"
+      />
 
       <section className="section">
         <div className="container">

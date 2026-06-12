@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { stagger, reveal, viewportOnce } from '@/lib/animations'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 type Work = {
@@ -105,15 +106,12 @@ export function WorksPageClient({ works, industries, serviceFilters, serviceLabe
 
   return (
     <div>
-      <div className="page-hero">
-        <div className="container">
-          <motion.span className="page-hero-label" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}>Works</motion.span>
-          <motion.h1 className="page-hero-title" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] as const }}>導入実績</motion.h1>
-          <motion.p className="page-hero-sub" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] as const }}>
-            モバイル・Web・AI・IoTなど多領域にわたる2021〜2026年の開発実績。
-          </motion.p>
-        </div>
-      </div>
+      <PageVisualHero
+        visualKey="works"
+        label="Works"
+        title="導入実績"
+        subtitle="モバイル・Web・AI・IoTなど多領域にわたる2021〜2026年の開発実績。"
+      />
 
       <section className="section">
         <div className="container">

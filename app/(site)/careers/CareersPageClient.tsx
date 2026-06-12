@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { stagger, reveal, viewportOnce } from '@/lib/animations'
 import ServiceIcon from '@/components/ui/ServiceIcon'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 type Job = {
@@ -50,16 +51,13 @@ type Props = {
 
 export function CareersPageClient({ jobs, culture, benefits, steps }: Props) {
   return (
-    <div className="page-content">
-      <div className="page-hero">
-        <div className="container">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}>
-            <span className="page-hero-label">Careers</span>
-            <h1 className="page-hero-title">採用情報</h1>
-            <p className="page-hero-sub">テクノロジーで未来を創造する仲間を募集しています。</p>
-          </motion.div>
-        </div>
-      </div>
+    <div>
+      <PageVisualHero
+        visualKey="careers"
+        label="Careers"
+        title="採用情報"
+        subtitle="テクノロジーで未来を創造する仲間を募集しています。"
+      />
 
       <section className="section section--alt">
         <div className="container">

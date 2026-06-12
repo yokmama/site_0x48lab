@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { stagger, reveal } from '@/lib/animations'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 type Post = {
@@ -22,23 +23,17 @@ function formatDate(date: Date | string) {
 
 export function BlogPageClient({ posts, categories }: { posts: Post[]; categories: string[] }) {
   const [active, setActive] = useState('全て')
+  const [preparedSlug, setPreparedSlug] = useState<string | null>(null)
   const filtered = active === '全て' ? posts : posts.filter(p => p.category === active)
 
   return (
-    <div className="page-content">
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Blog</span>
-            <h1 className="page-hero-title">ブログ・技術情報</h1>
-            <p className="page-hero-sub">開発事例・技術記事・お知らせを発信しています。</p>
-          </motion.div>
-        </div>
-      </div>
+    <div>
+      <PageVisualHero
+        visualKey="blog"
+        label="Blog"
+        title="ブログ・技術情報"
+        subtitle="開発事例・技術記事・お知らせを発信しています。"
+      />
 
       <section className="section">
         <div className="container">
@@ -61,7 +56,22 @@ export function BlogPageClient({ posts, categories }: { posts: Post[]; categorie
 
           <motion.div key={active} className={s.grid} variants={stagger} initial="hidden" animate="visible">
             {filtered.map(post => (
-              <motion.article key={post.slug} className={s.card} variants={reveal} onClick={() => alert('この記事のページは準備中です')}>
+              <motion.article
+                key={post.slug}
+                className={s.card}
+                variants={reveal}
+                whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(16,24,32,0.1)', borderColor: 'rgba(23,105,170,0.24)' }}
+                transition={{ type: 'tween', duration: 0.2 }}
+                onClick={() => setPreparedSlug(post.slug)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault()
+                    setPreparedSlug(post.slug)
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+              >
                 <div className={s.cardMeta}>
                   <span className={s.category}>{post.category}</span>
                   <time className={s.date}>{formatDate(post.date)}</time>
@@ -77,6 +87,18 @@ export function BlogPageClient({ posts, categories }: { posts: Post[]; categorie
                     </svg>
                   </span>
                 </div>
+                <AnimatePresence>
+                  {preparedSlug === post.slug && (
+                    <motion.p
+                      className={s.preparedNotice}
+                      initial={{ opacity: 0, y: -4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                    >
+                      記事ページは準備中です。公開までしばらくお待ちください。
+                    </motion.p>
+                  )}
+                </AnimatePresence>
               </motion.article>
             ))}
           </motion.div>

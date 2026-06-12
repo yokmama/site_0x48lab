@@ -11,6 +11,7 @@ import {
 } from '@/lib/data'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
 import ServiceIcon from '@/components/ui/ServiceIcon'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 function useTitleInView() {
@@ -36,19 +37,12 @@ export default function ServicesPage() {
 
   return (
     <div>
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Services</span>
-            <h1 className="page-hero-title">サービス一覧</h1>
-            <p className="page-hero-sub">受託開発からモバイルアプリ、プログラミング教育まで。</p>
-          </motion.div>
-        </div>
-      </div>
+      <PageVisualHero
+        visualKey="services"
+        label="Services"
+        title="サービス一覧"
+        subtitle="受託開発からモバイルアプリ、プログラミング教育まで。"
+      />
 
       <section className="section">
         <div className="container">

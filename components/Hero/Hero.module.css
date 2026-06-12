@@ -14,13 +14,24 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background-image:
-    linear-gradient(180deg, rgba(15, 30, 46, 0.76), rgba(15, 30, 46, 0.6) 44%, rgba(15, 30, 46, 0.8)),
-    radial-gradient(circle at 50% 42%, rgba(15, 30, 46, 0.22), rgba(15, 30, 46, 0.56) 62%),
-    url('/assets/hero-engineers.png');
-  background-position: center;
-  background-size: cover;
   pointer-events: none;
+}
+
+.backgroundPhoto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(16, 24, 32, 0.78), rgba(16, 24, 32, 0.58) 44%, rgba(16, 24, 32, 0.86)),
+    radial-gradient(circle at 50% 42%, rgba(42, 157, 143, 0.22), rgba(16, 24, 32, 0.56) 62%);
+}
+
+.backgroundImage {
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.04);
+  animation: heroPhotoDrift 18s ease-in-out infinite alternate;
+  filter: saturate(0.92) contrast(1.04);
 }
 
 /* Fine grid sitting above the canvas */
@@ -121,13 +132,13 @@
 }
 
 .ctaOrange {
-  background-color: var(--color-orange);
+  background: linear-gradient(135deg, var(--color-orange), #c9972e);
   color: #ffffff;
 }
 
 .ctaOrange:hover {
-  background-color: var(--color-orange-dark);
-  box-shadow: 0 4px 20px rgba(230, 126, 34, 0.45);
+  background: linear-gradient(135deg, var(--color-orange-dark), #a87922);
+  box-shadow: 0 4px 20px rgba(216, 90, 58, 0.38);
   transform: translateY(-2px);
 }
 
@@ -175,8 +186,24 @@
   100% { top: 40px; }
 }
 
+@keyframes heroPhotoDrift {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.09) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
 @media (max-width: 480px) {
   .hero {
     padding: 80px 16px 100px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backgroundImage {
+    animation: none;
+    transform: scale(1.04);
   }
 }

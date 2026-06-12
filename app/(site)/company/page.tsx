@@ -12,6 +12,7 @@ import {
 } from '@/lib/data'
 import { stagger, reveal, viewportOnce } from '@/lib/animations'
 import ServiceIcon from '@/components/ui/ServiceIcon'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 const representativeImg = '/assets/representative.jpg'
@@ -45,34 +46,12 @@ export default function CompanyPage() {
 
   return (
     <div>
-      <div className="page-hero">
-        <div className="container">
-          <motion.span
-            className="page-hero-label"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            Company
-          </motion.span>
-          <motion.h1
-            className="page-hero-title"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            会社概要
-          </motion.h1>
-          <motion.p
-            className="page-hero-sub"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.16, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            テクノロジーで未来を創造する株式会社ハックラボ（HackLab Inc.）
-          </motion.p>
-        </div>
-      </div>
+      <PageVisualHero
+        visualKey="company"
+        label="Company"
+        title="会社概要"
+        subtitle="テクノロジーで未来を創造する株式会社ハックラボ（HackLab Inc.）"
+      />
 
       <section className={`section section--alt ${s.statsSection}`}>
         <div className="container">

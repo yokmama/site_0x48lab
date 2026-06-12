@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { SCHOOL_PAGE_BUSINESS_ITEMS, SCHOOL_PAGE_FEATURES } from '@/lib/data'
 import { stagger, reveal, revealLeft, revealRight, viewportOnce } from '@/lib/animations'
 import ServiceIcon from '@/components/ui/ServiceIcon'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 const schoolLogo = '/assets/8x9-logo.png'
@@ -33,20 +34,13 @@ function SectionTitle({ label, title }) {
 
 export default function SchoolPage() {
   return (
-    <div className="page-content">
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Education</span>
-            <h1 className="page-hero-title">8x9 Kids プログラミングスクール</h1>
-            <p className="page-hero-sub">マインクラフトで楽しく学ぶ、子ども向けプログラミング教育。2016年開校。</p>
-          </motion.div>
-        </div>
-      </div>
+    <div>
+      <PageVisualHero
+        visualKey="school"
+        label="Education"
+        title="8x9 Kids プログラミングスクール"
+        subtitle="マインクラフトで楽しく学ぶ、子ども向けプログラミング教育。2016年開校。"
+      />
 
       <section className="section">
         <div className="container">

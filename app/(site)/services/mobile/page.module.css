@@ -81,6 +81,8 @@
 .tag {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
+  flex: 0 0 auto;
   padding: 3px 10px;
   font-size: 11px;
   font-weight: 600;
@@ -88,6 +90,10 @@
   border-radius: 999px;
   background-color: var(--color-accent-light);
   color: var(--color-accent);
+  line-height: 1.45;
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 /* Comparison Table */
@@ -220,6 +226,8 @@
 .techTag {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
+  flex: 0 0 auto;
   padding: 8px 18px;
   font-size: 13px;
   font-weight: 600;
@@ -228,6 +236,10 @@
   border: 1px solid var(--color-border);
   color: var(--color-dark);
   transition: border-color var(--transition), background-color var(--transition);
+  line-height: 1.45;
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .techTag:hover {

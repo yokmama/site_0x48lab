@@ -4,6 +4,10 @@
 .env.test.local
 .env.production.local
 
+.github/*
+.github/workflows/*
+.github
+
 # Logs
 logs
 *.log

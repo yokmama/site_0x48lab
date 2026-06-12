@@ -25,6 +25,7 @@ export default function HeroCanvas() {
     if (!canvas) return
     const ctx = canvas.getContext('2d')
     if (!ctx) return
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
 
     let raf
     let W = 0, H = 0, DPR = 1
@@ -291,7 +292,7 @@ export default function HeroCanvas() {
       ctx.fillStyle = gL; ctx.fillRect(0,      0,      vW, H)
       ctx.fillStyle = gR; ctx.fillRect(W - vW, 0,      vW, H)
 
-      raf = requestAnimationFrame(frame)
+      if (!reduceMotion) raf = requestAnimationFrame(frame)
     }
 
     // ── Init & bind ──────────────────────────────────────────────
@@ -309,7 +310,7 @@ export default function HeroCanvas() {
     window.addEventListener('resize',     onResize)
 
     return () => {
-      cancelAnimationFrame(raf)
+      if (raf) cancelAnimationFrame(raf)
       window.removeEventListener('mousemove',  onMove)
       window.removeEventListener('touchmove',  onMove)
       window.removeEventListener('mouseleave', onLeave)

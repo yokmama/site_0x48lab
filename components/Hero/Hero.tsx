@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
+import { siteVisuals } from '@/lib/siteVisuals'
 import HeroCanvas from '../HeroCanvas/HeroCanvas'
 import styles from './Hero.module.css'
 
@@ -16,9 +18,21 @@ const itemVariants = {
 }
 
 export default function Hero() {
+  const visual = siteVisuals.home
+
   return (
     <section className={styles.hero} id="hero">
-      <div className={styles.backgroundPhoto} aria-hidden="true" />
+      <div className={styles.backgroundPhoto} aria-hidden="true">
+        <Image
+          src={visual.src}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={84}
+          className={styles.backgroundImage}
+        />
+      </div>
       <HeroCanvas />
 
       <motion.div

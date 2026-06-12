@@ -12,6 +12,7 @@ import {
 } from '@/lib/data'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
 import ServiceIcon from '@/components/ui/ServiceIcon'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 function useTitleInView() {
@@ -38,19 +39,12 @@ export default function MobilePage() {
 
   return (
     <div>
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Mobile App Development</span>
-            <h1 className="page-hero-title">モバイルアプリ開発</h1>
-            <p className="page-hero-sub">Android黎明期から積み上げた実績と、FlutterによるiOS/Android両対応開発。</p>
-          </motion.div>
-        </div>
-      </div>
+      <PageVisualHero
+        visualKey="mobile"
+        label="Mobile App Development"
+        title="モバイルアプリ開発"
+        subtitle="Android黎明期から積み上げた実績と、FlutterによるiOS/Android両対応開発。"
+      />
 
       <section className="section section--alt">
         <div className="container">

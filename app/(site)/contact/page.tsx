@@ -4,24 +4,18 @@ import { motion } from 'framer-motion'
 import { CONTACT_PROCESS } from '@/lib/data'
 import { revealLeft, revealRight, viewportOnce } from '@/lib/animations'
 import ContactForm from '@/components/ContactForm/ContactForm'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 export default function ContactPage() {
   return (
-    <div className="page-content">
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Contact</span>
-            <h1 className="page-hero-title">お問い合わせ・無料相談</h1>
-            <p className="page-hero-sub">まずはお気軽にご相談ください。ヒアリング・簡易見積もりまで無料。</p>
-          </motion.div>
-        </div>
-      </div>
+    <div>
+      <PageVisualHero
+        visualKey="contact"
+        label="Contact"
+        title="お問い合わせ・無料相談"
+        subtitle="まずはお気軽にご相談ください。ヒアリング・簡易見積もりまで無料。"
+      />
 
       <section className="section">
         <div className="container">

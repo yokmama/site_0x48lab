@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 type Problem = { id: number; title: string; desc: string }
@@ -99,19 +100,12 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
 
   return (
     <div>
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">AI-Powered Development</span>
-            <h1 className="page-hero-title">AI活用型受託開発</h1>
-            <p className="page-hero-sub">20年の開発実績×生成AIで、短納期と高品質を両立する業務システム開発。</p>
-          </motion.div>
-        </div>
-      </div>
+      <PageVisualHero
+        visualKey="aiDevelopment"
+        label="AI-Powered Development"
+        title="AI活用型受託開発"
+        subtitle="20年の開発実績×生成AIで、短納期と高品質を両立する業務システム開発。"
+      />
 
       <section className="section section--alt">
         <div className="container">

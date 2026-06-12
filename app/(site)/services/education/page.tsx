@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { EDUCATION_PAGE_BUSINESS_ITEMS, EDUCATION_PAGE_FEATURES } from '@/lib/data'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
 import ServiceIcon from '@/components/ui/ServiceIcon'
+import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
 const logoSrc = '/assets/8x9-logo.png'
@@ -32,19 +33,12 @@ export default function EducationPage() {
 
   return (
     <div>
-      <div className="page-hero">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
-          >
-            <span className="page-hero-label">Programming Education</span>
-            <h1 className="page-hero-title">プログラミング教育</h1>
-            <p className="page-hero-sub">マインクラフトを使った独自カリキュラムで、子どもの創造力とプログラミング思考を育てます。</p>
-          </motion.div>
-        </div>
-      </div>
+      <PageVisualHero
+        visualKey="education"
+        label="Programming Education"
+        title="プログラミング教育"
+        subtitle="マインクラフトを使った独自カリキュラムで、子どもの創造力とプログラミング思考を育てます。"
+      />
 
       <section className="section">
         <div className="container">
