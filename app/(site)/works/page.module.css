@@ -188,6 +188,19 @@
   color: var(--color-accent);
 }
 
+.cardLink {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.cardLink:hover {
+  text-decoration: underline;
+}
+
 .empty {
   text-align: center;
   padding: 80px 0;

@@ -2,10 +2,22 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { TEAM_MEMBERS } from '../../lib/data'
 import styles from './Team.module.css'
 
+type Member = {
+  id: number
+  name: string
+  role: string
+  photo: string | null
+  photoFileId: number | null
+  initials: string | null
+}
+
 const representativeImg = '/assets/representative.jpg'
+
+const PHOTO_MAP: Record<string, string> = {
+  representative: representativeImg,
+}
 
 const containerVariants = {
   hidden: {},
@@ -17,11 +29,13 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as const } },
 }
 
-const PHOTO_MAP = {
-  representative: representativeImg,
+function resolvePhoto(member: Member): string | null {
+  if (member.photoFileId) return `/api/media/${member.photoFileId}`
+  if (member.photo) return PHOTO_MAP[member.photo] ?? null
+  return null
 }
 
-export default function Team() {
+export default function Team({ members }: { members: Member[] }) {
   const titleRef = useRef(null)
   const [inView, setInView] = useState(false)
 
@@ -41,10 +55,7 @@ export default function Team() {
       <div className="container">
         <div className="section-header">
           <span className="section-label">Team</span>
-          <h2
-            ref={titleRef}
-            className={`section-title${inView ? ' in-view' : ''}`}
-          >
+          <h2 ref={titleRef} className={`section-title${inView ? ' in-view' : ''}`}>
             チーム
           </h2>
         </div>
@@ -56,30 +67,31 @@ export default function Team() {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          {TEAM_MEMBERS.map((member) => {
-            const photo = member.photo ? PHOTO_MAP[member.photo] : null
+          {members.map((member) => {
+            const photo = resolvePhoto(member)
             return (
-            <motion.div
-              key={member.name}
-              className={styles.card}
-              variants={cardVariants}
-              whileHover={{ boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.25)' }}
-              transition={{ type: 'tween', duration: 0.22 }}
-            >
-              {photo ? (
-                <div className={styles.avatar}>
-                  <img src={photo} alt={member.name} />
+              <motion.div
+                key={member.id}
+                className={styles.card}
+                variants={cardVariants}
+                whileHover={{ boxShadow: '0 8px 28px rgba(0,0,0,0.09)', borderColor: 'rgba(36,144,243,0.25)' }}
+                transition={{ type: 'tween', duration: 0.22 }}
+              >
+                {photo ? (
+                  <div className={styles.avatar}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={photo} alt={member.name} />
+                  </div>
+                ) : (
+                  <div className={styles.avatarInitials} aria-label={member.name}>
+                    {member.initials}
+                  </div>
+                )}
+                <div className={styles.info}>
+                  <p className={styles.name}>{member.name}</p>
+                  <p className={styles.role}>{member.role}</p>
                 </div>
-              ) : (
-                <div className={styles.avatarInitials} aria-label={member.name}>
-                  {member.initials}
-                </div>
-              )}
-              <div className={styles.info}>
-                <p className={styles.name}>{member.name}</p>
-                <p className={styles.role}>{member.role}</p>
-              </div>
-            </motion.div>
+              </motion.div>
             )
           })}
         </motion.div>

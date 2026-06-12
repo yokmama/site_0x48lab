@@ -1,0 +1,104 @@
+.photoField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  border: 2px dashed #cbd5e1;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  color: #94a3b8;
+  transition: border-color 0.15s, background 0.15s;
+  background: #f8fafc;
+}
+
+.dropzone:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.dropzoneText {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.dropzoneHint {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.previewImg {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #e2e8f0;
+  display: block;
+}
+
+.previewActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.changeBtn,
+.removeBtn {
+  padding: 0.3rem 0.75rem;
+  border-radius: 0.25rem;
+  border: 1px solid;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.changeBtn {
+  background: #fff;
+  border-color: #cbd5e1;
+  color: #374151;
+}
+
+.changeBtn:hover { background: #f1f5f9; }
+
+.removeBtn {
+  background: #fff;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.removeBtn:hover { background: #fef2f2; }
+
+.changeBtn:disabled,
+.removeBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status {
+  font-size: 0.8125rem;
+  color: #2563eb;
+  margin: 0;
+}
+
+.error {
+  font-size: 0.8125rem;
+  color: #dc2626;
+  margin: 0;
+}

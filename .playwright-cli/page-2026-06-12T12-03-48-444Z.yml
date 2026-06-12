@@ -1,0 +1,387 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "株式会社ハックラボ" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "株式会社ハックラボ" [ref=e5]
+      - navigation "グローバルナビゲーション" [ref=e6]:
+        - button "サービス" [ref=e8] [cursor=pointer]:
+          - text: サービス
+          - img [ref=e9]
+        - link "実績" [ref=e12] [cursor=pointer]:
+          - /url: /works
+        - link "会社概要" [ref=e14] [cursor=pointer]:
+          - /url: /company
+        - link "ブログ" [ref=e16] [cursor=pointer]:
+          - /url: /blog
+        - link "採用" [ref=e18] [cursor=pointer]:
+          - /url: /careers
+      - link "無料相談する" [ref=e19] [cursor=pointer]:
+        - /url: /contact
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]: Technology for the Future
+        - heading "株式会社ハックラボ" [level=1] [ref=e24]
+        - paragraph [ref=e25]: HackLab Inc.
+        - paragraph [ref=e27]: テクノロジーで未来を創造する
+        - generic [ref=e28]:
+          - link "サービスを見る" [ref=e29] [cursor=pointer]:
+            - /url: /services
+          - link "無料相談する" [ref=e30] [cursor=pointer]:
+            - /url: /contact
+      - generic [ref=e32]: Scroll
+    - generic [ref=e35]:
+      - generic [ref=e36]:
+        - generic [ref=e37]: Strengths
+        - heading "私たちの強み" [level=2] [ref=e38]
+        - paragraph [ref=e39]: 創業15年以上で積み上げたノウハウと、最新のAI技術を融合させたサービスを提供します。
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - img [ref=e43]
+          - heading "AI活用開発" [level=3] [ref=e47]
+          - paragraph [ref=e48]: 生成AIを設計・実装・テストに組み込み、短納期と高品質を両立。20年の設計ノウハウがAIを正しく活用する鍵です。
+        - generic [ref=e49]:
+          - img [ref=e51]
+          - heading "モバイルアプリ開発" [level=3] [ref=e53]
+          - paragraph [ref=e54]: Android黎明期からの深い実績を持ち、Flutterを活用したiOS/Androidクロスプラットフォーム開発を提供。ネイティブ品質のUXをスピーディに実現します。
+        - generic [ref=e55]:
+          - img [ref=e57]
+          - heading "Webシステム開発" [level=3] [ref=e60]
+          - paragraph [ref=e61]: React・Next.js・Javaなど幅広いスタックに対応。要件定義から設計・開発・保守まで一貫して担当し、長期運用を見据えたアーキテクチャを提案します。
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e65]: Services
+        - heading "サービス" [level=2] [ref=e66]
+        - paragraph [ref=e67]: 受託開発からモバイルアプリ、プログラミング教育まで。テクノロジーで課題を解決します。
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - img [ref=e72]
+            - generic [ref=e76]: AI-Powered Development
+          - heading "AI活用型受託開発" [level=3] [ref=e77]
+          - paragraph [ref=e78]: 生成AIと20年の設計ノウハウを組み合わせ、コスト1/5〜1/10・納期最大1/10を実現。業務管理・予約・自動化システムに対応。
+          - list [ref=e79]:
+            - listitem [ref=e80]:
+              - img [ref=e81]
+              - text: 業務管理システム
+            - listitem [ref=e83]:
+              - img [ref=e84]
+              - text: 予約・顧客対応システム
+            - listitem [ref=e86]:
+              - img [ref=e87]
+              - text: 業務効率化・自動化
+          - link "詳細を見る" [ref=e90] [cursor=pointer]:
+            - /url: /services/ai-development
+            - text: 詳細を見る
+            - img [ref=e91]
+        - generic [ref=e93]:
+          - generic [ref=e94]:
+            - img [ref=e96]
+            - generic [ref=e98]: Mobile App Development
+          - heading "モバイルアプリ開発" [level=3] [ref=e99]
+          - paragraph [ref=e100]: Android黎明期からの深い実績を持ち、FlutterによるiOS/Androidクロスプラットフォーム開発を提供。ネイティブ品質のUXをスピーディに実現します。
+          - list [ref=e101]:
+            - listitem [ref=e102]:
+              - img [ref=e103]
+              - text: Flutter (iOS / Android)
+            - listitem [ref=e105]:
+              - img [ref=e106]
+              - text: ネイティブアプリ
+            - listitem [ref=e108]:
+              - img [ref=e109]
+              - text: PWA対応
+          - link "詳細を見る" [ref=e112] [cursor=pointer]:
+            - /url: /services/mobile
+            - text: 詳細を見る
+            - img [ref=e113]
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - img [ref=e118]
+            - generic [ref=e121]: Web System Development
+          - heading "Webシステム開発" [level=3] [ref=e122]
+          - paragraph [ref=e123]: React・Next.js・Javaなど幅広いスタックに対応。要件定義から設計・開発・保守まで一貫して担当。長期運用を見据えたアーキテクチャを提案します。
+          - list [ref=e124]:
+            - listitem [ref=e125]:
+              - img [ref=e126]
+              - text: フロントエンド開発
+            - listitem [ref=e128]:
+              - img [ref=e129]
+              - text: APIサーバー構築
+            - listitem [ref=e131]:
+              - img [ref=e132]
+              - text: クラウドインフラ設計
+          - link "詳細を見る" [ref=e135] [cursor=pointer]:
+            - /url: /services/web
+            - text: 詳細を見る
+            - img [ref=e136]
+        - generic [ref=e138]:
+          - generic [ref=e139]:
+            - img [ref=e141]
+            - generic [ref=e144]: Programming Education
+          - heading "プログラミング教育" [level=3] [ref=e145]
+          - paragraph [ref=e146]: マインクラフトを題材にした独自カリキュラムで子ども向けプログラミング教育を提供。教材・教育システムの受託開発も承ります。
+          - list [ref=e147]:
+            - listitem [ref=e148]:
+              - img [ref=e149]
+              - text: 子ども向けスクール (8x9)
+            - listitem [ref=e151]:
+              - img [ref=e152]
+              - text: 教材・カリキュラム開発
+            - listitem [ref=e154]:
+              - img [ref=e155]
+              - text: Mod・プラグイン開発
+          - link "詳細を見る" [ref=e158] [cursor=pointer]:
+            - /url: https://8x9.jp/
+            - text: 詳細を見る
+            - img [ref=e159]
+      - link "すべてのサービスを見る" [ref=e164] [cursor=pointer]:
+        - /url: /services
+        - text: すべてのサービスを見る
+        - img [ref=e165]
+    - generic [ref=e168]:
+      - generic [ref=e169]:
+        - generic [ref=e170]: Works
+        - heading "導入実績" [level=2] [ref=e171]
+        - paragraph [ref=e172]: AIと20年の専門知識が生み出す、短納期で高品質な導入実績。
+      - generic [ref=e173]:
+        - generic [ref=e174]:
+          - generic [ref=e175]:
+            - generic [ref=e176]: 教育業
+            - generic [ref=e177]: 10年以上継続運営
+          - heading "AI教育プラットフォーム" [level=3] [ref=e178]
+          - paragraph [ref=e179]: Minecraft Java EditionベースのAI・プログラミング教育EdTechプラットフォームを設計・開発。全5章のカリキュラムを完成させ10年以上継続運営中。
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - paragraph [ref=e182]: 従来
+              - paragraph [ref=e183]: 教育開始前
+              - paragraph [ref=e184]: 既製EdTechなし
+            - img [ref=e186]
+            - generic [ref=e188]:
+              - paragraph [ref=e189]: 当社
+              - paragraph [ref=e190]: 10年以上継続
+              - paragraph [ref=e191]: マルチ言語学習環境
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - generic [ref=e194]: 教育業
+            - generic [ref=e195]: コスト大幅削減
+          - heading "オンライン授業ツール" [level=3] [ref=e196]
+          - paragraph [ref=e197]: ビデオ通話・画面共有・リモートPC操作を統合したElectronベースのオンライン授業ツール。LiveKit自己ホストでSaaS比コストを大幅削減。
+          - generic [ref=e198]:
+            - generic [ref=e199]:
+              - paragraph [ref=e200]: 従来
+              - paragraph [ref=e201]: SaaS利用時
+              - paragraph [ref=e202]: 高コスト・操作不可
+            - img [ref=e204]
+            - generic [ref=e206]:
+              - paragraph [ref=e207]: 当社
+              - paragraph [ref=e208]: 現在
+              - paragraph [ref=e209]: セルフホスト・低コスト
+        - generic [ref=e210]:
+          - generic [ref=e211]:
+            - generic [ref=e212]: 教育業
+            - generic [ref=e213]: 電話対応工数を大幅削減
+          - heading "LINE予約管理システム" [level=3] [ref=e214]
+          - paragraph [ref=e215]: LINE LIFF連携で電話不要の予約フローを実現。LINE経由の予約率が全体の60%以上を達成。
+          - generic [ref=e216]:
+            - generic [ref=e217]:
+              - paragraph [ref=e218]: 従来
+              - paragraph [ref=e219]: 導入前
+              - paragraph [ref=e220]: 電話・手作業対応
+            - img [ref=e222]
+            - generic [ref=e224]:
+              - paragraph [ref=e225]: 当社
+              - paragraph [ref=e226]: 現在
+              - paragraph [ref=e227]: LINE予約60%以上
+      - link "すべての実績を見る" [ref=e229] [cursor=pointer]:
+        - /url: /works
+        - text: すべての実績を見る
+        - img [ref=e230]
+    - generic [ref=e233]:
+      - generic [ref=e234]:
+        - generic [ref=e235]: History
+        - heading "沿革" [level=2] [ref=e236]
+      - generic [ref=e237]:
+        - generic [ref=e241]:
+          - paragraph [ref=e242]: 2010年
+          - heading "株式会社Re.Kayo-System 設立" [level=3] [ref=e243]
+          - paragraph [ref=e244]: 神戸にてWebシステム開発会社として創業。JavaサーバーサイドやXML、Androidアプリ開発を中心に事業展開。
+        - generic [ref=e247]:
+          - paragraph [ref=e248]: 2012年
+          - heading "技術書を出版" [level=3] [ref=e249]
+          - paragraph [ref=e250]: 翔泳社より「10日でおぼえるAndroidアプリ開発入門教室」を出版。教育事業へ本格参入。
+        - generic [ref=e253]:
+          - paragraph [ref=e254]: 2016年1月
+          - heading "8x9 Kids プログラミングスクール 開校" [level=3] [ref=e255]
+          - paragraph [ref=e256]: マインクラフトを題材にした独自カリキュラムの子ども向けプログラミングスクールを開校。教材・教育システムの開発も開始。
+        - generic [ref=e259]:
+          - paragraph [ref=e260]: 2021年1月
+          - heading "株式会社ハックラボへ商号変更" [level=3] [ref=e261]
+          - paragraph [ref=e262]: 神戸・灘区への移転を機に商号を変更。AI活用開発・モバイル開発へ事業を拡張。
+        - generic [ref=e265]:
+          - paragraph [ref=e266]: 2025年7月
+          - heading "東京・渋谷へ本社移転" [level=3] [ref=e267]
+          - paragraph [ref=e268]: 東京渋谷に本社を移転。首都圏での事業基盤を強化し、さらなる成長を推進。
+    - generic [ref=e270]:
+      - generic [ref=e271]:
+        - generic [ref=e272]: Team
+        - heading "チーム" [level=2] [ref=e273]
+      - generic [ref=e274]:
+        - generic [ref=e275]:
+          - img "寺園 聖文" [ref=e277]
+          - generic [ref=e278]:
+            - paragraph [ref=e279]: 寺園 聖文
+            - paragraph [ref=e280]: Representative Director / CEO
+        - generic [ref=e281]:
+          - generic "Maciej Nowakiewicz" [ref=e282]: MN
+          - generic [ref=e283]:
+            - paragraph [ref=e284]: Maciej Nowakiewicz
+            - paragraph [ref=e285]: CTO
+    - generic [ref=e287]:
+      - generic [ref=e288]:
+        - generic [ref=e289]: Education
+        - heading "プログラミングスクール" [level=2] [ref=e290]
+      - generic [ref=e291]:
+        - img "8x9 Kids プログラミングスクール" [ref=e293]
+        - generic [ref=e294]:
+          - paragraph [ref=e295]: Since 2016
+          - heading "8x9 Kids プログラミングスクール" [level=3] [ref=e296]
+          - paragraph [ref=e297]: マインクラフトを題材にした独自カリキュラムで、プログラミングの基礎から応用までを楽しく学べるスクールです。 株式会社ビヨンドとの共同出資により運営しています。
+          - link "スクールサイトへ" [ref=e298] [cursor=pointer]:
+            - /url: https://8x9.jp/
+            - text: スクールサイトへ
+            - img [ref=e299]
+    - generic [ref=e302]:
+      - generic [ref=e303]:
+        - generic [ref=e304]: Blog
+        - heading "ブログ・技術情報" [level=2] [ref=e305]
+      - generic [ref=e306]:
+        - article [ref=e307]:
+          - generic [ref=e308]:
+            - generic [ref=e309]: 開発事例
+            - generic [ref=e310]: 2025-05-20
+          - heading "AI活用でシステム開発コストを1/5に削減した話" [level=3] [ref=e311]
+          - paragraph [ref=e312]: 生成AIを設計・実装・テストに活用することで、従来比1/5のコストでシステム開発を実現した実践事例を紹介します。
+          - generic [ref=e314]: 6人が読みました
+        - article [ref=e315]:
+          - generic [ref=e316]:
+            - generic [ref=e317]: 技術
+            - generic [ref=e318]: 2025-04-15
+          - heading "Flutter 3.x でのクロスプラットフォーム開発 — 2025年版" [level=3] [ref=e319]
+          - paragraph [ref=e320]: iOS/Android/Web を一つのコードベースでカバーする Flutter の最新動向と実務での選択基準を解説します。
+          - generic [ref=e322]: 8人が読みました
+        - article [ref=e323]:
+          - generic [ref=e324]:
+            - generic [ref=e325]: 開発手法
+            - generic [ref=e326]: 2025-03-08
+          - heading "要件定義にAIを使うと何が変わるか" [level=3] [ref=e327]
+          - paragraph [ref=e328]: ChatGPT / Claude を要件定義フェーズに組み込んだことで、ドキュメント作成時間が従来の60%減になった経験を共有します。
+          - generic [ref=e330]: 5人が読みました
+      - link "すべての記事を見る" [ref=e332] [cursor=pointer]:
+        - /url: /blog
+        - text: すべての記事を見る
+        - img [ref=e333]
+    - generic [ref=e336]:
+      - generic [ref=e337]:
+        - generic [ref=e338]: Contact
+        - heading "お問い合わせ" [level=2] [ref=e339]
+        - paragraph [ref=e340]: ヒアリング・簡易見積もりまで無料です。お気軽にご相談ください。
+      - generic [ref=e342]:
+        - generic [ref=e343]:
+          - generic [ref=e344]:
+            - text: 会社名・団体名
+            - generic [ref=e345]: 必須
+          - textbox "例：株式会社〇〇" [ref=e346]
+        - generic [ref=e347]:
+          - generic [ref=e348]:
+            - text: お名前
+            - generic [ref=e349]: 必須
+          - textbox "例：山田 太郎" [ref=e350]
+        - generic [ref=e351]:
+          - generic [ref=e352]:
+            - text: メールアドレス
+            - generic [ref=e353]: 必須
+          - textbox "例：info@example.com" [ref=e354]
+        - generic [ref=e355]:
+          - generic [ref=e356]: 電話番号
+          - textbox "例：090-1234-5678" [ref=e357]
+        - generic [ref=e358]:
+          - generic [ref=e359]:
+            - text: お問い合わせ内容
+            - generic [ref=e360]: 必須
+          - textbox "例：顧客管理システムの開発を検討しています。現状の課題や要件をお聞かせください。" [ref=e361]
+        - button "無料相談を申し込む" [ref=e362] [cursor=pointer]
+        - paragraph [ref=e363]: ヒアリング・簡易見積もりまで無料です。お気軽にご相談ください。
+  - contentinfo [ref=e364]:
+    - generic [ref=e365]:
+      - generic [ref=e366]:
+        - generic [ref=e367]:
+          - img "株式会社ハックラボ" [ref=e369]
+          - paragraph [ref=e370]: テクノロジーで未来を創造する
+          - paragraph [ref=e371]:
+            - text: 〒150-0002 東京都渋谷区渋谷2丁目19-19
+            - text: 和光宮益坂ビル5F
+          - paragraph [ref=e372]: 法人番号：8140001033003
+          - generic [ref=e373]:
+            - link "Twitter/X" [ref=e374] [cursor=pointer]:
+              - /url: https://twitter.com/
+              - img [ref=e375]
+            - link "LinkedIn" [ref=e377] [cursor=pointer]:
+              - /url: https://linkedin.com/
+              - img [ref=e378]
+            - link "GitHub" [ref=e380] [cursor=pointer]:
+              - /url: https://github.com/
+              - img [ref=e381]
+        - navigation "フッターナビゲーション" [ref=e383]:
+          - generic [ref=e384]:
+            - paragraph [ref=e385]: Services
+            - list [ref=e386]:
+              - listitem [ref=e387]:
+                - link "AI活用型受託開発" [ref=e388] [cursor=pointer]:
+                  - /url: /services/ai-development
+              - listitem [ref=e389]:
+                - link "モバイルアプリ開発" [ref=e390] [cursor=pointer]:
+                  - /url: /services/mobile
+              - listitem [ref=e391]:
+                - link "Webシステム開発" [ref=e392] [cursor=pointer]:
+                  - /url: /services/web
+              - listitem [ref=e393]:
+                - link "プログラミング教育" [ref=e394] [cursor=pointer]:
+                  - /url: /services/education
+          - generic [ref=e395]:
+            - paragraph [ref=e396]: Company
+            - list [ref=e397]:
+              - listitem [ref=e398]:
+                - link "会社概要" [ref=e399] [cursor=pointer]:
+                  - /url: /company
+              - listitem [ref=e400]:
+                - link "実績・事例" [ref=e401] [cursor=pointer]:
+                  - /url: /works
+              - listitem [ref=e402]:
+                - link "ブログ" [ref=e403] [cursor=pointer]:
+                  - /url: /blog
+              - listitem [ref=e404]:
+                - link "採用情報" [ref=e405] [cursor=pointer]:
+                  - /url: /careers
+          - generic [ref=e406]:
+            - paragraph [ref=e407]: Support
+            - list [ref=e408]:
+              - listitem [ref=e409]:
+                - link "お問い合わせ" [ref=e410] [cursor=pointer]:
+                  - /url: /contact
+              - listitem [ref=e411]:
+                - link "プライバシーポリシー" [ref=e412] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e413]:
+                - link "8x9.jp" [ref=e414] [cursor=pointer]:
+                  - /url: https://8x9.jp/
+      - generic [ref=e415]:
+        - paragraph [ref=e416]: © 2026 株式会社ハックラボ All Rights Reserved.
+        - link "プライバシーポリシー" [ref=e418] [cursor=pointer]:
+          - /url: /privacy
+        - button "ページトップへ戻る" [ref=e419] [cursor=pointer]:
+          - img [ref=e420]
+          - text: PAGE TOP
+  - button "Open Next.js Dev Tools" [ref=e427] [cursor=pointer]:
+    - img [ref=e428]
+  - alert [ref=e431]

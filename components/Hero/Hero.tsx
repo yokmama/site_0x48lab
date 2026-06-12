@@ -18,6 +18,7 @@ const itemVariants = {
 export default function Hero() {
   return (
     <section className={styles.hero} id="hero">
+      <div className={styles.backgroundPhoto} aria-hidden="true" />
       <HeroCanvas />
 
       <motion.div
