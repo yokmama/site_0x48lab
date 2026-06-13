@@ -3,13 +3,36 @@ import Script from 'next/script'
 import './globals.css'
 
 const siteUrl = 'https://hacklab.jp'
+const siteName = '株式会社ハックラボ'
+const siteTitle = '株式会社ハックラボ | HackLab Inc. - AI活用型受託開発・Webシステム・モバイルアプリ開発'
+const siteDescription =
+  '株式会社ハックラボ（東京・渋谷）は、20年の開発実績と生成AI活用で、業務システム・Webシステム・Flutter/モバイルアプリ開発、プログラミング教育を提供します。'
+const ogImage = '/og-image.jpg'
+const heroVideoUrl = `${siteUrl}/assets/hero-engineers-discussion.mp4`
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: '株式会社ハックラボ | HackLab Inc. — AI活用型受託開発・モバイルアプリ・プログラミング教育',
-  description:
-    '20年の開発実績×生成AIで、コスト1/5〜1/10・納期最大1/10を実現。受託開発・AI活用・モバイルアプリ・プログラミング教育の株式会社ハックラボ（東京・渋谷）。',
-  keywords: ['受託開発', 'AI活用', 'システム開発', 'モバイルアプリ', 'Flutter', 'プログラミング教育', '渋谷', 'ハックラボ', 'HackLab'],
+  applicationName: 'HackLab',
+  title: siteTitle,
+  description: siteDescription,
+  keywords: [
+    '受託開発',
+    'AI活用',
+    '生成AI',
+    'システム開発',
+    'Webシステム',
+    '業務システム',
+    'モバイルアプリ',
+    'Flutter',
+    'プログラミング教育',
+    '渋谷',
+    'ハックラボ',
+    'HackLab',
+  ],
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+  category: 'technology',
   alternates: {
     canonical: '/',
   },
@@ -21,36 +44,55 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     url: '/',
-    siteName: '株式会社ハックラボ',
-    title: '株式会社ハックラボ | AI活用型受託開発・モバイルアプリ開発',
-    description:
-      '20年の開発実績×生成AI。コスト1/5〜1/10・納期最大1/10の受託開発。業務システム・モバイルアプリ・プログラミング教育。',
+    siteName,
+    title: siteTitle,
+    description: siteDescription,
     images: [
       {
-        url: '/og-image.png',
+        url: ogImage,
         width: 1200,
         height: 630,
+        alt: '株式会社ハックラボ - AI活用型受託開発・Webシステム・モバイルアプリ開発',
+        type: 'image/jpeg',
+      },
+    ],
+    videos: [
+      {
+        url: heroVideoUrl,
+        width: 1280,
+        height: 720,
+        type: 'video/mp4',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '株式会社ハックラボ | AI活用型受託開発',
-    description: '20年の開発実績×生成AI。コスト1/5〜1/10の受託開発。',
-    images: ['/og-image.png'],
+    title: siteTitle,
+    description: siteDescription,
+    images: [
+      {
+        url: ogImage,
+        alt: '株式会社ハックラボ - AI活用型受託開発・Webシステム・モバイルアプリ開発',
+      },
+    ],
   },
   icons: {
     icon: '/favicon.svg',
+  },
+  formatDetection: {
+    telephone: false,
   },
 }
 
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: '株式会社ハックラボ',
+  name: siteName,
   alternateName: 'HackLab Inc.',
   url: `${siteUrl}/`,
   logo: `${siteUrl}/favicon.svg`,
+  image: `${siteUrl}${ogImage}`,
+  description: siteDescription,
   foundingDate: '2010',
   address: {
     '@type': 'PostalAddress',
@@ -71,8 +113,11 @@ const organizationJsonLd = {
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: '株式会社ハックラボ',
+  name: siteName,
+  alternateName: 'HackLab Inc.',
   url: `${siteUrl}/`,
+  description: siteDescription,
+  inLanguage: 'ja',
 }
 
 export default function RootLayout({
