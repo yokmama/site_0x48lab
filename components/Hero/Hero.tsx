@@ -1,11 +1,13 @@
 "use client"
 
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import Image from 'next/image'
-import { siteVisuals } from '@/lib/siteVisuals'
 import HeroCanvas from '../HeroCanvas/HeroCanvas'
 import styles from './Hero.module.css'
+
+const HERO_VIDEO_SRC = '/assets/hero-engineers-discussion.mp4'
+const HERO_VIDEO_POSTER = '/assets/hero-engineers-discussion-poster.jpg'
 
 const containerVariants = {
   hidden: {},
@@ -18,20 +20,48 @@ const itemVariants = {
 }
 
 export default function Hero() {
-  const visual = siteVisuals.home
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const syncVideoMotion = () => {
+      const video = videoRef.current
+      if (!video) return
+
+      if (motionQuery.matches) {
+        video.pause()
+        video.currentTime = 0
+        return
+      }
+
+      void video.play()
+    }
+
+    syncVideoMotion()
+    motionQuery.addEventListener('change', syncVideoMotion)
+
+    return () => {
+      motionQuery.removeEventListener('change', syncVideoMotion)
+    }
+  }, [])
 
   return (
     <section className={styles.hero} id="hero">
-      <div className={styles.backgroundPhoto} aria-hidden="true">
-        <Image
-          src={visual.src}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          quality={84}
-          className={styles.backgroundImage}
-        />
+      <div className={styles.backgroundMedia} aria-hidden="true">
+        <video
+          ref={videoRef}
+          className={styles.backgroundVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster={HERO_VIDEO_POSTER}
+          tabIndex={-1}
+        >
+          <source src={HERO_VIDEO_SRC} type="video/mp4" />
+        </video>
       </div>
       <HeroCanvas />
 

@@ -7,7 +7,6 @@ import s from './HeroCanvas.module.css'
 const C_ACCENT = '36, 144, 243'
 const C_NODE   = '140, 200, 255'
 const C_SPARK  = '210, 235, 255'
-const C_BG     = '15, 30, 46'
 
 // ── Physics constants ──────────────────────────────────────────
 const CONNECT       = 155   // max connection draw distance
@@ -280,17 +279,6 @@ export default function HeroCanvas() {
         ctx.fillStyle = `rgba(${C_ACCENT}, 0.55)`
         ctx.fill()
       }
-
-      // ─ 7. Edge vignette ─
-      const vW = W * 0.18, vH = H * 0.15
-      const gT = ctx.createLinearGradient(0, 0,      0,  vH);    gT.addColorStop(0,'rgba(15,30,46,1)'); gT.addColorStop(1,'rgba(15,30,46,0)')
-      const gB = ctx.createLinearGradient(0, H - vH, 0,  H);     gB.addColorStop(0,'rgba(15,30,46,0)'); gB.addColorStop(1,'rgba(15,30,46,1)')
-      const gL = ctx.createLinearGradient(0, 0,      vW, 0);     gL.addColorStop(0,'rgba(15,30,46,1)'); gL.addColorStop(1,'rgba(15,30,46,0)')
-      const gR = ctx.createLinearGradient(W - vW, 0, W,  0);     gR.addColorStop(0,'rgba(15,30,46,0)'); gR.addColorStop(1,'rgba(15,30,46,1)')
-      ctx.fillStyle = gT; ctx.fillRect(0,      0,      W,  vH)
-      ctx.fillStyle = gB; ctx.fillRect(0,      H - vH, W,  vH)
-      ctx.fillStyle = gL; ctx.fillRect(0,      0,      vW, H)
-      ctx.fillStyle = gR; ctx.fillRect(W - vW, 0,      vW, H)
 
       if (!reduceMotion) raf = requestAnimationFrame(frame)
     }
