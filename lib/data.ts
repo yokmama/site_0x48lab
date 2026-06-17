@@ -314,14 +314,26 @@ export const AI_DEV_LIMIT_ITEMS = [
 ]
 
 /* ── Shared Navigation / Layout Data ──────────────────────── */
-export const HEADER_SERVICES_DROPDOWN = [
+type HeaderDropdownItem = {
+  label: string
+  sub: string
+  path: string
+}
+
+type HeaderNavItem = {
+  label: string
+  path: string
+  dropdown?: HeaderDropdownItem[]
+}
+
+export const HEADER_SERVICES_DROPDOWN: HeaderDropdownItem[] = [
   { label: 'AI活用型受託開発', sub: '短納期・高品質', path: '/services/ai-development' },
   { label: 'モバイルアプリ開発', sub: 'Flutter / iOS / Android', path: '/services/mobile' },
   { label: 'Webシステム開発', sub: 'React / Next.js / Java', path: '/services/web' },
   { label: 'プログラミング教育', sub: '8x9 Kids スクール', path: '/services/education' },
 ]
 
-export const HEADER_NAV = [
+export const HEADER_NAV: HeaderNavItem[] = [
   { label: 'AI開発', path: '/services/ai-development' },
   { label: '実績', path: '/works' },
   { label: '料金・納期', path: '/services/ai-development#pricing' },
