@@ -255,3 +255,29 @@ model TeamMember {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
 }
+
+// ── Contact Inquiries ─────────────────────────────────────────
+
+model ContactInquiry {
+  id             String   @id
+  company        String
+  name           String
+  email          String
+  phone          String?
+  inquiryType    String?
+  budgetRange    String?
+  timeline       String?
+  message        String   @db.Text
+  sourcePath     String?
+  utm            Json?
+  privacyConsent   Boolean   @default(false)
+  privacyConsentAt DateTime?
+  status         String   @default("new")
+  adminNotes     String?  @db.Text
+  notificationAt DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([status, createdAt])
+  @@index([email])
+}

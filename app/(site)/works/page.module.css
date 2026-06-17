@@ -137,7 +137,30 @@
   font-size: 13px;
   color: var(--color-body-light);
   line-height: 1.75;
+}
+
+.caseDetails {
+  display: grid;
+  gap: 10px;
   flex: 1;
+}
+
+.caseDetails div {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+}
+
+.caseDetails dt {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.caseDetails dd {
+  font-size: 12.5px;
+  color: var(--color-body);
+  line-height: 1.65;
 }
 
 .compare {
@@ -229,6 +252,12 @@
 
 .cardLink:hover {
   text-decoration: underline;
+}
+
+.caveat {
+  font-size: 11px;
+  color: var(--color-body-muted);
+  line-height: 1.6;
 }
 
 .empty {

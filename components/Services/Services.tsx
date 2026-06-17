@@ -24,7 +24,7 @@ export default function Services() {
   }, [])
 
   return (
-    <section id="service" className="section section--alt">
+    <section id="services" className="section section--alt">
       <div className="container">
         <div className="section-header">
           <span className="section-label">Services</span>

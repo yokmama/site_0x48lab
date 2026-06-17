@@ -4,9 +4,9 @@ import './globals.css'
 
 const siteUrl = 'https://hacklab.jp'
 const siteName = '株式会社ハックラボ'
-const siteTitle = '株式会社ハックラボ | HackLab Inc. - AI活用型受託開発・Webシステム・モバイルアプリ開発'
+const siteTitle = '株式会社ハックラボ | AI活用型の業務システム開発・受託開発'
 const siteDescription =
-  '株式会社ハックラボ（東京・渋谷）は、20年の開発実績と生成AI活用で、業務システム・Webシステム・Flutter/モバイルアプリ開発、プログラミング教育を提供します。'
+  '株式会社ハックラボ（東京・渋谷）は、2010年創業の開発経験と生成AI活用で、業務管理・予約・自動化システムを短いサイクルで段階導入します。'
 const ogImage = '/og-image.jpg'
 const heroVideoUrl = `${siteUrl}/assets/hero-engineers-discussion.mp4`
 

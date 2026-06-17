@@ -76,7 +76,30 @@
   font-size: 13px;
   color: var(--color-body-light);
   line-height: 1.7;
+}
+
+.caseFacts {
+  display: grid;
+  gap: 10px;
   flex: 1;
+}
+
+.caseFacts div {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 10px;
+}
+
+.caseFacts dt {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-accent);
+}
+
+.caseFacts dd {
+  font-size: 12.5px;
+  color: var(--color-body);
+  line-height: 1.65;
 }
 
 .compare {
@@ -124,6 +147,12 @@
 .arrow {
   color: var(--color-border);
   flex-shrink: 0;
+}
+
+.caveat {
+  font-size: 11px;
+  color: var(--color-body-muted);
+  line-height: 1.6;
 }
 
 .cta {

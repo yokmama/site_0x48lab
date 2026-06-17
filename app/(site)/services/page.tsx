@@ -192,7 +192,7 @@ export default function ServicesPage() {
           >
             <h2 className={s.ctaTitle}>まずは無料相談から。</h2>
             <p className={s.ctaSub}>ヒアリング・簡易見積もりまで費用はかかりません。お気軽にご相談ください。</p>
-            <Link href="/contact" className="btn btn--orange btn--lg">
+            <Link href="/contact?topic=ai-development" className="btn btn--orange btn--lg">
               無料相談を申し込む
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" />

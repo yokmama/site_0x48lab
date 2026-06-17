@@ -1,14 +1,10 @@
 'use client'
 
-import { useState, useRef, useEffect, type ChangeEvent, type FormEvent } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  validateContactRequest,
-  type ContactFormErrors,
-  type ContactRequest,
-  type ContactResponse,
-} from '@/lib/contact'
+import ContactForm from '@/components/ContactForm/ContactForm'
+import { AI_DEV_FIT_ITEMS, AI_DEV_LIMIT_ITEMS, AI_DEV_TRUST_ITEMS } from '@/lib/data'
 import s from './page.module.css'
 
 type LpProblem = { id: number; text: string }
@@ -29,19 +25,6 @@ type LpPageProps = {
 
 const logoSrc = '/assets/logo.svg'
 const representativeImg = '/assets/representative.jpg'
-
-const contactFields: Array<{
-  key: keyof ContactRequest
-  label: string
-  required: boolean
-  placeholder: string
-  type?: string
-}> = [
-  { key: 'company', label: '会社名・団体名', required: true, placeholder: '例：株式会社〇〇' },
-  { key: 'name', label: 'お名前', required: true, placeholder: '例：山田 太郎' },
-  { key: 'email', label: 'メールアドレス', required: true, placeholder: '例：info@example.com', type: 'email' },
-  { key: 'phone', label: '電話番号', required: false, placeholder: '例：090-1234-5678', type: 'tel' },
-]
 
 /* ─── Helpers ──────────────────────────────────────────────── */
 function useSectionTitle() {
@@ -115,116 +98,6 @@ function FaqItem({ item, index }) {
   )
 }
 
-function ContactForm() {
-  const [fields, setFields] = useState<ContactRequest>({
-    company: '', name: '', email: '', phone: '', message: '',
-  })
-  const [errors, setErrors] = useState<ContactFormErrors>({})
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-
-  const [serverError, setServerError] = useState(false)
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const errs = validateContactRequest(fields)
-    if (Object.keys(errs).length) { setErrors(errs); return }
-    setLoading(true)
-    setServerError(false)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(fields),
-      })
-      const data = await res.json() as ContactResponse
-      if (res.ok && data.ok) {
-        setSubmitted(true)
-      } else {
-        if ('fieldErrors' in data && data.fieldErrors) setErrors(data.fieldErrors)
-        setServerError(true)
-      }
-    } catch {
-      setServerError(true)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const set = (key: keyof ContactRequest) => (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFields((f) => ({ ...f, [key]: e.target.value }))
-    setErrors((er) => { const n = { ...er }; delete n[key]; return n })
-  }
-
-  if (submitted) {
-    return (
-      <motion.div
-        className={s.thankYou}
-        initial={{ opacity: 0, scale: 0.96 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.4 }}
-      >
-        <div className={s.thankYouIcon}>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M20 6L9 17l-5-5" />
-          </svg>
-        </div>
-        <p className={s.thankYouTitle}>送信が完了しました</p>
-        <p className={s.thankYouDesc}>
-          お問い合わせありがとうございます。<br />
-          内容を確認のうえ、担当者よりご連絡いたします。
-        </p>
-      </motion.div>
-    )
-  }
-
-  return (
-    <form className={s.contactForm} onSubmit={handleSubmit} noValidate>
-      {contactFields.map(({ key, label, required, placeholder, type = 'text' }) => (
-        <div className={s.formGroup} key={key}>
-          <label className={s.formLabel}>
-            {label}
-            {required && <span className={s.formRequired}>必須</span>}
-          </label>
-          <input
-            type={type}
-            className={`${s.formInput}${errors[key] ? ` ${s.error}` : ''}`}
-            value={fields[key]}
-            onChange={set(key)}
-            placeholder={placeholder}
-            maxLength={key === 'company' ? 100 : key === 'name' ? 50 : undefined}
-          />
-          {errors[key] && <p className={s.formError}>{errors[key]}</p>}
-        </div>
-      ))}
-
-      <div className={s.formGroup}>
-        <label className={s.formLabel}>
-          お問い合わせ内容
-          <span className={s.formRequired}>必須</span>
-        </label>
-        <textarea
-          className={`${s.formTextarea}${errors.message ? ` ${s.error}` : ''}`}
-          value={fields.message}
-          onChange={set('message')}
-          placeholder="例：顧客管理システムの開発を検討しています"
-          maxLength={1000}
-        />
-        {errors.message && <p className={s.formError}>{errors.message}</p>}
-      </div>
-
-      {serverError && (
-        <p style={{ fontSize: 13, color: '#e53e3e', textAlign: 'center', padding: '10px', background: 'rgba(229,62,62,0.08)', borderRadius: 6 }}>
-          送信に失敗しました。しばらくしてから再度お試しください。
-        </p>
-      )}
-      <button type="submit" className={s.formSubmit} disabled={loading}>
-        {loading ? '送信中...' : '無料相談を申し込む'}
-      </button>
-    </form>
-  )
-}
-
 /* ─── Page ──────────────────────────────────────────────────── */
 export function LpPageClient({ problems, solutions, comparisonRows, pricing, results, faqItems }: LpPageProps) {
   const LP_PROBLEMS = problems
@@ -238,6 +111,7 @@ export function LpPageClient({ problems, solutions, comparisonRows, pricing, res
   const [solutionRef, solutionIn] = useSectionTitle()
   const [compRef, compIn] = useSectionTitle()
   const [pricingRef, pricingIn] = useSectionTitle()
+  const [trustRef, trustIn] = useSectionTitle()
   const [resultsRef, resultsIn] = useSectionTitle()
   const [messageRef, messageIn] = useSectionTitle()
   const [processRef, processIn] = useSectionTitle()
@@ -268,21 +142,21 @@ export function LpPageClient({ problems, solutions, comparisonRows, pricing, res
             variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15, delayChildren: 0.2 } } }}
           >
             <motion.span className={s.heroLabel} variants={reveal}>
-              20年の開発実績 × 生成AI
+              2010年創業の開発経験 × 生成AI
             </motion.span>
             <motion.h1 className={s.heroTitle} variants={reveal}>
-              500万円のシステムが、<br />
-              <em>100万円</em>で実現できる時代へ。
+              AIで業務システム開発を、<br />
+              <em>短く、確実に。</em>
             </motion.h1>
             <motion.p className={s.heroCatch} variants={reveal}>
-              AI＋20年の専門知識 ＝ コスト1/5〜1/10、納期を大幅短縮。<br />
-              諦めていたシステムを、今こそ実現しましょう。
+              生成AIと2010年創業の開発経験を組み合わせ、業務管理・予約・自動化システムを2〜4週間単位で段階導入。<br />
+              AI任せにせず、シニアエンジニアが設計・実装・QAを確認します。
             </motion.p>
             <motion.div className={s.heroStats} variants={reveal}>
               {[
-                { num: '1/5〜1/10', label: 'コスト削減' },
-                { num: '最大1/10', label: '納期短縮' },
-                { num: '20年', label: '開発実績' },
+                { num: '2010年', label: '創業' },
+                { num: '300+', label: 'プロジェクト' },
+                { num: '2〜4週間', label: '段階リリース目安' },
               ].map((stat) => (
                 <div key={stat.label} className={s.heroStat}>
                   <p className={s.heroStatNum}>{stat.num}</p>
@@ -351,7 +225,7 @@ export function LpPageClient({ problems, solutions, comparisonRows, pricing, res
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            AIの進化がシステム開発のパラダイムを変えました。20年の設計ノウハウ × AIの生産性 ＝ コスト1/5〜1/10、納期1/10が現実になっています。
+            AIの進化がシステム開発の進め方を変えました。生成AIの生産性とシニアレビューを組み合わせ、短い単位で確認しながら業務システムを段階導入します。
           </motion.p>
           <motion.div
             className={s.solutionGrid}
@@ -456,6 +330,49 @@ export function LpPageClient({ problems, solutions, comparisonRows, pricing, res
         </div>
       </section>
 
+      {/* ── Trust ── */}
+      <section className={s.section} id="lp-trust">
+        <div className={s.inner}>
+          <div className={s.sectionHeader}>
+            <span className={s.sectionLabel}>Trust &amp; Security</span>
+            <h2
+              ref={trustRef}
+              className={`${s.sectionTitle}${trustIn ? ` ${s.inView}` : ''}`}
+            >
+              AI利用・機密情報・納品範囲を明確にします
+            </h2>
+          </div>
+          <motion.div
+            className={s.trustGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+          >
+            {AI_DEV_TRUST_ITEMS.map((item) => (
+              <motion.article key={item.title} className={s.trustCard} variants={reveal}>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </motion.article>
+            ))}
+          </motion.div>
+          <div className={s.fitGrid}>
+            <div className={s.fitCard}>
+              <h3>相談しやすい内容</h3>
+              <ul>
+                {AI_DEV_FIT_ITEMS.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+            <div className={s.fitCard}>
+              <h3>向かない進め方</h3>
+              <ul>
+                {AI_DEV_LIMIT_ITEMS.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Results ── */}
       <section className={s.section}>
         <div className={s.inner}>
@@ -525,7 +442,7 @@ export function LpPageClient({ problems, solutions, comparisonRows, pricing, res
               <p className={s.messageRole}>代表取締役 CEO</p>
               <p className={s.messageText}>
                 2010年の創業以来、Webシステム・モバイル・業務システムと数百件のプロジェクトを手がけてきました。
-                AIの進化によって開発の生産性は劇的に変わりました。20年の設計・QAのノウハウがあるからこそ、AIを正しく活用して低コスト・高品質な開発が実現できます。
+                AIの進化によって、要件整理・設計・実装補助の進め方は大きく変わりました。人の設計判断とQAを組み合わせるからこそ、AIを実務で安全に活用できます。
                 「費用が高くて諦めた」というシステムをぜひご相談ください。
               </p>
             </div>
@@ -616,7 +533,7 @@ export function LpPageClient({ problems, solutions, comparisonRows, pricing, res
             viewport={{ once: true, margin: '-60px' }}
             transition={{ duration: 0.6 }}
           >
-            <ContactForm />
+            <ContactForm dark />
           </motion.div>
         </div>
       </section>

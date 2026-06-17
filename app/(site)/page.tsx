@@ -8,6 +8,7 @@ import School from '@/components/School/School'
 import Contact from '@/components/Contact/Contact'
 import HomeWorks from '@/components/HomeWorks/HomeWorks'
 import HomeBlog from '@/components/HomeBlog/HomeBlog'
+import HomeDecisionSupport from '@/components/HomeDecisionSupport/HomeDecisionSupport'
 
 export const dynamic = 'force-dynamic'
 
@@ -19,11 +20,12 @@ export default async function HomePage() {
       <Strengths />
       <Services />
       <HomeWorks />
+      <HomeDecisionSupport />
+      <Contact />
       <History />
       <Team members={members} />
       <School />
       <HomeBlog />
-      <Contact />
     </>
   )
 }

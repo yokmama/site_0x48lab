@@ -5,8 +5,8 @@ export const SERVICES = [
     title: 'AI活用型受託開発',
     titleEn: 'AI-Powered Development',
     icon: 'ai',
-    tagline: '500万円のシステムが100万円で。',
-    desc: '生成AIと20年の設計ノウハウを組み合わせ、コスト1/5〜1/10・納期最大1/10を実現。業務管理・予約・自動化システムに対応。',
+    tagline: '業務システムを短く、確実に。',
+    desc: '2010年創業の開発経験と生成AIを組み合わせ、業務管理・予約・自動化システムを2〜4週間単位で段階導入します。',
     features: ['業務管理システム', '予約・顧客対応システム', '業務効率化・自動化'],
     path: '/services/ai-development',
     lpPath: '/lp/ai-development',
@@ -69,7 +69,7 @@ export const AI_DEV_SOLUTIONS = [
   {
     num: '02',
     title: '品質レビューを標準化',
-    desc: '20年の開発経験をもつエンジニアが設計・実装・QAをレビューし、AI任せにしない品質管理を行います。',
+    desc: 'シニアエンジニアが設計・実装・QAをレビューし、AI任せにしない品質管理を行います。',
   },
   {
     num: '03',
@@ -249,7 +249,7 @@ export const AI_DEV_EXAMPLE_PROJECTS = [
 export const AI_DEV_PROCESS_STEPS = [
   { num: '1', title: 'ヒアリング', desc: '課題・要件・優先順位を整理します。オンライン30分から対応します。', badge: '初回相談' },
   { num: '2', title: '設計・納期計画', desc: '機能の範囲、画面構成、品質確認項目、リリース計画を提示します。' },
-  { num: '3', title: '開発・レビュー', desc: 'AI×20年の経験で高速に実装し、設計・コード・動作をレビューします。' },
+  { num: '3', title: '開発・レビュー', desc: 'AIを活用して実装を進め、シニアエンジニアが設計・コード・動作をレビューします。' },
   { num: '4', title: '納品・改善', desc: '検証後に納品。運用データを見ながら機能追加・改善を継続します。' },
 ]
 
@@ -260,7 +260,7 @@ export const AI_DEV_FAQ_ITEMS = [
   },
   {
     q: '品質は大丈夫ですか？',
-    a: '20年の設計・検証ノウハウを持つシニアエンジニアがAIの出力をすべてレビューします。AI任せにせず、人間の経験と組み合わせることで高品質を担保しています。',
+    a: 'シニアエンジニアがAIの出力をレビューします。AI任せにせず、人間の設計判断と検証を組み合わせて品質を確認します。',
   },
   {
     q: 'AIを使うことで安全性は問題ありませんか？',
@@ -280,6 +280,39 @@ export const AI_DEV_FAQ_ITEMS = [
   },
 ]
 
+export const AI_DEV_TRUST_ITEMS = [
+  {
+    title: '機密情報は初回相談では不要',
+    desc: '初回は業務課題と実現したい状態だけで整理します。詳細データや顧客情報は、必要に応じてNDA締結後に扱います。',
+  },
+  {
+    title: 'AIの利用範囲を明確化',
+    desc: '生成AIは要件整理・設計補助・実装補助・テスト観点の整理に活用します。判断とレビューは人間が担います。',
+  },
+  {
+    title: '納品物と権利を事前確認',
+    desc: 'ソースコード、設計資料、運用手順、保守範囲など、納品後に必要なものを見積もり前に整理します。',
+  },
+  {
+    title: 'リリース後の改善まで対応',
+    desc: '最初の中核機能を出して終わりにせず、利用状況を見ながら修正・追加開発・品質改善を継続できます。',
+  },
+]
+
+export const AI_DEV_FIT_ITEMS = [
+  'Excel・スプレッドシート運用をシステム化したい',
+  '予約、申請、顧客対応などの定型業務を減らしたい',
+  '小さく始めて、現場確認しながら改善したい',
+  '要件が固まりきっていない段階で相談したい',
+]
+
+export const AI_DEV_LIMIT_ITEMS = [
+  '要件が未整理のまま固定価格だけを先に確定したい',
+  '法規制・監査要件の正式判断を開発会社だけに任せたい',
+  'AIに機密情報をそのまま投入する前提で進めたい',
+  '大規模基幹システムを一括で短期刷新したい',
+]
+
 /* ── Shared Navigation / Layout Data ──────────────────────── */
 export const HEADER_SERVICES_DROPDOWN = [
   { label: 'AI活用型受託開発', sub: '短納期・高品質', path: '/services/ai-development' },
@@ -289,11 +322,12 @@ export const HEADER_SERVICES_DROPDOWN = [
 ]
 
 export const HEADER_NAV = [
-  { label: 'サービス', path: '/services', dropdown: HEADER_SERVICES_DROPDOWN },
+  { label: 'AI開発', path: '/services/ai-development' },
   { label: '実績', path: '/works' },
-  { label: '会社概要', path: '/company' },
-  { label: 'ブログ', path: '/blog' },
-  { label: '採用', path: '/careers' },
+  { label: '料金・納期', path: '/services/ai-development#pricing' },
+  { label: '導入の流れ', path: '/services/ai-development#process' },
+  { label: 'FAQ', path: '/services/ai-development#faq' },
+  { label: '会社情報', path: '/company' },
 ]
 
 export const FOOTER_NAV = [
@@ -326,9 +360,9 @@ export const FOOTER_NAV = [
 ]
 
 export const NOT_FOUND_QUICK_LINKS = [
-  { label: 'サービス', to: '/#services' },
-  { label: '実績', to: '/#works' },
-  { label: '会社概要', to: '/#about' },
+  { label: 'AI開発', to: '/services/ai-development' },
+  { label: '実績', to: '/works' },
+  { label: '無料相談', to: '/contact?topic=ai-development' },
 ]
 
 /* ── Home Sections ────────────────────────────────────────── */
@@ -351,7 +385,7 @@ export const HOME_STRENGTHS = [
   {
     icon: 'ai',
     title: 'AI活用開発',
-    desc: '生成AIを設計・実装・テストに組み込み、短納期と高品質を両立。20年の設計ノウハウがAIを正しく活用する鍵です。',
+    desc: '生成AIを設計・実装・テストに組み込み、短いサイクルで品質を確認。シニアレビューと組み合わせてAIを実務で活用します。',
   },
   {
     icon: 'mobile',
@@ -474,21 +508,21 @@ export const SERVICES_PAGE_ICON_BG = {
 
 export const SERVICES_PAGE_WHY_ITEMS = [
   {
-    num: '1/5〜1/10',
-    unit: 'コスト',
-    title: 'コスト1/5〜1/10',
-    desc: 'AI活用と20年の設計ノウハウにより、従来比大幅なコスト削減を実現。削減分はそのままお客様に還元します。',
+    num: '2〜4週間',
+    unit: '段階リリース',
+    title: '中核機能から短く導入',
+    desc: '最初から大きく作り込まず、現場確認できる中核機能を短い単位で届けます。',
   },
   {
-    num: '最大1/10',
-    unit: '納期',
-    title: '最大1/10の納期',
-    desc: 'AI活用で設計・実装・QAを加速。数ヶ月かかっていた開発が数週間で完了します。',
+    num: 'AI＋人',
+    unit: '品質確認',
+    title: 'AI任せにしないレビュー',
+    desc: '生成AIを開発補助に使いながら、設計・実装・QAの判断はシニアエンジニアが確認します。',
   },
   {
-    num: '20年',
+    num: '2010年',
     unit: '実績',
-    title: '20年の実績と品質',
+    title: '創業以来300件超',
     desc: '2010年の創業以来、製造業・サービス業・小売など幅広い業種で300件超のプロジェクトを手がけてきました。',
   },
 ]
@@ -734,8 +768,8 @@ export const WEB_PAGE_STRENGTHS = [
   },
   {
     icon: 'ai',
-    title: 'AI活用でコスト削減',
-    desc: '生成AIを設計・実装・テストに積極活用。従来比1/5〜1/10のコストで同品質のシステムを届けます。',
+    title: 'AI活用で開発を効率化',
+    desc: '生成AIを設計・実装・テスト観点の整理に活用。人のレビューと組み合わせて、短いサイクルで確認できる開発を進めます。',
   },
   {
     icon: 'clock',
@@ -760,39 +794,39 @@ export const WEB_PAGE_PROCESS_STEPS = [
 
 /* ── AI Development LP ────────────────────────────────────── */
 export const LP_PROBLEMS = [
-  '見積もりを取ったら500万円以上になり、諦めてしまった',
+  '見積もりの前に、費用・納期・実現範囲の目安が知りたい',
   'ノーコードツールで自作を試みたが、機能の限界で頓挫した',
-  'エンジニア不足で年々開発コストが上がり、困っている',
+  'エンジニア不足で改善したい業務が後回しになっている',
 ]
 
 export const LP_SOLUTIONS = [
   {
     num: '01',
-    title: 'コスト1/5〜1/10',
-    desc: 'AIが設計・実装・テストを加速し、人件費を大幅削減。削減分をそのままお客様に還元します。',
+    title: '短い単位で設計・実装',
+    desc: 'AIを要件整理・実装補助・テスト観点の整理に使い、2〜4週間単位で確認できる状態を目指します。',
   },
   {
     num: '02',
-    title: '納期最大1/10',
-    desc: '数ヶ月かかっていた案件が数週間に。ビジネスのスピードに合わせた開発が実現します。',
+    title: 'シニアレビューで品質確認',
+    desc: 'AI任せにせず、設計・実装・QAを人が確認。業務運用に必要な権限・入力ルール・例外対応まで見ます。',
   },
   {
     num: '03',
     title: '必要なものだけを作る',
-    desc: '大きなパッケージを買わなくていい。最小限のコストで要件にぴったりのシステムを構築します。',
+    desc: '大きなパッケージありきではなく、現場で使う中核機能から始めて段階的に改善します。',
   },
 ]
 
 export const LP_COMPARISON_ROWS = [
   {
     item: '費用',
-    traditional: '500万円以上',
-    ours: '50万円〜（1/5〜1/10）',
+    traditional: '大きな初期見積もりになりやすい',
+    ours: '中核機能から範囲を区切って見積もり',
   },
   {
     item: '期間',
     traditional: '3〜6ヶ月',
-    ours: '2〜4週間（最大1/10）',
+    ours: '2〜4週間単位で段階リリース',
   },
   {
     item: '柔軟性',
@@ -802,7 +836,7 @@ export const LP_COMPARISON_ROWS = [
   {
     item: '品質保証',
     traditional: '手動QAが中心',
-    ours: 'AI＋人間の20年QA知識',
+    ours: 'AI補助＋シニアレビュー',
   },
 ]
 
@@ -831,34 +865,34 @@ export const LP_RESULTS = [
   {
     industry: '製造業',
     title: 'CRM構築',
-    before: { cost: '500万円', period: '5ヶ月' },
-    after: { cost: '80万円', period: '3週間' },
-    saving: 'コスト84%削減',
+    before: { cost: 'Excel・手作業', period: '確認に時間がかかる' },
+    after: { cost: '管理画面化', period: '3週間目安' },
+    saving: '入力と確認の流れを整理',
   },
   {
     industry: 'サービス業',
     title: '予約システム',
-    before: { cost: '300万円', period: '4ヶ月' },
-    after: { cost: '60万円', period: '2週間' },
-    saving: 'コスト80%削減',
+    before: { cost: '電話・メール中心', period: '対応漏れが発生' },
+    after: { cost: '予約を一元管理', period: '2週間目安' },
+    saving: '予約変更と通知を整理',
   },
   {
     industry: '卸売業',
     title: '在庫・受発注管理',
-    before: { cost: '800万円', period: '6ヶ月' },
-    after: { cost: '120万円', period: '4週間' },
-    saving: 'コスト85%削減',
+    before: { cost: '担当者依存', period: '発注判断が属人化' },
+    after: { cost: '在庫アラート', period: '4週間目安' },
+    saving: '発注候補を可視化',
   },
 ]
 
 export const LP_FAQ_ITEMS = [
   {
-    q: 'なぜこんなに安くできるのですか？',
-    a: 'AIが設計・実装・テストの工数を大幅に削減するため、従来比1/5〜1/10のコストが実現できます。その削減分をそのままお客様に還元しています。',
+    q: 'なぜ短い期間で開発できるのですか？',
+    a: '要件整理・設計・実装補助・テスト観点の洗い出しにAIを活用し、シニアエンジニアが判断とレビューを担うためです。最初から大きく作り込まず、中核機能から段階導入します。',
   },
   {
     q: '品質は大丈夫ですか？',
-    a: '20年の設計・検証ノウハウを持つシニアエンジニアがAIの出力をすべてレビューします。AI任せにせず、人間の経験と組み合わせることで高品質を担保しています。',
+    a: 'シニアエンジニアがAIの出力をレビューします。AI任せにせず、人間の設計判断と検証を組み合わせて品質を確認します。',
   },
   {
     q: 'AIを使うことで安全性は問題ありませんか？',
@@ -866,7 +900,7 @@ export const LP_FAQ_ITEMS = [
   },
   {
     q: '納期はどのくらいですか？',
-    a: '規模によりますが、標準的なシステムで2〜4週間を想定しています。従来の開発と比べて最大1/10の期間で納品が可能です。',
+    a: '規模によりますが、標準的な業務システムの中核機能は2〜4週間単位で段階リリースを計画します。要件・連携先・確認範囲に合わせて調整します。',
   },
   {
     q: '納品後のサポートはありますか？',
@@ -1044,8 +1078,8 @@ export const BLOG_POSTS = [
   {
     slug: 'ai-development-cost-reduction',
     category: '開発事例',
-    title: 'AI活用でシステム開発コストを1/5に削減した話',
-    excerpt: '生成AIを設計・実装・テストに活用することで、従来比1/5のコストでシステム開発を実現した実践事例を紹介します。',
+    title: 'AI活用で業務システム開発を段階導入した話',
+    excerpt: '生成AIを要件整理・設計・実装補助に活用し、業務システムを短いサイクルで確認しながら進める方法を紹介します。',
     date: '2025-05-20',
     readCount: 6,
   },
@@ -1123,6 +1157,6 @@ export const JOB_OPENINGS = [
 export const COMPANY_STATS = [
   { num: '15+', label: '年の開発実績' },
   { num: '300+', label: 'プロジェクト実績' },
-  { num: '1/5〜1/10', label: 'コスト削減率' },
-  { num: '2週間〜', label: '最短納品期間' },
+  { num: '2〜4週間', label: '段階リリース目安' },
+  { num: 'AI＋人', label: 'レビュー体制' },
 ]

@@ -13,6 +13,8 @@ type Work = {
   service: string
   title: string
   summary: string
+  challenge: string
+  solution: string
   tech: string[]
   beforePeriod: string
   beforeQuality: string
@@ -56,6 +58,16 @@ function WorkCard({ work }: { work: Work }) {
       </div>
       <h3 className={s.cardTitle}>{work.title}</h3>
       <p className={s.cardSummary}>{work.summary}</p>
+      <dl className={s.caseDetails}>
+        <div>
+          <dt>課題</dt>
+          <dd>{work.challenge}</dd>
+        </div>
+        <div>
+          <dt>対応</dt>
+          <dd>{work.solution}</dd>
+        </div>
+      </dl>
       <div className={s.compare}>
         <div className={s.compareItem}>
           <p className={s.compareLabel}>従来</p>
@@ -76,6 +88,7 @@ function WorkCard({ work }: { work: Work }) {
       <div className={s.techList}>
         {work.tech.map(t => <TechTag key={t} label={t} />)}
       </div>
+      <p className={s.caveat}>匿名化した導入実績です。成果は要件・体制・連携先により変動します。</p>
       {work.link && (
         <a href={work.link} target="_blank" rel="noopener noreferrer" className={s.cardLink}>
           サイトを見る →

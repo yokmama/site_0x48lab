@@ -175,7 +175,7 @@ export default function EducationPage() {
                   <line x1="10" y1="14" x2="21" y2="3" />
                 </svg>
               </a>
-              <Link href="/contact" className="btn btn--orange btn--lg">
+              <Link href="/contact?topic=education" className="btn btn--orange btn--lg">
                 教材開発の相談
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" />

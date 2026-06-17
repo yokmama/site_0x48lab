@@ -27,7 +27,7 @@ export default function NotFound() {
               <Link href="/" className="btn btn--primary btn--lg">
                 トップへ戻る
               </Link>
-              <Link href="/contact" className="btn btn--outline btn--lg">
+              <Link href="/contact?topic=ai-development" className="btn btn--outline btn--lg">
                 お問い合わせ
               </Link>
             </div>

@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
+import { AI_DEV_FIT_ITEMS, AI_DEV_LIMIT_ITEMS, AI_DEV_TRUST_ITEMS } from '@/lib/data'
 import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
@@ -104,7 +105,7 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
         visualKey="aiDevelopment"
         label="AI-Powered Development"
         title="AI活用型受託開発"
-        subtitle="20年の開発実績×生成AIで、短納期と高品質を両立する業務システム開発。"
+        subtitle="2010年創業の開発経験×生成AIで、短い単位で確実に進める業務システム開発。"
       />
 
       <section className="section section--alt">
@@ -151,7 +152,7 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
               その課題、今なら解決できます。
             </h2>
             <p className="section-desc">
-              AIの進化がシステム開発の進め方を変えました。20年の設計ノウハウ × AIの生産性で、短いサイクルでも品質を落とさない開発が可能です。
+              AIの進化がシステム開発の進め方を変えました。生成AIの生産性とシニアレビューを組み合わせ、短いサイクルでも品質を確認しながら進めます。
             </p>
           </div>
           <motion.div
@@ -218,7 +219,7 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="examples">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Example Projects</span>
@@ -260,7 +261,7 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section section--alt" id="pricing">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Services &amp; Delivery</span>
@@ -302,7 +303,63 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" id="trust">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Trust &amp; Security</span>
+            <h2 className="section-title in-view">
+              安全性と進め方の考え方
+            </h2>
+            <p className="section-desc">
+              AIを使うからこそ、機密情報・レビュー・納品後の運用範囲を先に明確にします。
+            </p>
+          </div>
+          <motion.div
+            className={s.trustGrid}
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+          >
+            {AI_DEV_TRUST_ITEMS.map((item) => (
+              <motion.article key={item.title} className={s.trustCard} variants={reveal}>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </motion.article>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="section section--alt">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-label">Fit</span>
+            <h2 className="section-title in-view">
+              できること・向かないこと
+            </h2>
+            <p className="section-desc">
+              初回相談のミスマッチを減らすため、得意な相談内容と向かない進め方を明示します。
+            </p>
+          </div>
+          <div className={s.fitGrid}>
+            <div className={s.fitCard}>
+              <h3>相談しやすい内容</h3>
+              <ul>
+                {AI_DEV_FIT_ITEMS.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+            <div className={s.fitCard}>
+              <h3>向かない進め方</h3>
+              <ul>
+                {AI_DEV_LIMIT_ITEMS.map((item) => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="process">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Process</span>
@@ -335,7 +392,7 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
         </div>
       </section>
 
-      <section className="section section--alt">
+      <section className="section section--alt" id="faq">
         <div className="container">
           <div className="section-header">
             <span className="section-label">FAQ</span>
@@ -371,7 +428,7 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
           >
             <h2 className={s.ctaTitle}>まずは開発したい業務をお聞かせください。</h2>
             <p className={s.ctaSub}>短く届けるべき中核機能と、品質確認が必要なポイントを一緒に整理します。</p>
-            <Link href="/contact" className="btn btn--orange btn--lg">
+            <Link href="/contact?topic=ai-development" className="btn btn--orange btn--lg">
               相談を申し込む
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" />

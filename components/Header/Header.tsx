@@ -42,8 +42,10 @@ export default function Header() {
   }, [])
 
   const isActive = (path: string) => {
-    if (path === '/') return pathname === '/'
-    return pathname.startsWith(path)
+    if (path.includes('#')) return false
+    const basePath = path.split('#')[0]
+    if (basePath === '/') return pathname === '/'
+    return pathname.startsWith(basePath)
   }
 
   return (
@@ -100,7 +102,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <Link href="/contact" className={s.ctaBtn}>
+        <Link href="/contact?topic=ai-development" className={s.ctaBtn}>
           無料相談する
         </Link>
 
@@ -140,7 +142,7 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              <Link href="/contact" className={s.mobileCtaBtn}>
+              <Link href="/contact?topic=ai-development" className={s.mobileCtaBtn}>
                 無料相談する
               </Link>
             </nav>

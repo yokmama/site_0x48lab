@@ -26,14 +26,14 @@ export default function HomeWorks() {
   }, [])
 
   return (
-    <section className="section">
+    <section id="works" className="section">
       <div className="container">
         <div className="section-header">
           <span className="section-label">Works</span>
           <h2 ref={titleRef} className={`section-title${inView ? ' in-view' : ''}`}>
             導入実績
           </h2>
-          <p className="section-desc">AIと20年の専門知識が生み出す、短納期で高品質な導入実績。</p>
+          <p className="section-desc">業種・課題・対応内容を整理した、判断材料として見られる導入実績。</p>
         </div>
 
         <motion.div
@@ -51,6 +51,16 @@ export default function HomeWorks() {
               </div>
               <h3 className={s.cardTitle}>{work.title}</h3>
               <p className={s.summary}>{work.summary}</p>
+              <dl className={s.caseFacts}>
+                <div>
+                  <dt>課題</dt>
+                  <dd>{work.challenge}</dd>
+                </div>
+                <div>
+                  <dt>対応</dt>
+                  <dd>{work.solution}</dd>
+                </div>
+              </dl>
               <div className={s.compare}>
                 <div className={s.compareItem}>
                   <p className={s.compareLabel}>従来</p>
@@ -66,6 +76,7 @@ export default function HomeWorks() {
                   <p className={s.compareQuality}>{work.after.quality}</p>
                 </div>
               </div>
+              <p className={s.caveat}>匿名化した課題と成果です。詳細条件は個別相談で確認します。</p>
             </motion.div>
           ))}
         </motion.div>

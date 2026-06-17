@@ -87,7 +87,7 @@ export default function CompanyPage() {
             viewport={viewportOnce}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
           >
-            株式会社ハックラボは2010年の創業以来、Webシステム・モバイルアプリ・業務システムを中心に300件以上のプロジェクトを手がけてきました。生成AIの進化を活用し、従来の1/5〜1/10のコストと納期で高品質なシステム開発を実現しています。
+            株式会社ハックラボは2010年の創業以来、Webシステム・モバイルアプリ・業務システムを中心に300件以上のプロジェクトを手がけてきました。生成AIの進化を活用しながら、シニアエンジニアの設計・実装レビューと組み合わせて、業務システムを短い単位で段階導入します。
           </motion.p>
         </div>
       </section>
@@ -249,7 +249,7 @@ export default function CompanyPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
           >
             <p className={s.ctaText}>プロジェクトのご相談はお気軽にどうぞ</p>
-            <Link href="/contact" className="btn btn--primary btn--lg">お問い合わせ</Link>
+            <Link href="/contact?topic=ai-development" className="btn btn--primary btn--lg">お問い合わせ</Link>
           </motion.div>
         </div>
       </section>

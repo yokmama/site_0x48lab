@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import HeroCanvas from '../HeroCanvas/HeroCanvas'
@@ -21,15 +21,20 @@ const itemVariants = {
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const [showMotion, setShowMotion] = useState(false)
 
   useEffect(() => {
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const mobileQuery = window.matchMedia('(max-width: 768px)')
 
     const syncVideoMotion = () => {
+      const shouldShowMotion = !motionQuery.matches && !mobileQuery.matches
+      setShowMotion(shouldShowMotion)
+
       const video = videoRef.current
       if (!video) return
 
-      if (motionQuery.matches) {
+      if (!shouldShowMotion) {
         video.pause()
         video.currentTime = 0
         return
@@ -40,30 +45,38 @@ export default function Hero() {
 
     syncVideoMotion()
     motionQuery.addEventListener('change', syncVideoMotion)
+    mobileQuery.addEventListener('change', syncVideoMotion)
 
     return () => {
       motionQuery.removeEventListener('change', syncVideoMotion)
+      mobileQuery.removeEventListener('change', syncVideoMotion)
     }
   }, [])
 
   return (
     <section className={styles.hero} id="hero">
       <div className={styles.backgroundMedia} aria-hidden="true">
-        <video
-          ref={videoRef}
-          className={styles.backgroundVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          poster={HERO_VIDEO_POSTER}
-          tabIndex={-1}
-        >
-          <source src={HERO_VIDEO_SRC} type="video/mp4" />
-        </video>
+        {showMotion && (
+          <video
+            ref={videoRef}
+            className={styles.backgroundVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={HERO_VIDEO_POSTER}
+            tabIndex={-1}
+          >
+            <source src={HERO_VIDEO_SRC} type="video/mp4" />
+          </video>
+        )}
       </div>
-      <HeroCanvas />
+      {showMotion && (
+        <div className={styles.canvasLayer} aria-hidden="true">
+          <HeroCanvas />
+        </div>
+      )}
 
       <motion.div
         className={styles.content}
@@ -72,29 +85,39 @@ export default function Hero() {
         animate="visible"
       >
         <motion.span className={styles.eyebrow} variants={itemVariants}>
-          Technology for the Future
+          AI-Powered Business System Development
         </motion.span>
 
-        <motion.h1 className={styles.companyJa} variants={itemVariants}>
-          株式会社ハックラボ
+        <motion.h1 className={styles.heroTitle} variants={itemVariants}>
+          AIで業務システム開発を<br />
+          短く、確実に。
         </motion.h1>
 
-        <motion.p className={styles.companyEn} variants={itemVariants}>
-          HackLab Inc.
+        <motion.p className={styles.heroLead} variants={itemVariants}>
+          2010年創業の開発経験と生成AIを組み合わせ、業務管理・予約・自動化システムを
+          2〜4週間単位で段階リリース。AI任せにせず、シニアエンジニアが設計と品質を確認します。
         </motion.p>
 
-        <motion.div className={styles.divider} variants={itemVariants} />
-
-        <motion.p className={styles.tagline} variants={itemVariants}>
-          テクノロジーで未来を創造する
-        </motion.p>
+        <motion.dl className={styles.proofGrid} variants={itemVariants}>
+          {[
+            { value: '2010年', label: '創業' },
+            { value: '300+', label: 'プロジェクト' },
+            { value: '2〜4週間', label: '段階リリース目安' },
+            { value: '人がレビュー', label: 'AI任せにしない品質管理' },
+          ].map((item) => (
+            <div key={item.label} className={styles.proofItem}>
+              <dt>{item.value}</dt>
+              <dd>{item.label}</dd>
+            </div>
+          ))}
+        </motion.dl>
 
         <motion.div className={styles.heroCtas} variants={itemVariants}>
-          <Link href="/services" className="btn btn--ghost">
-            サービスを見る
-          </Link>
-          <Link href="/contact" className={`btn ${styles.ctaOrange}`}>
+          <Link href="/contact?topic=ai-development" className={`btn ${styles.ctaOrange}`}>
             無料相談する
+          </Link>
+          <Link href="/works" className="btn btn--ghost">
+            実績を見る
           </Link>
         </motion.div>
       </motion.div>

@@ -217,7 +217,7 @@ export default function MobilePage() {
           >
             <h2 className={s.ctaTitle}>アプリ開発の相談をする</h2>
             <p className={s.ctaSub}>ヒアリング・簡易見積もりまで無料です。まずはお気軽にご連絡ください。</p>
-            <Link href="/contact" className="btn btn--primary btn--lg">
+            <Link href="/contact?topic=web-mobile" className="btn btn--primary btn--lg">
               無料相談を申し込む
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" />
