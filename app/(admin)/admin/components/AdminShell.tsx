@@ -6,6 +6,7 @@ import styles from './AdminShell.module.css'
 
 const NAV = [
   { label: 'ダッシュボード', href: '/admin' },
+  { label: 'お問い合わせ', href: '/admin/inquiries' },
   { label: 'ブログ', href: '/admin/blog' },
   { label: '実績・事例', href: '/admin/works' },
   { label: '採用情報', href: '/admin/jobs' },

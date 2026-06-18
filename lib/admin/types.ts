@@ -19,6 +19,8 @@ export type AdminResponse<T = never> =
         | 'NO_FILE'
         | 'INVALID_TYPE'
         | 'FILE_TOO_LARGE'
+        | 'SMTP_NOT_CONFIGURED'
+        | 'EMAIL_SEND_FAILED'
       message?: string
       fieldErrors?: Record<string, string>
     }

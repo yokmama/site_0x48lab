@@ -22,13 +22,15 @@ model MediaFile {
 // ── Auth ──────────────────────────────────────────────────────
 
 model AdminUser {
-  id           Int            @id @default(autoincrement())
-  email        String         @unique
-  name         String
-  passwordHash String
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  sessions     AdminSession[]
+  id                   Int                   @id @default(autoincrement())
+  email                String                @unique
+  name                 String
+  passwordHash         String
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+  sessions             AdminSession[]
+  contactReplies       ContactInquiryReply[]
+  lastRepliedInquiries ContactInquiry[]      @relation("ContactInquiryLastRepliedBy")
 }
 
 model AdminSession {
@@ -259,25 +261,48 @@ model TeamMember {
 // ── Contact Inquiries ─────────────────────────────────────────
 
 model ContactInquiry {
-  id             String   @id
-  company        String
-  name           String
-  email          String
-  phone          String?
-  inquiryType    String?
-  budgetRange    String?
-  timeline       String?
-  message        String   @db.Text
-  sourcePath     String?
-  utm            Json?
+  id               String   @id
+  company          String
+  name             String
+  email            String
+  phone            String?
+  inquiryType      String?
+  budgetRange      String?
+  timeline         String?
+  message          String   @db.Text
+  sourcePath       String?
+  utm              Json?
   privacyConsent   Boolean   @default(false)
   privacyConsentAt DateTime?
-  status         String   @default("new")
-  adminNotes     String?  @db.Text
-  notificationAt DateTime?
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  status           String   @default("new")
+  adminNotes       String?  @db.Text
+  notificationAt   DateTime?
+  lastRepliedAt    DateTime?
+  lastRepliedById  Int?
+  lastRepliedBy    AdminUser? @relation("ContactInquiryLastRepliedBy", fields: [lastRepliedById], references: [id], onDelete: SetNull)
+  replies          ContactInquiryReply[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 
   @@index([status, createdAt])
   @@index([email])
+  @@index([lastRepliedById])
+}
+
+model ContactInquiryReply {
+  id             String         @id
+  inquiryId      String
+  inquiry        ContactInquiry @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  adminUserId    Int?
+  adminUser      AdminUser?     @relation(fields: [adminUserId], references: [id], onDelete: SetNull)
+  toEmail        String
+  fromEmail      String
+  subject        String
+  body           String         @db.Text
+  deliveryStatus String         @default("sent")
+  sentAt         DateTime       @default(now())
+  createdAt      DateTime       @default(now())
+
+  @@index([inquiryId, sentAt])
+  @@index([adminUserId])
 }
