@@ -52,6 +52,8 @@ type ReplyResponse =
       fieldErrors?: Partial<Record<'subject' | 'body', string>>
     }
 
+type ReplyErrorResponse = Extract<ReplyResponse, { ok: false }>
+
 type Props = {
   initialInquiries: InquirySummary[]
   initialSelectedId?: string
@@ -99,6 +101,14 @@ function fieldValue(value?: string | null, labels?: Record<string, string>) {
   return labels?.[value] ?? value
 }
 
+function isReplyError(data: ReplyResponse): data is ReplyErrorResponse {
+  return data.ok === false
+}
+
+function isInquiryDetail(inquiry: InquirySummary | InquiryDetail | null): inquiry is InquiryDetail {
+  return Array.isArray((inquiry as InquiryDetail | null)?.replies)
+}
+
 export function InquiriesClient({ initialInquiries, initialSelectedId, smtpConfigured }: Props) {
   const [inquiries, setInquiries] = useState(initialInquiries)
   const requestedSelectedId = initialSelectedId ?? ''
@@ -120,6 +130,7 @@ export function InquiriesClient({ initialInquiries, initialSelectedId, smtpConfi
     [inquiries, selectedId],
   )
   const selected = detail?.id === selectedId ? detail : selectedSummary
+  const selectedReplies = isInquiryDetail(selected) ? selected.replies : null
 
   useEffect(() => {
     if (!selectedId) return
@@ -160,9 +171,13 @@ export function InquiriesClient({ initialInquiries, initialSelectedId, smtpConfi
         body: JSON.stringify({ subject, body }),
       })
       const data = await res.json() as ReplyResponse
-      if (!res.ok || !data.ok) {
-        if ('fieldErrors' in data && data.fieldErrors) setFieldErrors(data.fieldErrors)
+      if (isReplyError(data)) {
+        if (data.fieldErrors) setFieldErrors(data.fieldErrors)
         setSendError(data.message || '返信を送信できませんでした')
+        return
+      }
+      if (!res.ok) {
+        setSendError('返信を送信できませんでした')
         return
       }
 
@@ -298,7 +313,7 @@ export function InquiriesClient({ initialInquiries, initialSelectedId, smtpConfi
               <div className={styles.replyHistory}>
                 <h3>返信履歴</h3>
                 {loadingDetail && <p className={styles.muted}>読み込み中...</p>}
-                {'replies' in selected && selected.replies.length > 0 && selected.replies.map((reply) => (
+                {selectedReplies && selectedReplies.length > 0 && selectedReplies.map((reply) => (
                   <article key={reply.id} className={styles.replyItem}>
                     <div>
                       <strong>{reply.subject}</strong>
@@ -307,7 +322,7 @@ export function InquiriesClient({ initialInquiries, initialSelectedId, smtpConfi
                     <p>{reply.body}</p>
                   </article>
                 ))}
-                {'replies' in selected && selected.replies.length === 0 && !loadingDetail && (
+                {selectedReplies && selectedReplies.length === 0 && !loadingDetail && (
                   <p className={styles.muted}>返信履歴はありません。</p>
                 )}
               </div>
