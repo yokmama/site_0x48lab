@@ -57,7 +57,7 @@
   min-height: 100svh;
   display: flex;
   align-items: center;
-  background-color: #0f1f2e;
+  background: #0f1f2e url('/assets/bg-consulting-workflow.png') center / cover no-repeat;
   padding: 80px var(--container-padding) 80px;
   position: relative;
   overflow: hidden;
@@ -67,10 +67,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
+  background: rgba(16, 31, 46, 0.74);
   pointer-events: none;
 }
 
@@ -179,13 +176,49 @@
 }
 
 .sectionAlt {
+  position: relative;
+  overflow: hidden;
   padding: 88px 0;
   background-color: var(--color-bg-alt);
 }
 
 .sectionDark {
+  position: relative;
+  overflow: hidden;
   padding: 88px 0;
-  background-color: #0f1f2e;
+  background: #0f1f2e;
+}
+
+.sectionAlt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-software-delivery.png') center / cover no-repeat;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+.sectionDark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-consulting-workflow.png') center / cover no-repeat;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.sectionDark::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 31, 46, 0.78);
+  pointer-events: none;
+}
+
+.sectionAlt > *,
+.sectionDark > * {
+  position: relative;
+  z-index: 1;
 }
 
 .inner {
@@ -518,7 +551,18 @@
   background-color: #ffffff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 28px 24px;
+  padding: 10px 10px 22px;
+  overflow: hidden;
+}
+
+.resultVisual {
+  min-height: 126px;
+  border-radius: calc(var(--radius-lg) - 2px);
+  background-color: var(--color-bg-alt);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid var(--color-border-light);
+  margin-bottom: 14px;
 }
 
 .resultIndustry {
@@ -528,6 +572,7 @@
   text-transform: uppercase;
   color: var(--color-accent);
   margin-bottom: 8px;
+  padding: 0 12px;
 }
 
 .resultTitle {
@@ -535,12 +580,14 @@
   font-weight: 700;
   color: var(--color-dark);
   margin-bottom: 18px;
+  padding: 0 12px;
 }
 
 .resultCompare {
   display: flex;
   gap: 12px;
   margin-bottom: 16px;
+  padding: 0 12px;
 }
 
 .resultBefore,
@@ -583,6 +630,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  margin: 0 12px;
   font-size: 12px;
   font-weight: 700;
   color: #27ae60;

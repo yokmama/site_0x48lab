@@ -26,7 +26,7 @@ export default function HomeBlog() {
   }, [])
 
   return (
-    <section className="section section--alt">
+    <section className={`section section--alt ${s.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">Blog</span>

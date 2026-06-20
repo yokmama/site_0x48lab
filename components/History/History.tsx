@@ -21,7 +21,7 @@ export default function History() {
   }, [])
 
   return (
-    <section id="history" className="section">
+    <section id="history" className={`section ${styles.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">History</span>

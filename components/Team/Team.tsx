@@ -51,7 +51,7 @@ export default function Team({ members }: { members: Member[] }) {
   }, [])
 
   return (
-    <section id="team" className="section section--alt">
+    <section id="team" className={`section section--alt ${styles.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">Team</span>

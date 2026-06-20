@@ -34,14 +34,14 @@ export const siteVisuals: Record<SiteVisualKey, SiteVisual> = {
     dim: 0.72,
   },
   services: {
-    src: 'https://images.pexels.com/photos/7651562/pexels-photo-7651562.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    src: '/assets/bg-consulting-workflow.png',
     alt: 'オフィスで仕事の説明をするビジネスパーソン',
     accent: '#1769AA',
     canvas: 'gridFlow',
     position: 'center 42%',
   },
   aiDevelopment: {
-    src: 'https://images.pexels.com/photos/7988748/pexels-photo-7988748.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    src: '/assets/bg-consulting-workflow.png',
     alt: 'ボードを見ながらシステム開発の議論をするエンジニア',
     accent: '#2A9D8F',
     canvas: 'network',
@@ -55,14 +55,14 @@ export const siteVisuals: Record<SiteVisualKey, SiteVisual> = {
     position: 'center 55%',
   },
   web: {
-    src: 'https://images.pexels.com/photos/7988748/pexels-photo-7988748.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    src: '/assets/bg-software-delivery.png',
     alt: '設計ボードを見ながらWebシステムを検討するチーム',
     accent: '#1769AA',
     canvas: 'gridFlow',
     position: 'center 45%',
   },
   education: {
-    src: 'https://images.pexels.com/photos/33449528/pexels-photo-33449528.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    src: '/assets/bg-programming-classroom.png',
     alt: 'デジタル教材で学ぶ日本の教室',
     accent: '#D85A3A',
     canvas: 'educationBlocks',
@@ -77,8 +77,8 @@ export const siteVisuals: Record<SiteVisualKey, SiteVisual> = {
     position: 'center 48%',
   },
   works: {
-    src: 'https://images.pexels.com/photos/31148079/pexels-photo-31148079.jpeg?auto=compress&cs=tinysrgb&w=2200',
-    alt: '東京の都市景観と高層ビル',
+    src: '/assets/bg-software-delivery.png',
+    alt: '業務システムの画面設計と開発資料',
     accent: '#2E7D5B',
     canvas: 'gridFlow',
     position: 'center 48%',
@@ -98,7 +98,7 @@ export const siteVisuals: Record<SiteVisualKey, SiteVisual> = {
     position: 'center 42%',
   },
   school: {
-    src: 'https://images.pexels.com/photos/33449528/pexels-photo-33449528.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    src: '/assets/bg-programming-classroom.png',
     alt: 'デジタル教材を使う教室',
     accent: '#D85A3A',
     canvas: 'educationBlocks',
@@ -106,7 +106,7 @@ export const siteVisuals: Record<SiteVisualKey, SiteVisual> = {
     dim: 0.62,
   },
   contact: {
-    src: 'https://images.pexels.com/photos/7651562/pexels-photo-7651562.jpeg?auto=compress&cs=tinysrgb&w=1800',
+    src: '/assets/bg-consulting-workflow.png',
     alt: '相談内容を確認するビジネスミーティング',
     accent: '#D85A3A',
     canvas: 'formSignal',

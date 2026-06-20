@@ -22,7 +22,7 @@ export default function School() {
   }, [])
 
   return (
-    <section id="school" className="section">
+    <section id="school" className={`section ${styles.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">Education</span>

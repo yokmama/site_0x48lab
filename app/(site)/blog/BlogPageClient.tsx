@@ -35,7 +35,7 @@ export function BlogPageClient({ posts, categories }: { posts: Post[]; categorie
         subtitle="開発事例・技術記事・お知らせを発信しています。"
       />
 
-      <section className="section">
+      <section className={`section ${s.postsSection}`}>
         <div className="container">
           <motion.div
             className={s.filters}

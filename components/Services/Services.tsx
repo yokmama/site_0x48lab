@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { stagger, reveal, viewportOnce } from '../../lib/animations'
 import { SERVICES } from '../../lib/data'
+import { getServiceVisual } from '../../lib/projectVisuals'
 import ServiceIcon from '../ui/ServiceIcon'
 import s from './Services.module.css'
 
@@ -24,7 +25,7 @@ export default function Services() {
   }, [])
 
   return (
-    <section id="services" className="section section--alt">
+    <section id="services" className={`section section--alt ${s.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">Services</span>
@@ -45,6 +46,7 @@ export default function Services() {
         >
           {SERVICES.map((svc) => (
             <motion.div key={svc.slug} className={s.card} variants={reveal}>
+              <div className={s.cardVisual} style={{ backgroundImage: `url(${getServiceVisual(svc.slug)})` }} aria-hidden="true" />
               <div className={s.cardTop}>
                 <div className={s.iconWrap}>
                   <ServiceIcon type={svc.icon} size={22} />

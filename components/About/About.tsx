@@ -21,7 +21,7 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" className="section section--alt">
+    <section id="about" className={`section section--alt ${styles.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">Company</span>

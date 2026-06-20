@@ -10,6 +10,7 @@ import {
   SERVICES_PAGE_WHY_ITEMS,
 } from '@/lib/data'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
+import { getServiceVisual } from '@/lib/projectVisuals'
 import ServiceIcon from '@/components/ui/ServiceIcon'
 import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
@@ -64,6 +65,7 @@ export default function ServicesPage() {
           >
             {SERVICES.map((svc) => (
               <motion.div key={svc.slug} className={s.serviceCard} variants={reveal}>
+                <div className={s.cardVisual} style={{ backgroundImage: `url(${getServiceVisual(svc.slug)})` }} aria-hidden="true" />
                 <div
                   className={s.cardIconArea}
                   style={{ backgroundColor: SERVICES_PAGE_ICON_BG[svc.slug] || 'var(--color-accent)' }}

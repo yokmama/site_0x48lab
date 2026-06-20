@@ -1,3 +1,22 @@
+.postsSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.postsSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-software-delivery.png') center / cover no-repeat;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+.postsSection > * {
+  position: relative;
+  z-index: 1;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;

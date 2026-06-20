@@ -20,16 +20,32 @@
   border-color: rgba(36, 144, 243, 0.2);
 }
 
+.cardVisual {
+  min-height: 190px;
+  background-color: var(--color-bg-alt);
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
 .cardIconArea {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 32px;
-  min-height: 110px;
+  width: 56px;
+  height: 56px;
+  min-height: 0;
+  margin: -28px 32px 0;
+  padding: 0;
+  border: 4px solid #ffffff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  z-index: 1;
 }
 
 .cardBody {
-  padding: 28px 32px 32px;
+  padding: 22px 32px 32px;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -222,8 +238,32 @@
 
 /* CTA */
 .ctaSection {
+  position: relative;
+  overflow: hidden;
   padding: var(--section-padding) 0;
-  background-color: var(--color-dark-3);
+  background: var(--color-dark-3);
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-consulting-workflow.png') center / cover no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.ctaSection::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 24, 32, 0.76);
+  pointer-events: none;
+}
+
+.ctaSection > * {
+  position: relative;
+  z-index: 1;
 }
 
 .ctaInner {

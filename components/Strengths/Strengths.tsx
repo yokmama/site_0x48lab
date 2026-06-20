@@ -23,7 +23,7 @@ export default function Strengths() {
   }, [])
 
   return (
-    <section id="strengths" className="section section--alt">
+    <section id="strengths" className={`section section--alt ${styles.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">Strengths</span>

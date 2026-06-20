@@ -8,6 +8,7 @@ import {
   AI_DEV_SERVICE_PACKAGES,
   AI_DEV_TRUST_ITEMS,
 } from '@/lib/data'
+import { getExampleVisual } from '@/lib/projectVisuals'
 import s from './HomeDecisionSupport.module.css'
 
 const featuredExamples = AI_DEV_EXAMPLE_PROJECTS.slice(0, 6)
@@ -37,6 +38,7 @@ export default function HomeDecisionSupport() {
           <div className={s.exampleGrid}>
             {featuredExamples.map((item) => (
               <article key={`${item.industry}-${item.title}`} className={s.exampleCard}>
+                <div className={s.exampleVisual} style={{ backgroundImage: `url(${getExampleVisual(item)})` }} aria-hidden="true" />
                 <div className={s.cardMeta}>
                   <span>{item.industry}</span>
                   <strong>{item.delivery}</strong>

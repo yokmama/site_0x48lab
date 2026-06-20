@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { reveal, stagger, viewportOnce } from '@/lib/animations'
 import { AI_DEV_FIT_ITEMS, AI_DEV_LIMIT_ITEMS, AI_DEV_TRUST_ITEMS } from '@/lib/data'
+import { getExampleVisual } from '@/lib/projectVisuals'
 import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
@@ -248,6 +249,7 @@ export function AiDevPageClient({ problems, solutions, comparisonRows, packages,
                 whileHover={{ y: -3, boxShadow: '0 8px 24px rgba(0,0,0,0.08)', borderColor: 'rgba(36,144,243,0.28)' }}
                 transition={{ type: 'tween', duration: 0.18 }}
               >
+                <div className={s.exampleVisual} style={{ backgroundImage: `url(${getExampleVisual(project)})` }} aria-hidden="true" />
                 <div className={s.exampleHead}>
                   <span className={s.exampleIndustry}>{project.industry}</span>
                   <span className={s.exampleDelivery}>{project.delivery}</span>

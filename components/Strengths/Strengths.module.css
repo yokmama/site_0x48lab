@@ -1,3 +1,22 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-consulting-workflow.png') center / cover no-repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -152,12 +152,22 @@
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 10px 10px 18px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   min-height: 220px;
+  overflow: hidden;
   transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.exampleVisual {
+  min-height: 106px;
+  border-radius: calc(var(--radius-lg) - 2px);
+  background-color: var(--color-bg-alt);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid var(--color-border-light);
 }
 
 .exampleHead {
@@ -166,6 +176,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 8px;
+  padding: 0 8px;
 }
 
 .exampleIndustry {
@@ -208,6 +219,7 @@
   font-weight: 700;
   color: var(--color-dark);
   line-height: 1.45;
+  padding: 0 8px;
 }
 
 .exampleDesc {
@@ -215,10 +227,11 @@
   color: var(--color-body);
   line-height: 1.7;
   flex: 1;
+  padding: 0 8px;
 }
 
 .exampleQuality {
-  padding-top: 10px;
+  padding: 10px 8px 0;
   border-top: 1px solid var(--color-border-light);
   font-size: 12px;
   font-weight: 600;
@@ -520,8 +533,32 @@
 
 /* CTA */
 .ctaSection {
+  position: relative;
+  overflow: hidden;
   padding: var(--section-padding) 0;
-  background-color: var(--color-dark-3);
+  background: var(--color-dark-3);
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-consulting-workflow.png') center / cover no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.ctaSection::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(16, 24, 32, 0.76);
+  pointer-events: none;
+}
+
+.ctaSection > * {
+  position: relative;
+  z-index: 1;
 }
 
 .ctaInner {

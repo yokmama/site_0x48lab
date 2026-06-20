@@ -22,7 +22,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(16, 24, 32, 0.7), rgba(16, 24, 32, 0.62));
+  background: rgba(16, 24, 32, 0.68);
 }
 
 .backgroundVideo {
@@ -38,22 +38,13 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
+  display: none;
 }
 
-/* Fine grid sitting above the canvas */
 .hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-  z-index: 1;
+  display: none;
 }
 
-/* Bottom divider line */
 .hero::after {
   content: '';
   position: absolute;
@@ -61,7 +52,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(36, 144, 243, 0.3), transparent);
+  background: rgba(255, 255, 255, 0.16);
   z-index: 3;
 }
 
@@ -154,13 +145,14 @@
 }
 
 .ctaOrange {
-  background: linear-gradient(135deg, var(--color-orange), #c9972e);
+  background: var(--color-orange);
   color: #ffffff;
+  box-shadow: inset 0 -2px 0 rgba(16, 24, 32, 0.16);
 }
 
 .ctaOrange:hover {
-  background: linear-gradient(135deg, var(--color-orange-dark), #a87922);
-  box-shadow: 0 4px 20px rgba(216, 90, 58, 0.38);
+  background: var(--color-orange-dark);
+  box-shadow: 0 8px 22px rgba(185, 95, 67, 0.25), inset 0 -2px 0 rgba(16, 24, 32, 0.14);
   transform: translateY(-2px);
 }
 
@@ -199,7 +191,7 @@
   left: 0;
   width: 100%;
   height: 40px;
-  background: linear-gradient(to bottom, transparent, rgba(36, 144, 243, 0.8));
+  background: rgba(255, 255, 255, 0.72);
   animation: scrollDrop 1.8s ease-in-out infinite;
 }
 
@@ -217,7 +209,7 @@
 
 @media (max-width: 768px) {
   .backgroundMedia::after {
-    background: linear-gradient(180deg, rgba(16, 24, 32, 0.78), rgba(16, 24, 32, 0.68));
+    background: rgba(16, 24, 32, 0.74);
   }
 
   .content {

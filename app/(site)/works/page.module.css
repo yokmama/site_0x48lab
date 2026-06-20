@@ -1,3 +1,22 @@
+.worksSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.worksSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-software-delivery.png') center / cover no-repeat;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+.worksSection > * {
+  position: relative;
+  z-index: 1;
+}
+
 .filterBar {
   display: flex;
   flex-direction: column;
@@ -74,11 +93,21 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 12px 12px 22px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  overflow: hidden;
   transition: box-shadow var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.cardVisual {
+  min-height: 150px;
+  border-radius: calc(var(--radius-lg) - 2px);
+  background-color: var(--color-bg-alt);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid var(--color-border-light);
 }
 
 .cardHead {
@@ -87,6 +116,7 @@
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 8px;
+  padding: 0 10px;
 }
 
 .industryTag {
@@ -131,18 +161,21 @@
   font-weight: 700;
   color: var(--color-dark);
   line-height: 1.4;
+  padding: 0 10px;
 }
 
 .cardSummary {
   font-size: 13px;
   color: var(--color-body-light);
   line-height: 1.75;
+  padding: 0 10px;
 }
 
 .caseDetails {
   display: grid;
   gap: 10px;
   flex: 1;
+  padding: 0 10px;
 }
 
 .caseDetails div {
@@ -168,6 +201,7 @@
   align-items: center;
   gap: 8px;
   padding: 14px 0 0;
+  margin: 0 10px;
   border-top: 1px solid var(--color-border-light);
 }
 
@@ -221,6 +255,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+  padding: 0 10px;
 }
 
 .techTag {
@@ -248,6 +283,7 @@
   font-weight: 600;
   color: var(--color-accent);
   text-decoration: none;
+  padding: 0 10px;
 }
 
 .cardLink:hover {
@@ -258,6 +294,7 @@
   font-size: 11px;
   color: var(--color-body-muted);
   line-height: 1.6;
+  padding: 0 10px;
 }
 
 .empty {

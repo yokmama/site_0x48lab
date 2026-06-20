@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import ContactForm from '@/components/ContactForm/ContactForm'
 import { AI_DEV_FIT_ITEMS, AI_DEV_LIMIT_ITEMS, AI_DEV_TRUST_ITEMS } from '@/lib/data'
+import { getExampleVisual } from '@/lib/projectVisuals'
 import s from './page.module.css'
 
 type LpProblem = { id: number; text: string }
@@ -394,6 +395,7 @@ export function LpPageClient({ problems, solutions, comparisonRows, pricing, res
           >
             {LP_RESULTS.map((r) => (
               <motion.div key={r.title} className={s.resultCard} variants={reveal}>
+                <div className={s.resultVisual} style={{ backgroundImage: `url(${getExampleVisual(r)})` }} aria-hidden="true" />
                 <p className={s.resultIndustry}>{r.industry}</p>
                 <p className={s.resultTitle}>{r.title}</p>
                 <div className={s.resultCompare}>

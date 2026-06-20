@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { stagger, reveal, viewportOnce } from '../../lib/animations'
 import { WORKS } from '../../lib/data'
+import { getWorkVisual } from '../../lib/projectVisuals'
 import ServiceIcon from '../ui/ServiceIcon'
 import s from './HomeWorks.module.css'
 
@@ -26,7 +27,7 @@ export default function HomeWorks() {
   }, [])
 
   return (
-    <section id="works" className="section">
+    <section id="works" className={`section ${s.section}`}>
       <div className="container">
         <div className="section-header">
           <span className="section-label">Works</span>
@@ -45,6 +46,7 @@ export default function HomeWorks() {
         >
           {FEATURED.map((work) => (
             <motion.div key={work.slug} className={s.card} variants={reveal}>
+              <div className={s.cardVisual} style={{ backgroundImage: `url(${getWorkVisual(work)})` }} aria-hidden="true" />
               <div className={s.cardHead}>
                 <span className={s.industry}>{work.industry}</span>
                 <span className={s.impact}>{work.impact}</span>

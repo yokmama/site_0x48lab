@@ -1,3 +1,22 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/assets/bg-software-delivery.png') center / cover no-repeat;
+  opacity: 0.035;
+  pointer-events: none;
+}
+
+.section > * {
+  position: relative;
+  z-index: 1;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -8,10 +27,11 @@
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 12px 12px 22px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow: hidden;
   transition: box-shadow var(--transition), transform var(--transition);
 }
 
@@ -20,12 +40,22 @@
   transform: translateY(-3px);
 }
 
+.cardVisual {
+  min-height: 132px;
+  border-radius: calc(var(--radius-lg) - 2px);
+  background-color: var(--color-bg-alt);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid var(--color-border-light);
+}
+
 .cardHead {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 8px;
+  padding: 0 10px;
 }
 
 .industry {
@@ -70,18 +100,21 @@
   font-weight: 700;
   color: var(--color-dark);
   line-height: 1.4;
+  padding: 0 10px;
 }
 
 .summary {
   font-size: 13px;
   color: var(--color-body-light);
   line-height: 1.7;
+  padding: 0 10px;
 }
 
 .caseFacts {
   display: grid;
   gap: 10px;
   flex: 1;
+  padding: 0 10px;
 }
 
 .caseFacts div {
@@ -107,6 +140,7 @@
   align-items: center;
   gap: 8px;
   padding-top: 12px;
+  margin: 0 10px;
   border-top: 1px solid var(--color-border-light);
 }
 
@@ -153,6 +187,7 @@
   font-size: 11px;
   color: var(--color-body-muted);
   line-height: 1.6;
+  padding: 0 10px;
 }
 
 .cta {

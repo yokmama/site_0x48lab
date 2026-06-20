@@ -58,19 +58,12 @@
   border-radius: var(--radius-md);
   transition: border-color var(--transition), box-shadow var(--transition);
   outline: none;
-  -webkit-appearance: none;
 }
 
 .select {
   padding-right: 38px;
-  background-image:
-    linear-gradient(45deg, transparent 50%, currentColor 50%),
-    linear-gradient(135deg, currentColor 50%, transparent 50%);
-  background-position:
-    calc(100% - 19px) 50%,
-    calc(100% - 13px) 50%;
-  background-size: 6px 6px, 6px 6px;
-  background-repeat: no-repeat;
+  appearance: auto;
+  -webkit-appearance: menulist;
 }
 
 .inputDark {

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { stagger, reveal, viewportOnce } from '@/lib/animations'
+import { getWorkVisual } from '@/lib/projectVisuals'
 import PageVisualHero from '@/components/PageVisualHero/PageVisualHero'
 import s from './page.module.css'
 
@@ -45,6 +46,8 @@ function TechTag({ label }: { label: string }) {
 }
 
 function WorkCard({ work }: { work: Work }) {
+  const visual = getWorkVisual(work)
+
   return (
     <motion.div
       className={s.card}
@@ -52,6 +55,7 @@ function WorkCard({ work }: { work: Work }) {
       whileHover={{ y: -4, boxShadow: '0 12px 36px rgba(0,0,0,0.10)', borderColor: 'rgba(36,144,243,0.25)' }}
       transition={{ type: 'tween', duration: 0.22 }}
     >
+      <div className={s.cardVisual} style={{ backgroundImage: `url(${visual})` }} aria-hidden="true" />
       <div className={s.cardHead}>
         <span className={s.industryTag}>{work.industry}</span>
         <span className={s.impactBadge}>{work.impact}</span>
@@ -126,7 +130,7 @@ export function WorksPageClient({ works, industries, serviceFilters, serviceLabe
         subtitle="モバイル・Web・AI・IoTなど多領域にわたる2021〜2026年の開発実績。"
       />
 
-      <section className="section">
+      <section className={`section ${s.worksSection}`}>
         <div className="container">
           <div className="section-header">
             <span className="section-label">Works</span>

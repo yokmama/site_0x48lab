@@ -105,17 +105,15 @@ body {
   --color-bg-dark: #101820;
   --color-border: #dce4ea;
   --color-border-light: rgba(16, 24, 32, 0.08);
-  --color-orange: #d85a3a;
-  --color-orange-dark: #b9452d;
+  --color-orange: #b95f43;
+  --color-orange-dark: #934735;
   --color-success: #2e7d5b;
   --color-error: #d64545;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
   --radius-xl: 8px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.32), transparent 360px),
-    var(--color-bg);
+  background: var(--color-bg);
   min-height: 100svh;
   color: var(--color-body);
 }
@@ -130,14 +128,11 @@ body {
 }
 
 .site-shell .section--alt {
-  background:
-    linear-gradient(135deg, rgba(23, 105, 170, 0.055), transparent 38%),
-    linear-gradient(315deg, rgba(42, 157, 143, 0.06), transparent 44%),
-    var(--color-bg-alt);
+  background: var(--color-bg-alt);
 }
 
 .site-shell .section-title::after {
-  background: linear-gradient(90deg, var(--color-accent), #2a9d8f);
+  background: var(--color-accent);
 }
 
 img {
@@ -216,7 +211,7 @@ section[id] {
   display: block;
   width: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-dark));
+  background: var(--color-accent);
   margin-top: 12px;
   transition: width 0.55s ease 0.2s;
 }
@@ -265,24 +260,26 @@ section[id] {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--color-accent), #2a9d8f);
+  background: var(--color-accent);
   color: #ffffff;
+  box-shadow: inset 0 -2px 0 rgba(16, 24, 32, 0.14);
 }
 
 .btn--primary:hover {
-  background: linear-gradient(135deg, var(--color-accent-dark), #21867b);
-  box-shadow: 0 4px 16px rgba(23, 105, 170, 0.28);
+  background: var(--color-accent-dark);
+  box-shadow: 0 8px 20px rgba(23, 105, 170, 0.2), inset 0 -2px 0 rgba(16, 24, 32, 0.12);
   transform: translateY(-2px);
 }
 
 .btn--orange {
-  background: linear-gradient(135deg, var(--color-orange), #c9972e);
+  background: var(--color-orange);
   color: #ffffff;
+  box-shadow: inset 0 -2px 0 rgba(16, 24, 32, 0.16);
 }
 
 .btn--orange:hover {
-  background: linear-gradient(135deg, var(--color-orange-dark), #a87922);
-  box-shadow: 0 4px 16px rgba(216, 90, 58, 0.3);
+  background: var(--color-orange-dark);
+  box-shadow: 0 8px 20px rgba(185, 95, 67, 0.22), inset 0 -2px 0 rgba(16, 24, 32, 0.14);
   transform: translateY(-2px);
 }
 
