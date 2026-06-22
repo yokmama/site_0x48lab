@@ -6,7 +6,6 @@ import {
   validateContactRequest,
   type ContactFormErrors,
   type ContactRequest,
-  type ContactResponse,
 } from '../../lib/contact'
 import s from './ContactForm.module.css'
 
@@ -70,9 +69,6 @@ export default function ContactForm({ dark = false }: ContactFormProps) {
   })
   const [errors, setErrors] = useState<ContactFormErrors>({})
   const [submitted, setSubmitted] = useState(false)
-  const [inquiryId, setInquiryId] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [serverError, setServerError] = useState(false)
 
   useEffect(() => {
     const url = new URL(window.location.href)
@@ -90,37 +86,34 @@ export default function ContactForm({ dark = false }: ContactFormProps) {
     }))
   }, [])
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const errs = validateContactRequest(fields)
     if (Object.keys(errs).length) {
       setErrors(errs)
       return
     }
-    setLoading(true)
-    setServerError(false)
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(fields),
-      })
-      const data = await res.json() as ContactResponse
-      if (res.ok && data.ok) {
-        setInquiryId(data.inquiryId)
-        setSubmitted(true)
-      } else {
-        if ('fieldErrors' in data && data.fieldErrors) {
-          setErrors(data.fieldErrors)
-        } else {
-          setServerError(true)
-        }
-      }
-    } catch {
-      setServerError(true)
-    } finally {
-      setLoading(false)
-    }
+
+    const inquiryLabel = inquiryOptions.find((o) => o.value === fields.inquiryType)?.label || fields.inquiryType || '未選択'
+    const budgetLabel = budgetOptions.find((o) => o.value === fields.budgetRange)?.label || fields.budgetRange || '未選択'
+    const timelineLabel = timelineOptions.find((o) => o.value === fields.timeline)?.label || fields.timeline || '未選択'
+
+    const body = [
+      `会社名・団体名: ${fields.company}`,
+      `お名前: ${fields.name}`,
+      `メールアドレス: ${fields.email}`,
+      `電話番号: ${fields.phone || '未入力'}`,
+      `ご相談内容: ${inquiryLabel}`,
+      `ご予算感: ${budgetLabel}`,
+      `希望時期: ${timelineLabel}`,
+      '',
+      'お問い合わせ内容:',
+      fields.message,
+    ].join('\n')
+
+    const subject = `【HackLab無料相談】${fields.company} ${fields.name}様`
+    window.location.href = `mailto:info@hacklab.jp?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    setSubmitted(true)
   }
 
   const set = (key: keyof ContactRequest) => (e: ChangeEvent<ContactInputElement>) => {
@@ -146,12 +139,11 @@ export default function ContactForm({ dark = false }: ContactFormProps) {
             <path d="M20 6L9 17l-5-5" />
           </svg>
         </div>
-        <p className={s.thankYouTitle}>送信が完了しました</p>
+        <p className={s.thankYouTitle}>メールアプリが開きます</p>
         <p className={s.thankYouDesc}>
-          お問い合わせありがとうございます。<br />
-          内容を確認のうえ、原則1〜2営業日以内に担当者よりご連絡いたします。
+          メールアプリに内容が入力されています。<br />
+          送信してお問い合わせを完了してください。
         </p>
-        {inquiryId && <p className={s.thankYouMeta}>受付番号: {inquiryId}</p>}
       </motion.div>
     )
   }
@@ -308,14 +300,8 @@ export default function ContactForm({ dark = false }: ContactFormProps) {
         {errors.privacyConsent && <p id="contact-privacyConsent-error" className={s.errorMsg}>{errors.privacyConsent}</p>}
       </div>
 
-      {serverError && (
-        <p className={s.serverError}>送信に失敗しました。時間をおいて再度お試しいただくか、内容を控えてお問い合わせください。</p>
-      )}
-
-      <button type="submit" className={s.submit} disabled={loading}>
-        {loading
-          ? <span className={s.spinner} aria-label="送信中" />
-          : '無料相談を申し込む'}
+      <button type="submit" className={s.submit}>
+        無料相談を申し込む
       </button>
 
       <p className={`${s.note}${dark ? ` ${s.noteDark}` : ''}`}>

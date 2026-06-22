@@ -1,15 +1,26 @@
-import { prisma } from '@/lib/db'
-import { WORKS_INDUSTRIES, WORKS_SERVICE_FILTERS, WORKS_SERVICE_LABEL_MAP } from '@/lib/data'
+import { WORKS, WORKS_INDUSTRIES, WORKS_SERVICE_FILTERS, WORKS_SERVICE_LABEL_MAP } from '@/lib/data'
 import { WorksPageClient } from './WorksPageClient'
 
-export const dynamic = 'force-dynamic'
 export const metadata = { title: '導入実績 | HackLab Inc.' }
 
-export default async function WorksPage() {
-  const works = await prisma.work.findMany({
-    where: { published: true },
-    orderBy: { sortOrder: 'asc' },
-  })
+export default function WorksPage() {
+  const works = WORKS.map((w, i) => ({
+    id: i + 1,
+    slug: w.slug,
+    industry: w.industry,
+    service: w.service,
+    title: w.title,
+    summary: w.summary,
+    challenge: w.challenge,
+    solution: w.solution,
+    tech: w.tech,
+    beforePeriod: w.before.period,
+    beforeQuality: w.before.quality,
+    afterPeriod: w.after.period,
+    afterQuality: w.after.quality,
+    impact: w.impact,
+    link: w.link ?? null,
+  }))
   return (
     <WorksPageClient
       works={works}

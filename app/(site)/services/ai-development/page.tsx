@@ -1,22 +1,27 @@
-import { prisma } from '@/lib/db'
+import {
+  AI_DEV_PROBLEMS,
+  AI_DEV_SOLUTIONS,
+  AI_DEV_COMPARISON_ROWS,
+  AI_DEV_SERVICE_PACKAGES,
+  AI_DEV_EXAMPLE_PROJECTS,
+  AI_DEV_PROCESS_STEPS,
+  AI_DEV_FAQ_ITEMS,
+} from '@/lib/data'
 import { AiDevPageClient } from './AiDevPageClient'
 import Script from 'next/script'
 
-export const dynamic = 'force-dynamic'
 export const metadata = { title: 'AI活用型受託開発 | HackLab Inc.' }
 
 const siteUrl = 'https://hacklab.jp'
 
-export default async function AiDevPage() {
-  const [problems, solutions, comparisonRows, packages, examples, steps, faqItems] = await prisma.$transaction([
-    prisma.aiDevProblem.findMany({ orderBy: { sortOrder: 'asc' } }),
-    prisma.aiDevSolution.findMany({ orderBy: { sortOrder: 'asc' } }),
-    prisma.aiDevComparisonRow.findMany({ orderBy: { sortOrder: 'asc' } }),
-    prisma.aiDevServicePackage.findMany({ orderBy: { sortOrder: 'asc' } }),
-    prisma.aiDevExampleProject.findMany({ orderBy: { sortOrder: 'asc' } }),
-    prisma.aiDevProcessStep.findMany({ orderBy: { sortOrder: 'asc' } }),
-    prisma.aiDevFaqItem.findMany({ orderBy: { sortOrder: 'asc' } }),
-  ])
+export default function AiDevPage() {
+  const problems = AI_DEV_PROBLEMS.map((p, i) => ({ id: i + 1, ...p }))
+  const solutions = AI_DEV_SOLUTIONS.map((s, i) => ({ id: i + 1, ...s }))
+  const comparisonRows = AI_DEV_COMPARISON_ROWS.map((r, i) => ({ id: i + 1, ...r }))
+  const packages = AI_DEV_SERVICE_PACKAGES.map((p, i) => ({ id: i + 1, ...p }))
+  const examples = AI_DEV_EXAMPLE_PROJECTS.map((p, i) => ({ id: i + 1, ...p }))
+  const steps = AI_DEV_PROCESS_STEPS.map((s, i) => ({ id: i + 1, ...s }))
+  const faqItems = AI_DEV_FAQ_ITEMS.map((f, i) => ({ id: i + 1, ...f }))
 
   const serviceJsonLd = {
     '@context': 'https://schema.org',
