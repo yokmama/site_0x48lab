@@ -1,15 +1,11 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  output: 'export',
+  basePath: '/site_0x48lab',
+  trailingSlash: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
-        pathname: '/photos/**',
-      },
-    ],
+    unoptimized: true,
   },
 }
 

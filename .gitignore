@@ -4,10 +4,6 @@
 .env.test.local
 .env.production.local
 
-.github/*
-.github/workflows/*
-.github
-
 # Logs
 logs
 *.log
@@ -35,4 +31,4 @@ dist-ssr
 *.sln
 *.sw?
 
-/generated/prisma
+.playwright-cli
