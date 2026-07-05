@@ -202,7 +202,7 @@
 }
 .lp-result-before, .lp-result-after { text-align: center; }
 .lp-result-label { display: block; font-size: 0.75rem; color: #999; margin-bottom: 4px; }
-.lp-result-value { display: block; font-size: 1.4rem; font-weight: 700; }
+.lp-result-value { display: block; font-size: 1.4rem; font-weight: 700; white-space: nowrap; }
 .lp-result-old { color: #999; text-decoration: line-through; }
 .lp-result-new { color: #2490F3; }
 .lp-result-sub { display: block; font-size: 0.78rem; color: #999; margin-top: 2px; }
