@@ -491,6 +491,104 @@ html[lang="ja"] .en { display: none !important; }
   color: var(--text-muted);
 }
 
+/* --- Screenshots gallery --- */
+.adc-shots-section { background: var(--surface-2); }
+
+.adc-shots-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  padding: 8px 0 12px;
+  padding-inline: max(24px, calc((100% - 1080px) / 2));
+}
+
+.adc-shots {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+}
+
+.adc-shots img {
+  flex: 0 0 auto;
+  width: 258px;
+  height: auto;
+  border-radius: 22px;
+  box-shadow: var(--shadow-lg);
+  scroll-snap-align: center;
+}
+
+/* --- Pricing plans table --- */
+.adc-plans-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 4px 0 14px; }
+
+.adc-plans {
+  width: 100%;
+  min-width: 520px;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.adc-plans th,
+.adc-plans td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.adc-plans tbody tr:last-child th,
+.adc-plans tbody tr:last-child td { border-bottom: none; }
+
+.adc-plans tbody th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.adc-plans thead th { padding: 18px 14px; }
+
+.adc-plan-name { display: block; font-weight: 700; font-size: 1rem; }
+
+.adc-plan-price {
+  display: block;
+  margin-top: 2px;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--blue);
+}
+
+.adc-plan-price small { font-size: 0.68rem; font-weight: 500; color: var(--text-muted); }
+
+.adc-plan-badge {
+  display: inline-block;
+  margin-bottom: 6px;
+  padding: 2px 12px;
+  border-radius: 50px;
+  background: var(--grad);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+/* Standard（3列目）を強調 */
+.adc-plans tr > *:nth-child(3) { background: var(--grad-soft); }
+.adc-plans thead th.adc-plan-reco .adc-plan-name { color: var(--blue); }
+
+.adc-plan-check { color: var(--green); font-weight: 700; }
+.adc-plan-x { color: var(--text-muted); }
+
+.adc-plans-note {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+
 /* --- Responsive --- */
 @media (max-width: 820px) {
   .adc-hero { padding: 64px 0 72px; }
@@ -517,4 +615,6 @@ html[lang="ja"] .en { display: none !important; }
   .adc-header-cta { display: none; }
 
   .adc-store-badge { height: 48px; }
+
+  .adc-shots img { width: 220px; border-radius: 18px; }
 }
