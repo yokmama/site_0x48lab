@@ -20,10 +20,14 @@
       "@context": "https://schema.org",
       "@type": "MobileApplication",
       "name": "AI ダイエットコーチ",
-      "operatingSystem": "iOS",
+      "operatingSystem": "iOS, Android",
       "applicationCategory": "HealthApplication",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
       "url": "https://apps.apple.com/jp/app/id6776113681",
+      "installUrl": [
+        "https://apps.apple.com/jp/app/id6776113681",
+        "https://play.google.com/store/apps/details?id=com.x48lab.aidiet"
+      ],
       "author": { "@type": "Organization", "name": "HackLab Inc.", "url": "https://0x48lab.com" }
     }
     </script>
@@ -41,8 +45,8 @@
                 <button id="lang-toggle" class="adc-lang-toggle" type="button" aria-label="Switch language">
                     <span class="ja">EN</span><span class="en">日本語</span>
                 </button>
-                <a href="https://apps.apple.com/jp/app/id6776113681" class="adc-header-cta" target="_blank" rel="noopener">
-                    <span class="ja">App Storeで入手</span><span class="en">Get on App Store</span>
+                <a href="#download" class="adc-header-cta">
+                    <span class="ja">アプリを入手</span><span class="en">Get the App</span>
                 </a>
             </div>
         </nav>
@@ -54,7 +58,7 @@
             <div class="adc-container adc-hero-inner">
                 <div class="adc-hero-content">
                     <p class="adc-kicker">
-                        <span class="ja">HackLab のプロダクト · iOSアプリ</span><span class="en">A HackLab Product · iOS App</span>
+                        <span class="ja">HackLab のプロダクト · iOS / Android アプリ</span><span class="en">A HackLab Product · iOS & Android App</span>
                     </p>
                     <h1>
                         <span class="ja">AIが、あなた専属の<br><em>トレーナー</em>になる。</span>
@@ -69,9 +73,10 @@
                             <img src="images/badge-appstore-ja.svg" alt="App Storeからダウンロード" class="ja adc-store-badge">
                             <img src="images/badge-appstore-en.svg" alt="Download on the App Store" class="en adc-store-badge">
                         </a>
-                        <span class="adc-coming-soon">
-                            <span class="ja">Google Play 版は近日公開</span><span class="en">Coming soon to Google Play</span>
-                        </span>
+                        <a href="https://play.google.com/store/apps/details?id=com.x48lab.aidiet" target="_blank" rel="noopener" class="adc-badge-link">
+                            <img src="images/badge-googleplay-ja.png" alt="Google Play で手に入れよう" class="ja adc-store-badge">
+                            <img src="images/badge-googleplay-en.png" alt="Get it on Google Play" class="en adc-store-badge">
+                        </a>
                     </div>
                     <p class="adc-hero-note">
                         <span class="ja">無料で始められます · 日本語 / English 対応</span>
@@ -141,8 +146,8 @@
                         </div>
                         <h3><span class="ja">記録はチャットで話すだけ</span><span class="en">Log by simply saying it</span></h3>
                         <p>
-                            <span class="ja">「昼にパスタ食べた」「30分歩いた」と伝えるだけで記録完了。体重や歩数はヘルスケアと連携して自動で取り込めます。</span>
-                            <span class="en">"Had pasta for lunch." "Walked 30 minutes." That's all it takes. Weight and steps sync automatically from Apple Health.</span>
+                            <span class="ja">「昼にパスタ食べた」「30分歩いた」と伝えるだけで記録完了。体重や歩数はスマホのヘルスケアアプリと連携して自動で取り込めます。</span>
+                            <span class="en">"Had pasta for lunch." "Walked 30 minutes." That's all it takes. Weight and steps sync automatically from your phone's health app.</span>
                         </p>
                     </div>
                     <div class="adc-feature-card">
@@ -356,14 +361,15 @@
                     <span class="en">* Prices follow store display. Subscriptions can be cancelled anytime from your store's management screen.</span>
                 </p>
 
-                <div class="adc-final-cta">
+                <div class="adc-final-cta" id="download">
                     <a href="https://apps.apple.com/jp/app/id6776113681" target="_blank" rel="noopener" class="adc-badge-link">
                         <img src="images/badge-appstore-ja.svg" alt="App Storeからダウンロード" class="ja adc-store-badge adc-store-badge-lg">
                         <img src="images/badge-appstore-en.svg" alt="Download on the App Store" class="en adc-store-badge adc-store-badge-lg">
                     </a>
-                    <span class="adc-coming-soon">
-                        <span class="ja">Google Play 版は近日公開</span><span class="en">Coming soon to Google Play</span>
-                    </span>
+                    <a href="https://play.google.com/store/apps/details?id=com.x48lab.aidiet" target="_blank" rel="noopener" class="adc-badge-link">
+                        <img src="images/badge-googleplay-ja.png" alt="Google Play で手に入れよう" class="ja adc-store-badge adc-store-badge-lg">
+                        <img src="images/badge-googleplay-en.png" alt="Get it on Google Play" class="en adc-store-badge adc-store-badge-lg">
+                    </a>
                 </div>
                 <p class="adc-disclaimer">
                     <span class="ja">※本アプリは食事・運動の改善を支援するものであり、医療行為・診断は行いません。18歳以上の方を対象としています。</span>
