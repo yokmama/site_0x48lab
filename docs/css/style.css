@@ -5171,6 +5171,13 @@ html:not(.js) .chat {
 .footer__nav a:hover {
   color: var(--accent);
 }
+.footer__legal {
+  padding-block: 20px 4px;
+  border-top: 1px solid rgb(var(--inv-text-rgb)/0.12);
+  color: var(--inv-muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
 .footer__bottom {
   display: flex;
   justify-content: space-between;

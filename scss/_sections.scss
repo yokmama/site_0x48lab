@@ -3079,6 +3079,14 @@ html:not(.js) .chat { opacity: 1; }
     }
   }
 
+  &__legal {
+    padding-block: 20px 4px;
+    border-top: 1px solid a(inv-text, .12);
+    color: $inv-muted;
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
   &__bottom {
     display: flex;
     justify-content: space-between;
