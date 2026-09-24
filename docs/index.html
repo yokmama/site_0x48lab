@@ -1316,13 +1316,13 @@
             </ul>
           </div>
           <div class="cform" id="cform">
-            <!-- Every submission goes two places: an e-mail to kenzaumezaki@gmail.com (Web3Forms),
+            <!-- Every submission goes two places: an e-mail to the company contact address (Web3Forms),
                  and the company's existing Google Form, which keeps the spreadsheet record. -->
             <form class="cform__form" id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLScvRv7GRD_amzFjgmpO6VWGWyy5f1K6HuIdd3wyqVnsyZiBgA/formResponse" method="post" novalidate>
-              <!-- Access key issued by https://web3forms.com for kenzaumezaki@gmail.com.
+              <!-- Access key issued by https://web3forms.com for the company contact address (see README).
                    It is public by design — it only allows sending to that one address.
                    Until it is filled in, submissions are recorded in the Google Form but no mail is sent. -->
-              <input type="hidden" id="cf-key" name="access_key" value="42fa2707-35d3-4634-8589-9e174820b430">
+              <input type="hidden" id="cf-key" name="access_key" value="PASTE_WEB3FORMS_ACCESS_KEY">
               <label class="cform__hp" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
 
               <fieldset class="cform__group">
@@ -1416,6 +1416,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=4ca6b07a" defer></script>
+  <script src="js/main.js?v=7f2e069f" defer></script>
 </body>
 </html>

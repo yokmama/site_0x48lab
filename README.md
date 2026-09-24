@@ -32,7 +32,7 @@ npx sass --watch scss/style.scss css/style.css --no-source-map    # 保存のた
 - `prefers-reduced-motion` が有効な環境では、アニメーションをすべて止めて内容をそのまま表示します。
 - JavaScript が無効な環境でも、ローダーや非表示状態が残らず全文を読めます。
 - お問い合わせフォームは送信のたびに2か所へ送ります。
-  1. **メール**：[Web3Forms](https://web3forms.com) 経由で `kenzaumezaki@gmail.com` に届きます。返信先（Reply-To）は送信者のアドレスなので、そのまま返信できます。
+  1. **メール**：[Web3Forms](https://web3forms.com) 経由で会社の問い合わせ用アドレスに届きます（アクセスキー発行時に登録したアドレス）。返信先（Reply-To）は送信者のアドレスなので、そのまま返信できます。
   2. **Google フォーム**：これまで通り回答がスプレッドシートに残ります。「ご相談の種類」は、お問い合わせ内容の先頭に `【ご相談の種類】…` として付けて送ります。
   - 画面の成否表示はメール送信の結果で判断します（Google フォームは CORS ヘッダーを返さず成否を取得できないため、送りっぱなしです）。
 
@@ -40,7 +40,7 @@ npx sass --watch scss/style.scss css/style.css --no-source-map    # 保存のた
 
 `index.html` の `id="cf-key"` の `value` が `PASTE_WEB3FORMS_ACCESS_KEY` のままだと、**メールは送られません**（Google フォームへの記録だけが行われ、ブラウザのコンソールに警告が出ます）。
 
-1. <https://web3forms.com> で `kenzaumezaki@gmail.com` を入力し、届いたアクセスキーを控える。
+1. <https://web3forms.com> で会社の問い合わせ用アドレスを入力し、届いたアクセスキーを控える。個人アドレスは使わない。
 2. `index.html` の `<input type="hidden" id="cf-key" name="access_key" value="…">` にそのキーを貼る。
 
 アクセスキーは公開前提の値です（そのキーで送れる宛先は登録した1アドレスだけ）。送信先を変えるときは、新しいアドレスでキーを取り直して差し替えてください。`js/main.js` 側にアドレスは書かれていません。

@@ -685,7 +685,7 @@
         if (!key || key === MAIL_KEY_PLACEHOLDER) {
           console.warn(
             "[contact] Web3Forms access key is not set in index.html — this message was recorded " +
-            "in the Google Form but no mail was sent to kenzaumezaki@gmail.com."
+            "in the Google Form but no notification mail was sent."
           );
           return;
         }
