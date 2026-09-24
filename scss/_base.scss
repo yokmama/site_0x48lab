@@ -1,0 +1,134 @@
+// ==========================================================
+//  Base / reset
+// ==========================================================
+@use "variables" as *;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: $header-h;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: $bg;
+  color: $text;
+  font-family: $font-ja;
+  font-size: 16px;
+  line-height: 1.9;
+  letter-spacing: .03em;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+
+  .js &.is-loading { overflow: hidden; }
+}
+
+// rotated marquee / oversized decorations must never cause sideways scroll
+main, .footer { overflow-x: clip; }
+
+h1, h2, h3, p { word-break: auto-phrase; }
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+strong { color: $text; font-weight: 700; }
+
+::selection { background: $accent; color: $on-accent; }
+
+:focus-visible {
+  outline: 2px solid $accent;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: $container;
+  margin-inline: auto;
+  padding-inline: $gutter;
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(96px, 14vw, 180px);
+  overflow: hidden;
+}
+
+.accent { @include accent-text; }
+
+.sp-hide { @include down(sm) { display: none; } }
+.sp-only { @include up(sm) { display: none; } }
+
+// Film grain overlay
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: .03;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+
+// Scroll progress
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 3px;
+  z-index: 120;
+
+  span {
+    display: block;
+    height: 100%;
+    background: $accent;
+    transform: scaleX(0);
+    transform-origin: left;
+
+  }
+}
+
+// Custom cursor (fine pointers only)
+.cursor { display: none; }
+
+@include hover {
+  .js .cursor {
+    display: block;
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    mix-blend-mode: difference;
+  }
+
+  .cursor__dot,
+  .cursor__ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    translate: -50% -50%;
+  }
+
+  .cursor__dot {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+  }
+
+  .cursor__ring {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, .8);
+    transition: width .35s $ease-out, height .35s $ease-out, background-color .35s;
+  }
+
+  .cursor.is-hover .cursor__ring {
+    width: 72px;
+    height: 72px;
+    background: rgba(255, 255, 255, .95);
+  }
+}

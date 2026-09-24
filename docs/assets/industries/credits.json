@@ -1,0 +1,59 @@
+{
+ "manufacturing": {
+  "photographer": "Lilian Do Khac",
+  "photo": "https://unsplash.com/photos/robotic-arms-assembling-a-car-chassis-on-a-factory-line-EyqUxJuOb1Q",
+  "alt": "Robotic arms assembling a car chassis on a factory line"
+ },
+ "construction": {
+  "photographer": "Se. Tsuchiya",
+  "photo": "https://unsplash.com/photos/a-group-of-cranes-in-front-of-a-city-TBc4drKY0p0",
+  "alt": "a group of cranes in front of a city"
+ },
+ "realestate": {
+  "photographer": "Mylène Larnaud",
+  "photo": "https://unsplash.com/photos/yellow-and-white-basketball-hoop-ZoPSn0WI94k",
+  "alt": "yellow and white basketball hoop"
+ },
+ "logistics": {
+  "photographer": "George Kedenburg III",
+  "photo": "https://unsplash.com/photos/landscape-photography-of-plastic-crates-in-a-garage-8lXmsn4rxEY",
+  "alt": "landscape photography of plastic crates in a garage"
+ },
+ "finance": {
+  "photographer": "Szymon Shields",
+  "photo": "https://unsplash.com/photos/a-large-building-with-a-dome-in-the-middle-of-a-city-KebaWH0BVCc",
+  "alt": "a large building with a dome in the middle of a city"
+ },
+ "it": {
+  "photographer": "Albert Stoynov",
+  "profile": "https://unsplash.com/@albertstoynov",
+  "photo": "https://unsplash.com/photos/yellow-and-green-cables-are-neatly-connected-yhJVLxcquEY",
+  "alt": "Yellow and green cables are neatly connected"
+ },
+ "healthcare": {
+  "photographer": "Adhy Savala",
+  "photo": "https://unsplash.com/photos/empty-hospital-bed-inside-room-zbpgmGe27p8",
+  "alt": "empty hospital bed inside room"
+ },
+ "education": {
+  "photographer": "Sean Chen",
+  "photo": "https://unsplash.com/photos/man-in-black-and-white-jacket-sitting-beside-woman-in-black-and-white-jacket-KE3JUCbv5ok",
+  "alt": "man in black and white jacket sitting beside woman in black and white jacket"
+ },
+ "retail": {
+  "photographer": "Perry Merrity II",
+  "photo": "https://unsplash.com/photos/man-walks-down-aisle-of-video-game-store-U4cvvgwBD6Y",
+  "alt": "Man walks down aisle of video game store"
+ },
+ "hospitality": {
+  "photographer": "Filiz Elaerts",
+  "photo": "https://unsplash.com/photos/brown-wooden-table-near-window-58ApUELd3Ec",
+  "alt": "brown wooden table near window"
+ },
+ "government": {
+  "photographer": "Fumiaki Hayashi",
+  "profile": "https://unsplash.com/@fumirin",
+  "photo": "https://unsplash.com/photos/a-couple-of-tall-buildings-sitting-next-to-each-other-f77UJy0_iW8",
+  "alt": "a couple of tall buildings sitting next to each other"
+ }
+}

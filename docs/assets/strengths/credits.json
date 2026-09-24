@@ -1,0 +1,32 @@
+{
+ "s01-ai": {
+  "photographer": "Mindspace Studio",
+  "photo": "https://unsplash.com/photos/woman-sitting-and-using-macbook-NdO2zVQ7cXE",
+  "alt": "woman sitting and using MacBook"
+ },
+ "s02-mobile": {
+  "photographer": "Sebastian Sammer",
+  "photo": "https://unsplash.com/photos/person-taking-a-photo-of-people-HUBoBR1fH1U",
+  "alt": "person taking a photo of people"
+ },
+ "s03-fullstack": {
+  "photographer": "Nguyen Dang Hoang Nhu",
+  "photo": "https://unsplash.com/photos/woman-in-blue-shirt-sitting-on-chair-in-front-of-computer-8KXcmwGg8CU",
+  "alt": "woman in blue shirt sitting on chair in front of computer"
+ },
+ "s04-ops": {
+  "photographer": "blue sky",
+  "photo": "https://unsplash.com/photos/two-men-working-on-computers-at-night-QN1Sz74hVjg",
+  "alt": "Two men working on computers at night"
+ },
+ "s05-legacy": {
+  "photographer": "Niklas König",
+  "photo": "https://unsplash.com/photos/vintage-computer-with-a-crt-monitor-and-floppy-drives-1cTFuvI14J4",
+  "alt": "Vintage computer with a crt monitor and floppy drives"
+ },
+ "s06-education": {
+  "photographer": "Andy Kelly",
+  "photo": "https://unsplash.com/photos/photo-of-girl-laying-left-hand-on-white-digital-robot-0E_vhMVqL9g",
+  "alt": "photo of girl laying left hand on white digital robot"
+ }
+}
