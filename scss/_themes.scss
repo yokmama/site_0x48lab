@@ -1,0 +1,94 @@
+// ==========================================================
+//  Colour themes — switch with <html data-theme="sky|mint|sunrise">
+//
+//  Every colour used in the SCSS is a CSS custom property defined here.
+//  "*-rgb" triplets exist so partials can write alpha variants:
+//  a(accent, .2)  →  rgb(var(--accent-rgb) / .2)
+//
+//  Contrast (WCAG): text/bg ≥ 14, muted/bg ≥ 5, accent-deep/bg ≥ 5,
+//  on-accent/accent ≥ 5, accent-head/bg ≥ 3 (large headings only).
+// ==========================================================
+
+@use "sass:color";
+@use "sass:math";
+
+@mixin theme(
+  $bg, $bg-2, $bg-3, $text, $muted, $steel,
+  $accent, $accent-head, $accent-deep, $accent-2,
+  $inv-bg, $inv-text, $inv-muted,
+  $hero-top, $orb-1, $orb-2
+) {
+  --bg: #{$bg};             --bg-rgb: #{_rgb($bg)};
+  --bg-2: #{$bg-2};
+  --bg-3: #{$bg-3};
+  --text: #{$text};         --text-rgb: #{_rgb($text)};
+  --muted: #{$muted};
+  --steel: #{$steel};
+  --accent: #{$accent};     --accent-rgb: #{_rgb($accent)};
+  --accent-head: #{$accent-head};
+  --accent-deep: #{$accent-deep};
+  --accent-2: #{$accent-2}; --accent-2-rgb: #{_rgb($accent-2)};
+  --on-accent: #{$text};
+  --inv-bg: #{$inv-bg};     --inv-bg-rgb: #{_rgb($inv-bg)};
+  --inv-text: #{$inv-text}; --inv-text-rgb: #{_rgb($inv-text)};
+  --inv-muted: #{$inv-muted};
+  --hero-top: #{$hero-top};
+  --orb-1: #{$orb-1};
+  --orb-2: #{$orb-2};       --orb-2-rgb: #{_rgb($orb-2)};
+  --line: rgb(#{_rgb($text)} / .12);
+}
+
+@function _rgb($c) {
+  $r: math.round(color.channel($c, "red", $space: rgb));
+  $g: math.round(color.channel($c, "green", $space: rgb));
+  $b: math.round(color.channel($c, "blue", $space: rgb));
+  @return "#{$r} #{$g} #{$b}";
+}
+
+// 1) 空と公式ブルー — the official logo blue under an open sky, with a sun-yellow spark
+:root,
+[data-theme="sky"] {
+  @include theme(
+    $bg: #f6f9fd, $bg-2: #ffffff, $bg-3: #eaf2fc,
+    $text: #0b1d3a, $muted: #566780, $steel: #aab6c6,
+    $accent: #2490f3, $accent-head: #2490f3, $accent-deep: #0a62c4, $accent-2: #ffc83d,
+    $inv-bg: #0b1d3a, $inv-text: #eaf2fc, $inv-muted: #9fb2cc,
+    $hero-top: #d3e7fb, $orb-1: #fff6cf, $orb-2: #ffc83d
+  );
+}
+
+// 2) ミントと海 — fresh emerald on mint white, a coral spark
+[data-theme="mint"] {
+  @include theme(
+    $bg: #f3faf7, $bg-2: #ffffff, $bg-3: #e1f3ec,
+    $text: #0e2a2f, $muted: #51706c, $steel: #a8bfbb,
+    $accent: #00a884, $accent-head: #00977a, $accent-deep: #00785e, $accent-2: #ff6b57,
+    $inv-bg: #0e2a2f, $inv-text: #e1f3ec, $inv-muted: #94b5b2,
+    $hero-top: #cfeee3, $orb-1: #e8fff7, $orb-2: #2ec79f
+  );
+}
+
+// 3) 朝日とコーラル — a rising sun on warm white, a deep-teal counterpoint
+[data-theme="sunrise"] {
+  @include theme(
+    $bg: #fffaf3, $bg-2: #ffffff, $bg-3: #ffeee0,
+    $text: #10262e, $muted: #626e73, $steel: #c3bab1,
+    $accent: #ff5a36, $accent-head: #ee4a26, $accent-deep: #c8360f, $accent-2: #1f8a99,
+    $inv-bg: #10262e, $inv-text: #ffeee0, $inv-muted: #a9b6b8,
+    $hero-top: #ffe0c7, $orb-1: #fff1c4, $orb-2: #ff7a3d
+  );
+}
+
+// smooth colour change when switching themes
+.theme-anim,
+.theme-anim *,
+.theme-anim *::before,
+.theme-anim *::after {
+  transition:
+    background-color .6s ease,
+    color .6s ease,
+    border-color .6s ease,
+    fill .6s ease,
+    stroke .6s ease,
+    box-shadow .6s ease !important;
+}

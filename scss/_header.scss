@@ -1,0 +1,210 @@
+// ==========================================================
+//  Header / navigation
+// ==========================================================
+@use "variables" as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: $header-h;
+  transition: background-color .5s, border-color .5s, transform .6s $ease-out;
+  border-bottom: 1px solid transparent;
+
+  // scrim so the logo and links stay readable over the hero film
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 -28px 0;
+    z-index: -1;
+    background: linear-gradient(180deg, a(bg, .92) 0%, a(bg, .74) 55%, transparent 100%);
+    transition: opacity .5s;
+    pointer-events: none;
+  }
+
+  &.is-scrolled {
+    background: a(bg, .94);
+    border-color: $line;
+
+    &::before { opacity: 0; }
+  }
+
+  &.is-hidden { transform: translateY(-100%); }
+
+  // a fixed full-screen menu must not be trapped by filter/transform containing blocks
+  .is-open & {
+    transform: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  &__inner {
+    height: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: $gutter;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+// ---------- Brand (official logo, monochrome) ----------
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+  // official two-tone logo: block + "Lab" in the main colour, "Hack" in ink, "0x48" knocked out in white
+  --logo-main: var(--accent);
+  --logo-ink: var(--text);
+  --logo-knock: #fff;
+
+  &__logo {
+    height: 40px;
+    width: auto;
+    transition: transform .6s $ease-back;
+  }
+
+  &:hover &__logo { transform: translateY(-2px) rotate(-2deg); }
+
+  &__name {
+    padding-left: 16px;
+    border-left: 1px solid $line;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: $muted;
+    white-space: nowrap;
+
+    @include down(sm) { display: none; }
+  }
+}
+
+// ---------- Nav ----------
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  ul {
+    display: flex;
+    gap: 6px;
+  }
+
+  ul a {
+    position: relative;
+    display: block;
+    height: 30px;
+    padding-inline: 14px;
+    overflow: hidden;
+    font-size: 15.5px;
+    font-weight: 700;
+    line-height: 30px;
+
+    span, em {
+      display: block;
+      transition: transform .5s $ease-out;
+    }
+
+    em {
+      font-style: normal;
+      font-family: $font-en;
+      color: $accent-deep;
+      letter-spacing: .06em;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 0;
+      height: 1px;
+      background: $accent;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .5s $ease-out;
+    }
+
+    &:hover, &.is-active {
+      span, em { transform: translateY(-100%); }
+      &::after { transform: scaleX(1); transform-origin: left; }
+    }
+  }
+
+  @include down(lg) {
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    background: $bg;
+    clip-path: circle(0% at calc(100% - 44px) 38px);
+    visibility: hidden;
+    transition: clip-path .9s $ease-in-out, visibility 0s .9s;
+
+    ul { flex-direction: column; align-items: center; gap: 8px; }
+
+    ul a {
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      font-size: 24px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s, transform .6s $ease-out;
+    }
+
+    .is-open & {
+      clip-path: circle(150% at calc(100% - 44px) 38px);
+      visibility: visible;
+      transition: clip-path .9s $ease-in-out, visibility 0s;
+
+      ul a {
+        opacity: 1;
+        transform: none;
+      }
+
+      @for $i from 1 through 6 {
+        li:nth-child(#{$i}) a { transition-delay: #{.25 + $i * .06}s; }
+      }
+    }
+  }
+}
+
+// ---------- Hamburger ----------
+.menu-toggle {
+  display: none;
+  position: relative;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border: 1px solid $line;
+  border-radius: 50%;
+  background: a(text, .04);
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    height: 1.5px;
+    background: $text;
+    transition: transform .5s $ease-out, opacity .3s;
+
+    &:nth-child(1) { top: 17px; }
+    &:nth-child(2) { top: 23px; }
+    &:nth-child(3) { top: 29px; }
+  }
+
+  .is-open & {
+    span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  }
+
+  @include down(lg) { display: block; }
+}

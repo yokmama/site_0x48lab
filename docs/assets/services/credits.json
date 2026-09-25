@@ -1,0 +1,37 @@
+{
+ "main": {
+  "photographer": "AN LY",
+  "photo": "https://unsplash.com/photos/man-sitting-next-to-woman-leaning-on-white-table-QooESgXRg8w",
+  "alt": "man sitting next to woman leaning on white table"
+ },
+ "web": {
+  "photographer": "Campaign Creators",
+  "photo": "https://unsplash.com/photos/person-using-macbook-pro-pypeCEaJeZY",
+  "alt": "person using MacBook Pro"
+ },
+ "mobile": {
+  "photographer": "Jezael Melgoza",
+  "photo": "https://unsplash.com/photos/selective-focus-photography-of-man-sitting-on-concrete-chair-while-holding-smartphone-X7BSCrsdHVg",
+  "alt": "selective focus photography of man sitting on concrete chair while holding smartphone"
+ },
+ "ai": {
+  "photographer": "Swello",
+  "photo": "https://unsplash.com/photos/woman-typing-on-a-laptop-with-a-vase-nearby-4Ya_nyKge5k",
+  "alt": "Woman typing on a laptop with a vase nearby"
+ },
+ "infra": {
+  "photographer": "Albert Stoynov",
+  "photo": "https://unsplash.com/photos/a-close-up-of-a-network-with-wires-connected-to-it-dyUp7WPu5q4",
+  "alt": "a close up of a network with wires connected to it"
+ },
+ "legacy": {
+  "photographer": "Pakata Goh",
+  "photo": "https://unsplash.com/photos/laptop-computer-beside-monitor-with-keyboard-and-mouse-EJMTKCZ00I0",
+  "alt": "laptop computer beside monitor with keyboard and mouse"
+ },
+ "xr": {
+  "photographer": "Snowscat",
+  "photo": "https://unsplash.com/photos/a-city-street-filled-with-lots-of-tall-buildings-pJPW9H5D4Zg",
+  "alt": "a city street filled with lots of tall buildings"
+ }
+}

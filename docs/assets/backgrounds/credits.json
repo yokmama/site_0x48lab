@@ -1,0 +1,38 @@
+{
+ "intro": {
+  "photographer": "phyo min",
+  "photo": "https://unsplash.com/photos/two-men-sitting-at-a-desk-looking-at-a-laptop-cIocF-SSZiM",
+  "alt": "two men sitting at a desk looking at a laptop"
+ },
+ "numbers": {
+  "photographer": "Sebastian Willius",
+  "photo": "https://unsplash.com/photos/black-red-and-green-screen-GKCpRs0rcNY",
+  "alt": "black red and green screen"
+ },
+ "process": {
+  "photographer": "Matt Ketchum",
+  "photo": "https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-wearing-face-masks-vrsL8_tcqPE",
+  "alt": "a group of people sitting around a table wearing face masks"
+ },
+ "history": {
+  "photographer": "Jaison Lin",
+  "photo": "https://unsplash.com/photos/aerial-photography-of-red-tower-surrounded-by-buildings-during-daytime-2WHTac8jVA8",
+  "alt": "aerial photography of red tower surrounded by buildings during daytime"
+ },
+ "company": {
+  "photographer": "Denys Nevozhai",
+  "photo": "https://unsplash.com/photos/aerial-photography-of-city-6ULy3pxuxL8",
+  "alt": "aerial photography of city"
+ },
+ "contact": {
+  "photographer": "Falco Negenman",
+  "photo": "https://unsplash.com/photos/a-group-of-people-walking-across-a-cross-walk-7yxaXhRszpo",
+  "alt": "a group of people walking across a cross walk"
+ },
+ "aidiet-chat": {
+  "file": "assets/brand/aidiet-chat-bg.webp",
+  "photographer": "Dose Juice",
+  "photo": "https://unsplash.com/photos/sliced-fruit-and-vegetables-sTPy-oeA3h0",
+  "alt": "sliced fruit and vegetables"
+ }
+}
