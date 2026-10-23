@@ -1978,6 +1978,51 @@ html:not(.js) .chat { opacity: 1; }
   }
 
   p { color: $muted; font-size: 14.5px; }
+
+  // 画面写真つきの実績（Ray Kids school）
+  &--feature {
+    @include up(md) { align-items: start; }
+    &:hover { transform: none; }
+  }
+
+  &__shots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(10px, 1.6vw, 18px);
+    margin: 22px 0 6px;
+
+    figure { margin: 0; }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 780 / 1000;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 14px;
+      border: 1px solid $line;
+      background: $bg;
+    }
+
+    figcaption {
+      margin-top: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: $muted;
+      text-align: center;
+    }
+  }
+
+  .btn-row { margin-top: 18px; align-items: center; }
+
+  &__link {
+    font-size: 13px;
+    font-weight: 700;
+    color: $accent-deep;
+    text-decoration: none;
+    &:hover { text-decoration: underline; }
+  }
 }
 
 // ---------- Industries: tabs + photo stage ----------
