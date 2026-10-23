@@ -4031,6 +4031,54 @@ html:not(.js) .chat {
   color: var(--muted);
   font-size: 14.5px;
 }
+@media (min-width: 900px) {
+  .work--feature {
+    align-items: start;
+  }
+}
+.work--feature:hover {
+  transform: none;
+}
+.work__shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(10px, 1.6vw, 18px);
+  margin: 22px 0 6px;
+}
+.work__shots figure {
+  margin: 0;
+}
+.work__shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 780/1000;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+.work__shots figcaption {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-align: center;
+}
+.work .btn-row {
+  margin-top: 18px;
+  align-items: center;
+}
+.work__link {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-deep);
+  text-decoration: none;
+}
+.work__link:hover {
+  text-decoration: underline;
+}
 
 .ind {
   margin-top: clamp(80px, 10vw, 130px);
