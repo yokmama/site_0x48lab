@@ -1,5 +1,5 @@
 /* ==========================================================
-   HackLab Inc. — interactions & motion
+   HAKKU LABO, K.K. — interactions & motion
    ========================================================== */
 (() => {
   "use strict";
