@@ -232,8 +232,9 @@
     ['<span class="t-dim">', "  ✔ requirements analyzed by AI", "</span>"],
     ['<span class="t-dim">', "  ✔ architecture: Flutter + Spring + AWS", "</span>"],
     ['<span class="t-prompt">❯</span> ', "hacklab build --ai-assisted"],
-    ['<span class="t-key">', "  ⚡ est. 4 months → ~1 month", "</span>"],
-    ['<span class="t-ok">', "  ✔ deployed. monitoring: auto", "</span>"],
+    ['<span class="t-ok">', "  ✔ tests passed. deployed.", "</span>"],
+    ['<span class="t-prompt">❯</span> ', "hacklab maintain --update php wordpress"],
+    ['<span class="t-ok">', "  ✔ updated. site is running.", "</span>"],
   ];
   let typingStarted = false;
 
@@ -313,9 +314,6 @@
   const progress = $("#scrollProgress");
   const parallax = $$("[data-parallax]");
   const sbgs = $$(".sbg img");
-  const stepsTrack = $(".process__track");
-  const stepsLine = $("#stepsLine");
-  const steps = $$(".step");
   const timeline = $("#timeline");
   const timelineFill = $("#timelineFill");
   const navLinks = $$('.nav ul a');
@@ -356,11 +354,6 @@
       });
     }
 
-    if (stepsTrack) {
-      const p = progressOf(stepsTrack);
-      stepsLine.style.setProperty("--p", p);
-      steps.forEach((s, i) => s.classList.toggle("is-lit", p > i / steps.length));
-    }
 
     if (timeline) {
       timelineFill.style.setProperty("--p", progressOf(timeline, 0.7, 0.5));
@@ -414,130 +407,6 @@
       entries.forEach((e) => { if (e.isIntersecting) activate(+e.target.dataset.i); });
     }, { rootMargin: "-45% 0px -45% 0px" });
     items.forEach((el) => io.observe(el));
-  }
-
-  /* ---------- Build simulator ---------- */
-  const sim = $("#simulator");
-  if (sim) {
-    // weeks are rough guides, deliberately shown as ranges
-    const KIND = {
-      web:    { label: "業務Webシステム", code: "WEB",    weeks: 10, stack: ["Java / Spring", "React", "PostgreSQL", "AWS"], nodes: ["client", "api", "db"] },
-      mobile: { label: "モバイルアプリ",   code: "MOBILE", weeks: 11, stack: ["Flutter", "Dart", "Firebase", "iOS / Android"], nodes: ["client", "api", "db"] },
-      ai:     { label: "AI組み込み",       code: "AI",     weeks: 9,  stack: ["Python", "LLM API", "TypeScript", "AWS"], nodes: ["client", "api", "db", "ai"] },
-      renew:  { label: "既存システム刷新", code: "RENEW",  weeks: 13, stack: ["Java", "COBOL 解析", "Oracle", "移行設計"], nodes: ["client", "api", "db", "link"] },
-    };
-    const SIZE = {
-      s: { label: "小（画面 〜10）", code: "S", mul: 0.7 },
-      m: { label: "中（画面 〜30）", code: "M", mul: 1 },
-      l: { label: "大（画面 30〜）", code: "L", mul: 1.5 },
-    };
-    const OPT = {
-      auth:   { label: "ログイン・権限", weeks: 2, node: "auth",   stack: ["OAuth / SSO"] },
-      admin:  { label: "管理画面",       weeks: 3, node: "admin",  stack: ["管理UI"] },
-      pay:    { label: "決済",           weeks: 3, node: "pay",    stack: ["Stripe / 決済API"] },
-      notify: { label: "通知",           weeks: 1, node: "notify", stack: ["Push / SendGrid"] },
-      link:   { label: "外部システム連携", weeks: 3, node: "link",  stack: ["REST / CSV連携"] },
-      ai:     { label: "生成AI機能",      weeks: 3, node: "ai",    stack: ["生成AI", "ベクトル検索"] },
-    };
-    const LINKS = { client: "client-api", db: "api-db", auth: "api-auth", ai: "api-ai", link: "api-link", admin: "api-admin", notify: "api-notify", pay: "api-pay" };
-
-    const nodes = Object.fromEntries($$("[data-node]", sim).map((g) => [g.dataset.node, g]));
-    const links = Object.fromEntries($$("[data-link]", sim).map((l) => [l.dataset.link, l]));
-    const stackList = $("#simStack");
-    const weeks = { base: $("#simWeeksBase"), ai: $("#simWeeksAi") };
-    const range = { base: $("#simRangeBase"), ai: $("#simRangeAi") };
-    const core = { base: $("#simCoreBase"), ai: $("#simCoreAi") };
-    const axis = $("#simAxis");
-    const head = { crumb: $("#simCrumb"), rev: $("#simRev") };
-    const tb = { config: $("#tbConfig"), size: $("#tbSize"), mod: $("#tbMod"), rev: $("#tbRev") };
-    const pad2 = (n) => String(n).padStart(2, "0");
-    let summary = "";
-    let rev = 0;
-
-    // both estimates are drawn against one axis, so the bars can be compared by eye.
-    // the axis always ends on a tick, so the right edge of the track is a labelled value.
-    const scaleFor = (weeks) => {
-      const step = weeks <= 20 ? 5 : weeks <= 50 ? 10 : 20;
-      return { step, max: Math.max(step * 2, Math.ceil(weeks / step) * step) };
-    };
-    const drawAxis = ({ step, max }) => {
-      let out = "";
-      for (let v = 0; v <= max; v += step) {
-        const pct = (v / max) * 100;
-        const shift = v === 0 ? "0" : pct >= 99.9 ? "-100%" : "-50%";
-        out += `<span style="left:${pct}%;transform:translateX(${shift})">${v}</span>`;
-      }
-      axis.innerHTML = out;
-    };
-
-    const read = () => ({
-      kind: $('input[name="sim-kind"]:checked', sim).value,
-      size: $('input[name="sim-size"]:checked', sim).value,
-      opts: $$('input[name="sim-opt"]:checked', sim).map((i) => i.value),
-    });
-
-    const update = () => {
-      const { kind, size, opts } = read();
-      const k = KIND[kind];
-      const sz = SIZE[size];
-
-      // weeks: base scope × size + options, then the AI-assisted range
-      const raw = k.weeks * sz.mul + opts.reduce((n, o) => n + OPT[o].weeks, 0);
-      const base = [Math.round(raw), Math.round(raw * 1.3)];
-      const ai = [Math.max(2, Math.round(raw * 0.4)), Math.max(3, Math.round(raw * 0.6))];
-      weeks.base.textContent = `${base[0]}〜${base[1]}週`;
-      weeks.ai.textContent = `${ai[0]}〜${ai[1]}週`;
-
-      const scale = scaleFor(base[1]);
-      drawAxis(scale);
-      range.base.style.width = `${(base[1] / scale.max) * 100}%`;
-      core.base.style.width = `${(base[0] / scale.max) * 100}%`;
-      range.ai.style.width = `${(ai[1] / scale.max) * 100}%`;
-      core.ai.style.width = `${(ai[0] / scale.max) * 100}%`;
-
-      // diagram
-      const on = new Set([...k.nodes, ...opts.map((o) => OPT[o].node)]);
-      Object.entries(nodes).forEach(([name, g]) => {
-        g.classList.toggle("is-on", on.has(name));
-        g.classList.toggle("is-accent", name === "ai" && on.has("ai"));
-      });
-      Object.values(links).forEach((l) => l.classList.remove("is-on"));
-      on.forEach((n) => { const id = LINKS[n]; if (id && links[id]) links[id].classList.add("is-on"); });
-
-      // sheet metadata: every change is a new revision of the drawing
-      rev += 1;
-      const modules = on.size;
-      head.crumb.textContent = `${k.code} / ${sz.code} / ${pad2(modules)} MODULES`;
-      head.rev.textContent = pad2(rev);
-      tb.config.textContent = k.label;
-      tb.size.textContent = sz.label;
-      tb.mod.textContent = pad2(modules);
-      tb.rev.textContent = pad2(rev);
-
-      // stack
-      const chips = [...new Set([...k.stack, ...opts.flatMap((o) => OPT[o].stack)])];
-      stackList.innerHTML = chips.map((c, i) => `<li style="animation-delay:${i * 40}ms">${c}</li>`).join("");
-
-      summary = [
-        `【開発シミュレーター】`,
-        `つくるもの：${k.label}`,
-        `規模：${sz.label.replace(/（.*/, "")}規模`,
-        `必要な機能：${opts.length ? opts.map((o) => OPT[o].label).join("、") : "未選択"}`,
-        `期間の目安：${ai[0]}〜${ai[1]}週（AI活用時）`,
-      ].join("\n");
-    };
-
-    $$('input[name^="sim-"]', sim).forEach((i) => i.addEventListener("change", update));
-    update();
-
-    // hand the selection over to the contact form
-    $("#simCta").addEventListener("click", () => {
-      const msg = $("#cf-msg");
-      if (!msg) return;
-      const rest = msg.value.replace(/^【開発シミュレーター】[\s\S]*?(?:\n\n|$)/, "");
-      msg.value = `${summary}\n\n${rest}`;
-      msg.dispatchEvent(new Event("input"));
-    });
   }
 
   /* ---------- Industries: tabs with photo stage ---------- */

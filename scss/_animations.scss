@@ -26,11 +26,6 @@
   to   { transform: translateY(80px); }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 @keyframes char-in {
   0%   { opacity: 0; transform: translateY(70%) rotateX(-70deg) scale(.8); filter: blur(16px); }
   55%  { opacity: 1; filter: blur(0); }

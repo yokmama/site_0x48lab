@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WordPress・PHP・Laravel・Node.js のバージョンアップ代行／Cloudflare 設定｜株式会社ハックラボ</title>
+  <meta name="description" content="WordPress・PHP・データベース・Laravel・Node.js のバージョンアップと、Cloudflare のドメイン設定・セキュリティ対策を代行します。サポート終了への対応や脆弱性対応も。WordPress・PHP・データベースをまとめて最新化した実績があります。">
+  <link rel="canonical" href="https://0x48lab.com/lp/version-up/">
+  <meta property="og:title" content="バージョンアップ代行・Cloudflare 設定｜株式会社ハックラボ">
+  <meta property="og:description" content="WordPress・PHP・Laravel・Node.js の更新と、Cloudflare のドメイン設定・セキュリティ対策を代行します。">
+  <meta property="og:url" content="https://0x48lab.com/lp/version-up/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="theme-color" content="#f6f9fd">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/lp-contact.css">
+  <link rel="stylesheet" href="../../css/lp-ops.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "バージョンアップ代行・Cloudflare 設定",
+        "serviceType": "システム保守・バージョンアップ",
+        "description": "WordPress・PHP・データベース・Laravel・Node.js のバージョンアップと、Cloudflare のドメイン設定・セキュリティ対策を代行します。",
+        "url": "https://0x48lab.com/lp/version-up/",
+        "areaServed": "JP",
+        "provider": { "@type": "Organization", "name": "株式会社ハックラボ", "alternateName": "HAKKU LABO, K.K.", "url": "https://0x48lab.com/" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "対応内容",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WordPress のバージョンアップ" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "PHP のバージョンアップ" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "データベース（MySQL・MariaDB）のバージョンアップ" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laravel のバージョンアップ" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Node.js のバージョンアップ" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloudflare のドメイン設定・セキュリティ対策" } }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "株式会社ハックラボ", "item": "https://0x48lab.com/" },
+          { "@type": "ListItem", "position": 2, "name": "バージョンアップ代行・Cloudflare 設定", "item": "https://0x48lab.com/lp/version-up/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "バージョンアップでサイトが壊れることはありませんか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "作業前にバックアップを取り、戻せる状態で進めます。可能な場合は本番と同じ構成の検証環境で先に試し、動かない箇所を直してから本番に反映します。" } },
+          { "@type": "Question", "name": "自社で作っていないシステムでも対応できますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。制作会社と連絡が取れないサイトや、引き継ぎ資料がないシステムも、ソースコードとサーバーを確認したうえで対応します。" } },
+          { "@type": "Question", "name": "Laravel を何世代も上げる必要があります。対応できますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。一度に飛ばさず、メジャーバージョンを1つずつ上げながら、依存パッケージとテストを確認して進めます。" } },
+          { "@type": "Question", "name": "Cloudflare の設定だけを依頼できますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。ドメインのネームサーバーの切り替え、DNS・SSL/TLS の設定、WAF やボット対策などのセキュリティ設定だけのご依頼にも対応します。" } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="op-header">
+    <div class="op-wrap op-header__inner">
+      <a href="../../" class="op-brand"><img src="../../assets/brand/logo.svg" alt="0x48 HackLab" width="110" height="32"><span>株式会社ハックラボ</span></a>
+      <nav class="op-nav" aria-label="ページ内メニュー">
+        <a href="#targets">対応範囲</a>
+        <a href="#cloudflare">Cloudflare</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact" class="op-btn op-btn--sm">相談する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="op-wrap op-crumb">
+      <ol><li><a href="../../">ホーム</a></li><li>バージョンアップ代行・Cloudflare 設定</li></ol>
+    </div>
+
+    <section class="op-hero">
+      <div class="op-wrap">
+        <p class="op-kicker">保守・バージョンアップ・セキュリティ対策</p>
+        <h1>WordPress・PHP・Laravel・Node.js を、<br><em>止めずに、最新へ。</em></h1>
+        <p class="op-lead">古いバージョンのまま動いているサイトやシステムは、セキュリティ修正が届かなくなり、脆弱性を突かれる危険が高まります。ハックラボは、<strong>WordPress・PHP・データベース・Laravel・Node.js のバージョンアップ</strong>と、<strong>Cloudflare によるドメイン設定・セキュリティ対策</strong>をまとめて引き受けます。</p>
+        <div class="op-cta">
+          <a href="#contact" class="op-btn">無料で相談する</a>
+          <a href="../php2shell/" class="op-btn op-btn--ghost">PHP2Shell の対策はこちら</a>
+        </div>
+        <div class="op-proof">
+          <div><b>実績</b><span>WordPress・PHP・データベースをまとめて最新化</span></div>
+          <div><b>6<small>領域</small></b><span>WordPress / PHP / DB / Laravel / Node.js / Cloudflare</span></div>
+          <div><b>10<small>年+</small></b><span>大きなトラブルなく稼働を続けるシステムの運用実績</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="targets">
+      <div class="op-wrap">
+        <p class="op-eyebrow">TARGETS</p>
+        <h2 class="op-title">対応範囲</h2>
+        <div class="op-cards op-cards--3">
+          <div class="op-card" id="wordpress">
+            <h3>WordPress のバージョンアップ</h3>
+            <p>本体・テーマ・プラグインを最新版へ。更新で動かなくなるプラグインは、代わりの選定や改修で対応します。</p>
+            <p class="op-tags">WordPress / テーマ / プラグイン</p>
+          </div>
+          <div class="op-card" id="php">
+            <h3>PHP のバージョンアップ</h3>
+            <p>サポートが終了した PHP から、サポート中のバージョンへ移行します。非推奨になった書き方の修正まで行います。</p>
+            <p class="op-tags">PHP 7.x → 8.x / mod_php / php-fpm</p>
+          </div>
+          <div class="op-card" id="database">
+            <h3>データベースのバージョンアップ</h3>
+            <p>MySQL・MariaDB などを新しいバージョンへ。バックアップを取り、データと文字コードの移行を確かめながら進めます。</p>
+            <p class="op-tags">MySQL / MariaDB / PostgreSQL</p>
+          </div>
+          <div class="op-card" id="laravel">
+            <h3>Laravel のバージョンアップ</h3>
+            <p>メジャーバージョンを1つずつ上げ、Composer の依存パッケージとテストを確認しながら最新版へ移行します。</p>
+            <p class="op-tags">Laravel / Composer / PHPUnit</p>
+          </div>
+          <div class="op-card" id="nodejs">
+            <h3>Node.js のバージョンアップ</h3>
+            <p>サポート中の LTS 版へ更新し、npm の依存パッケージの更新とビルド・動作確認まで行います。</p>
+            <p class="op-tags">Node.js LTS / npm / ビルド環境</p>
+          </div>
+          <div class="op-card">
+            <h3>脆弱性への緊急対応</h3>
+            <p>PHP の重大な脆弱性「PHP2Shell」など、急ぎの対応が必要なときもご相談ください。</p>
+            <p class="op-tags"><a href="../php2shell/">PHP2Shell 対策 →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section" id="cloudflare">
+      <div class="op-wrap">
+        <p class="op-eyebrow">CLOUDFLARE</p>
+        <h2 class="op-title">Cloudflare のドメイン設定・セキュリティ対策</h2>
+        <p class="op-text" style="margin-bottom:24px">ドメインを Cloudflare で管理すると、サイトの前に防御の層を置けます。設定を誤るとサイトやメールが止まるため、今の設定を確かめてから切り替えます。</p>
+        <div class="op-cards">
+          <div class="op-card">
+            <h3>ドメイン・DNS の設定</h3>
+            <ul>
+              <li>ネームサーバーの Cloudflare への切り替え</li>
+              <li>DNS レコードの移行と整理（Web・メール）</li>
+              <li>切り替え中にサイトとメールが止まらないように確認</li>
+            </ul>
+          </div>
+          <div class="op-card">
+            <h3>セキュリティの設定</h3>
+            <ul>
+              <li>SSL/TLS の設定（HTTPS の強制など）</li>
+              <li>WAF・ファイアウォールのルール</li>
+              <li>ボット対策と、ログイン画面などへのアクセス制限</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="case">
+      <div class="op-wrap">
+        <p class="op-eyebrow">CASE</p>
+        <h2 class="op-title">対応実績</h2>
+        <div class="op-case">
+          <div class="op-case__metric"><b>3つ</b><span>WordPress・PHP・DB を<br>まとめて最新化</span></div>
+          <div>
+            <h3>WordPress・PHP・データベースを最新版に（PHP2Shell 対応）</h3>
+            <p>PHP の重大な脆弱性「PHP2Shell」への対応として、WordPress 本体、PHP、データベースの3つを最新版へ更新し、サイトが正しく動くことを確認するところまでを行いました。この事例では1日で完了しましたが、作業日数はサイトとサーバーの状況によって変わり、2〜3日以上かかる場合もあります。</p>
+            <ul><li>WordPress</li><li>PHP</li><li>データベース</li></ul>
+          </div>
+        </div>
+        <div class="op-cards" style="margin-top:16px">
+          <div class="op-card">
+            <h3>Laravel・Node.js を最新版へ</h3>
+            <p>Laravel で作られたシステムと、Node.js の実行環境を、それぞれ最新版へ更新しました。</p>
+          </div>
+          <div class="op-card">
+            <h3>Cloudflare のドメイン設定とセキュリティ対策</h3>
+            <p>ドメインの設定を Cloudflare で整え、サイトを守るためのセキュリティ設定を行いました。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section" id="flow">
+      <div class="op-wrap">
+        <p class="op-eyebrow">FLOW</p>
+        <h2 class="op-title">ご依頼の流れ</h2>
+        <ol class="op-flow">
+          <li><b>ご相談</b><span>対象のサイト・システムと、困っていることをお知らせください</span></li>
+          <li><b>現状の確認・お見積り</b><span>バージョンと構成を調べ、作業内容と費用をお伝えします</span></li>
+          <li><b>更新と動作確認</b><span>バックアップを取り、できる限り検証環境で試してから本番へ</span></li>
+          <li><b>報告・保守</b><span>実施内容をご報告し、今後の更新計画もご提案します</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="faq">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">FAQ</p>
+        <h2 class="op-title">よくある質問</h2>
+        <div class="op-faq">
+          <details><summary>バージョンアップでサイトが壊れることはありませんか？</summary><p>作業前にバックアップを取り、戻せる状態で進めます。可能な場合は本番と同じ構成の検証環境で先に試し、動かない箇所を直してから本番に反映します。</p></details>
+          <details><summary>自社で作っていないシステムでも対応できますか？</summary><p>はい。制作会社と連絡が取れないサイトや、引き継ぎ資料がないシステムも、ソースコードとサーバーを確認したうえで対応します。</p></details>
+          <details><summary>Laravel を何世代も上げる必要があります。対応できますか？</summary><p>はい。一度に飛ばさず、メジャーバージョンを1つずつ上げながら、依存パッケージとテストを確認して進めます。</p></details>
+          <details><summary>Cloudflare の設定だけを依頼できますか？</summary><p>はい。ドメインのネームサーバーの切り替え、DNS・SSL/TLS の設定、WAF やボット対策などのセキュリティ設定だけのご依頼にも対応します。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-contact" id="contact">
+      <div class="op-wrap">
+        <p class="op-eyebrow">CONTACT</p>
+        <h2 class="op-title">バージョンアップ・Cloudflare 設定の相談</h2>
+        <p class="op-center">対象のサイト・システムと、わかる範囲で今のバージョンをお知らせください。<br>担当者よりメールでご連絡します。</p>
+        <div class="lpf">
+          <form data-lp-contact data-product="バージョンアップ・Cloudflare 設定" data-source="バージョンアップ代行ページ（0x48lab.com）"
+                data-msg-error="送信できませんでした。通信状況をご確認のうえ、時間をおいて再度お試しください。" novalidate>
+            <label class="lpf-hp" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
+            <fieldset>
+              <legend>対象 <span class="lpf-tag lpf-tag--opt">任意・複数可</span></legend>
+              <div class="lpf-chips">
+                <label class="lpf-chip"><input type="checkbox" name="t-wp" value="WordPress" data-label="対象：WordPress"><span>WordPress</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="t-php" value="PHP" data-label="対象：PHP"><span>PHP</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="t-db" value="データベース" data-label="対象：データベース"><span>データベース</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="t-laravel" value="Laravel" data-label="対象：Laravel"><span>Laravel</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="t-node" value="Node.js" data-label="対象：Node.js"><span>Node.js</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="t-cf" value="Cloudflare" data-label="対象：Cloudflare"><span>Cloudflare</span></label>
+              </div>
+            </fieldset>
+            <div class="lpf-field">
+              <label class="lpf-label" for="vu-url">サイトの URL <span class="lpf-tag lpf-tag--opt">任意</span></label>
+              <input type="text" id="vu-url" name="url" inputmode="url" placeholder="https://example.com" data-label="サイトのURL">
+            </div>
+            <div class="lpf-row">
+              <div class="lpf-field">
+                <label class="lpf-label" for="vu-name">お名前 <span class="lpf-tag">必須</span></label>
+                <input type="text" id="vu-name" name="name" required autocomplete="name" placeholder="山田 太郎" aria-describedby="vu-name-err">
+                <p class="lpf-error" id="vu-name-err">お名前を入力してください</p>
+              </div>
+              <div class="lpf-field">
+                <label class="lpf-label" for="vu-org">会社名・団体名 <span class="lpf-tag lpf-tag--opt">任意</span></label>
+                <input type="text" id="vu-org" name="org" autocomplete="organization" placeholder="株式会社〇〇">
+              </div>
+            </div>
+            <div class="lpf-field">
+              <label class="lpf-label" for="vu-email">メールアドレス <span class="lpf-tag">必須</span></label>
+              <input type="email" id="vu-email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="vu-email-err">
+              <p class="lpf-error" id="vu-email-err">正しいメールアドレスを入力してください</p>
+            </div>
+            <div class="lpf-field">
+              <label class="lpf-label" for="vu-msg">ご相談内容 <span class="lpf-tag">必須</span></label>
+              <textarea id="vu-msg" name="message" required maxlength="2000" rows="6" placeholder="今のバージョン、希望の時期、困っていることなど、わかる範囲でご記入ください。" aria-describedby="vu-msg-err"></textarea>
+              <p class="lpf-error" id="vu-msg-err">ご相談内容を入力してください</p>
+            </div>
+            <button type="submit" class="lpf-submit">送信する</button>
+            <p class="lpf-note">送信をもって<a href="../../privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に同意いただいたものとみなします。サーバーのパスワードなどは、このフォームに書かないでください。</p>
+            <p class="lpf-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="lpf-done" hidden tabindex="-1">
+            <h3>送信が完了しました</h3>
+            <p>お問い合わせありがとうございます。<br>内容を確認のうえ、担当者よりご連絡いたします。</p>
+            <button type="button" class="lpf-again">別の内容を送る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="op-footer">
+    <div class="op-wrap">
+      <p><a href="../../">株式会社ハックラボ（HAKKU LABO, K.K.）</a><br>〒150-0002 東京都渋谷区渋谷2丁目19番19号 ワコー宮益坂ビル5階</p>
+      <nav class="op-footer__nav" aria-label="フッターメニュー">
+        <a href="../../">ホーム</a>
+        <a href="../php2shell/">PHP2Shell 対策</a>
+        <a href="../../privacy/">プライバシーポリシー</a>
+      </nav>
+      <small>WordPress は WordPress Foundation の商標です。Cloudflare は Cloudflare, Inc. の商標です。その他記載の会社名・製品名は各社の商標または登録商標です。© 2026 HAKKU LABO, K.K.</small>
+    </div>
+  </footer>
+
+  <script src="../../js/lp-contact.js" defer></script>
+</body>
+</html>

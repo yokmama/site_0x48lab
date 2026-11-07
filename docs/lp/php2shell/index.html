@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PHP2Shell 対策・PHPアップデート代行（CVE-2026-109618 / 109619）｜株式会社ハックラボ</title>
+  <meta name="description" content="PHPの重大な脆弱性「PHP2Shell」（CVE-2026-109618 / CVE-2026-109619）への対応を代行します。PHPを修正版へ更新し、WordPress・Laravelの動作確認、データベースの更新、侵害の痕跡確認まで。WordPress・PHP・データベースをまとめて最新化した実績があります。">
+  <link rel="canonical" href="https://0x48lab.com/lp/php2shell/">
+  <meta property="og:title" content="PHP2Shell 対策・PHPアップデート代行｜株式会社ハックラボ">
+  <meta property="og:description" content="PHPの重大な脆弱性「PHP2Shell」への対応を代行。PHPの更新からWordPress・Laravelの動作確認、侵害の痕跡確認まで。">
+  <meta property="og:url" content="https://0x48lab.com/lp/php2shell/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="theme-color" content="#f6f9fd">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/lp-contact.css">
+  <link rel="stylesheet" href="../../css/lp-ops.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "PHP2Shell 対策・PHPアップデート代行",
+        "serviceType": "脆弱性対応・PHPバージョンアップ",
+        "description": "PHPの重大な脆弱性PHP2Shell（CVE-2026-109618 / CVE-2026-109619）への対応として、PHPの修正版への更新、WordPress・Laravelの動作確認、データベースの更新、侵害の痕跡確認を行います。",
+        "url": "https://0x48lab.com/lp/php2shell/",
+        "areaServed": "JP",
+        "provider": { "@type": "Organization", "name": "株式会社ハックラボ", "alternateName": "HAKKU LABO, K.K.", "url": "https://0x48lab.com/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "株式会社ハックラボ", "item": "https://0x48lab.com/" },
+          { "@type": "ListItem", "position": 2, "name": "PHP2Shell 対策", "item": "https://0x48lab.com/lp/php2shell/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "WordPressのプラグインを更新すればPHP2Shellは防げますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "防げません。PHP2ShellはPHP本体の脆弱性なので、PHPそのものを修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 以降）に更新する必要があります。" } },
+          { "@type": "Question", "name": "PHP 8.1以前を使っています。どうすればよいですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "PHP 8.1以前はサポートが終了しており、修正版が提供されていません。サポート中のバージョンへの移行が必要です。WordPressやLaravel、プラグインが新しいPHPで動くかを確かめながら移行します。" } },
+          { "@type": "Question", "name": "共用レンタルサーバーでも対応してもらえますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。サーバーの管理画面でPHPのバージョンを切り替えられる場合は、切り替えとサイトの動作確認を行います。サーバー会社側の対応状況もあわせて確認します。" } },
+          { "@type": "Question", "name": "どのくらいの期間で対応できますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "環境によって変わります。WordPress・PHP・データベースの更新は、状況によって2〜3日以上かかる場合もあります。まずは現在の環境を確認して、作業日数とお見積りをお伝えします。" } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="op-header">
+    <div class="op-wrap op-header__inner">
+      <a href="../../" class="op-brand"><img src="../../assets/brand/logo.svg" alt="0x48 HackLab" width="110" height="32"><span>株式会社ハックラボ</span></a>
+      <nav class="op-nav" aria-label="ページ内メニュー">
+        <a href="#about">PHP2Shellとは</a>
+        <a href="#service">対応内容</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact" class="op-btn op-btn--sm">相談する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="op-wrap op-crumb">
+      <ol><li><a href="../../">ホーム</a></li><li>PHP2Shell 対策・PHPアップデート代行</li></ol>
+    </div>
+
+    <section class="op-hero">
+      <div class="op-wrap">
+        <p class="op-alert">PHPの重大な脆弱性（2026年10月公表）</p>
+        <h1><em>PHP2Shell</em> の対策を、<br>PHPの更新から動作確認まで。</h1>
+        <p class="op-lead">「PHP2Shell」（CVE-2026-109618 / CVE-2026-109619）は、<strong>PHP本体</strong>の重大な脆弱性です。WordPress やプラグインの更新だけでは直らず、<strong>PHPそのものの更新</strong>が必要です。ハックラボは、PHPの更新と、WordPress・Laravel などのサイトが新しいPHPで正しく動くかの確認、データベースの更新、侵害の痕跡の確認までをまとめて引き受けます。</p>
+        <div class="op-cta">
+          <a href="#contact" class="op-btn">対応を相談する（無料）</a>
+          <a href="#about" class="op-btn op-btn--ghost">PHP2Shellとは</a>
+        </div>
+        <div class="op-proof">
+          <div><b>実績</b><span>WordPress・PHP・データベースをまとめて最新化</span></div>
+          <div><b>PHP / DB</b><span>WordPress・Laravel・Node.js の更新まで一緒に</span></div>
+          <div><b>16<small>年</small></b><span>受託開発と運用保守の実績（2010年〜）</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="about">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">ABOUT</p>
+        <h2 class="op-title">PHP2Shell とは</h2>
+        <p class="op-text">2026年10月21日に PHP の開発チームがセキュリティ修正を公開した、PHP本体の脆弱性2件の通称です。条件がそろうと、<strong>ログインなしで外部からサーバー上のプログラムを実行される</strong>（リモートコード実行）おそれがあります。</p>
+        <table class="op-facts">
+          <tr><th scope="row">CVE</th><td>CVE-2026-109618 / CVE-2026-109619</td></tr>
+          <tr><th scope="row">深刻度</th><td>CVSS v4.0 で 9.2</td></tr>
+          <tr><th scope="row">修正版</th><td>PHP 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12</td></tr>
+          <tr><th scope="row">8.1 以前</th><td>サポートが終了しており、修正版は出ません。サポート中のバージョンへの移行が必要です</td></tr>
+          <tr><th scope="row">影響が報告された構成</th><td>mod_php、php-fpm、WordPress、Laravel、Symfony など</td></tr>
+          <tr><th scope="row">悪用の状況</th><td>攻撃コードが出回っていると報告されており、米国 CISA は悪用が確認された脆弱性の一覧（KEV）に登録しています</td></tr>
+        </table>
+        <p class="op-text">設定の変更で一時的に危険を下げる方法も紹介されていますが、<strong>どれも完全な対策ではありません</strong>。根本的な対策は PHP を修正版に更新することです。また、更新の前にすでに攻撃を受けていないか、ログを確かめることも勧められています。</p>
+        <p class="op-fine">参考：<a href="https://blog.flatt.tech/entry/php2shell" target="_blank" rel="noopener">GMO Flatt Security Blog</a>、<a href="https://aws.amazon.com/jp/blogs/news/using-aws-waf-to-apply-mitigations-for-php2shell-rce-vulnerabilities-cve-2026-109618-and-cve-2026-109619/" target="_blank" rel="noopener">AWS ブログ</a>、<a href="https://atmarkit.itmedia.co.jp/ait/articles/2610/21/news072.html" target="_blank" rel="noopener">＠IT</a>。正確な情報は PHP 公式と JVN のアドバイザリでご確認ください（2026年11月7日時点の情報です）。</p>
+      </div>
+    </section>
+
+    <section class="op-section" id="check">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">CHECK</p>
+        <h2 class="op-title">こんなサイトは、すぐに確認を</h2>
+        <ul class="op-checks">
+          <li>WordPress で作ったサイトやブログを運営している</li>
+          <li>Laravel など PHP で作った業務システムがある</li>
+          <li>サーバーの PHP のバージョンを把握していない</li>
+          <li>PHP 8.1 以前のまま、長く更新していない</li>
+          <li>制作会社と連絡がつかず、保守する人がいない</li>
+          <li>更新したいが、サイトが壊れないか心配</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="service">
+      <div class="op-wrap">
+        <p class="op-eyebrow">SERVICE</p>
+        <h2 class="op-title">対応内容</h2>
+        <div class="op-cards op-cards--3">
+          <div class="op-card">
+            <h3><span class="op-num">01</span>現状の確認</h3>
+            <p>PHP のバージョンと動かし方（mod_php / php-fpm）、サーバーの種類、WordPress・Laravel・プラグインのバージョンを洗い出し、更新の影響を見積もります。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">02</span>PHP の更新</h3>
+            <p>PHP を修正版へ更新します。8.1 以前の場合は、サポート中のバージョンへ移行します。更新の前にバックアップを取り、戻せる状態で作業します。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">03</span>サイトの動作確認と修正</h3>
+            <p>WordPress のテーマ・プラグイン、Laravel のアプリが新しい PHP で動くかを確かめ、動かない箇所は修正します。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">04</span>データベースの更新</h3>
+            <p>MySQL・MariaDB などのデータベースも、必要に応じて新しいバージョンへ更新します。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">05</span>侵害の痕跡の確認</h3>
+            <p>アクセスログや不審なファイルを確かめ、更新の前に攻撃を受けていないかを調べます。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">06</span>再発を防ぐ設定</h3>
+            <p>Cloudflare などによる防御の設定や、今後の更新の進め方もあわせてご提案します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section" id="case">
+      <div class="op-wrap">
+        <p class="op-eyebrow">CASE</p>
+        <h2 class="op-title">対応実績</h2>
+        <div class="op-case">
+          <div class="op-case__metric"><b>3つ</b><span>WordPress・PHP・DB を<br>まとめて最新化</span></div>
+          <div>
+            <h3>PHP2Shell 対応として、WordPress・PHP・データベースを最新版に</h3>
+            <p>WordPress で運営しているサイトの PHP2Shell 対応として、WordPress 本体、PHP、データベースの3つを最新版へ更新し、サイトが正しく動くことを確認するところまでを行いました。この事例では1日で完了しましたが、作業日数はサイトとサーバーの状況によって変わり、2〜3日以上かかる場合もあります。</p>
+            <ul><li>WordPress</li><li>PHP</li><li>データベース</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="flow">
+      <div class="op-wrap">
+        <p class="op-eyebrow">FLOW</p>
+        <h2 class="op-title">ご依頼の流れ</h2>
+        <ol class="op-flow">
+          <li><b>ご相談</b><span>サイトの URL とサーバーの種類をお知らせください</span></li>
+          <li><b>現状の確認・お見積り</b><span>バージョンと構成を確かめ、作業内容と費用をお伝えします</span></li>
+          <li><b>更新と動作確認</b><span>バックアップを取ってから更新し、サイトの動作を確かめます</span></li>
+          <li><b>報告</b><span>実施内容と、今後の保守の進め方をご報告します</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="op-section" id="faq">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">FAQ</p>
+        <h2 class="op-title">よくある質問</h2>
+        <div class="op-faq">
+          <details><summary>WordPress のプラグインを更新すれば PHP2Shell は防げますか？</summary><p>防げません。PHP2Shell は PHP 本体の脆弱性なので、PHP そのものを修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 以降）に更新する必要があります。</p></details>
+          <details><summary>PHP 8.1 以前を使っています。どうすればよいですか？</summary><p>PHP 8.1 以前はサポートが終了しており、修正版が提供されていません。サポート中のバージョンへの移行が必要です。WordPress や Laravel、プラグインが新しい PHP で動くかを確かめながら移行します。</p></details>
+          <details><summary>共用レンタルサーバーでも対応してもらえますか？</summary><p>はい。サーバーの管理画面で PHP のバージョンを切り替えられる場合は、切り替えとサイトの動作確認を行います。サーバー会社側の対応状況もあわせて確認します。</p></details>
+          <details><summary>どのくらいの期間で対応できますか？</summary><p>環境によって変わります。WordPress・PHP・データベースの更新は、状況によって2〜3日以上かかる場合もあります。まずは現在の環境を確認して、作業日数とお見積りをお伝えします。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white">
+      <div class="op-wrap">
+        <p class="op-eyebrow">RELATED</p>
+        <h2 class="op-title">あわせて承ります</h2>
+        <div class="op-related">
+          <a href="../version-up/">WordPress・PHP・Laravel・Node.js のバージョンアップ<small>サポートが切れる前の計画的な更新</small></a>
+          <a href="../version-up/#cloudflare">Cloudflare の設定・セキュリティ対策<small>ドメイン・DNS・SSL・WAF の設定</small></a>
+          <a href="../../#services">受託開発・システム開発<small>Webシステム・モバイルアプリ・AI</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-contact" id="contact">
+      <div class="op-wrap">
+        <p class="op-eyebrow">CONTACT</p>
+        <h2 class="op-title">PHP2Shell の対応を相談する</h2>
+        <p class="op-center">サイトの URL と、わかる範囲でサーバーの種類をお知らせください。<br>担当者よりメールでご連絡します。</p>
+        <div class="lpf">
+          <form data-lp-contact data-product="PHP2Shell 対応" data-source="PHP2Shell 対策ページ（0x48lab.com）"
+                data-msg-error="送信できませんでした。通信状況をご確認のうえ、時間をおいて再度お試しください。" novalidate>
+            <label class="lpf-hp" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
+            <fieldset>
+              <legend>サイトの種類 <span class="lpf-tag lpf-tag--opt">任意</span></legend>
+              <div class="lpf-chips">
+                <label class="lpf-chip"><input type="radio" name="stack" value="WordPress" data-label="サイトの種類"><span>WordPress</span></label>
+                <label class="lpf-chip"><input type="radio" name="stack" value="Laravel" data-label="サイトの種類"><span>Laravel</span></label>
+                <label class="lpf-chip"><input type="radio" name="stack" value="その他のPHP" data-label="サイトの種類"><span>その他の PHP</span></label>
+                <label class="lpf-chip"><input type="radio" name="stack" value="わからない" data-label="サイトの種類"><span>わからない</span></label>
+              </div>
+            </fieldset>
+            <div class="lpf-row">
+              <div class="lpf-field">
+                <label class="lpf-label" for="op-url">サイトの URL <span class="lpf-tag lpf-tag--opt">任意</span></label>
+                <input type="text" id="op-url" name="url" inputmode="url" placeholder="https://example.com" data-label="サイトのURL">
+              </div>
+              <div class="lpf-field">
+                <label class="lpf-label" for="op-server">サーバー <span class="lpf-tag lpf-tag--opt">任意</span></label>
+                <input type="text" id="op-server" name="server" placeholder="例：さくら / Xserver / AWS / わからない" data-label="サーバー">
+              </div>
+            </div>
+            <div class="lpf-row">
+              <div class="lpf-field">
+                <label class="lpf-label" for="op-name">お名前 <span class="lpf-tag">必須</span></label>
+                <input type="text" id="op-name" name="name" required autocomplete="name" placeholder="山田 太郎" aria-describedby="op-name-err">
+                <p class="lpf-error" id="op-name-err">お名前を入力してください</p>
+              </div>
+              <div class="lpf-field">
+                <label class="lpf-label" for="op-org">会社名・団体名 <span class="lpf-tag lpf-tag--opt">任意</span></label>
+                <input type="text" id="op-org" name="org" autocomplete="organization" placeholder="株式会社〇〇">
+              </div>
+            </div>
+            <div class="lpf-field">
+              <label class="lpf-label" for="op-email">メールアドレス <span class="lpf-tag">必須</span></label>
+              <input type="email" id="op-email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="op-email-err">
+              <p class="lpf-error" id="op-email-err">正しいメールアドレスを入力してください</p>
+            </div>
+            <div class="lpf-field">
+              <label class="lpf-label" for="op-msg">ご相談内容 <span class="lpf-tag">必須</span></label>
+              <textarea id="op-msg" name="message" required maxlength="2000" rows="6" placeholder="PHP のバージョン、急ぎ具合、気になっていることなど、わかる範囲でご記入ください。" aria-describedby="op-msg-err"></textarea>
+              <p class="lpf-error" id="op-msg-err">ご相談内容を入力してください</p>
+            </div>
+            <button type="submit" class="lpf-submit">送信する</button>
+            <p class="lpf-note">送信をもって<a href="../../privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に同意いただいたものとみなします。サーバーのパスワードなどは、このフォームに書かないでください。</p>
+            <p class="lpf-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="lpf-done" hidden tabindex="-1">
+            <h3>送信が完了しました</h3>
+            <p>お問い合わせありがとうございます。<br>内容を確認のうえ、担当者よりご連絡いたします。</p>
+            <button type="button" class="lpf-again">別の内容を送る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="op-footer">
+    <div class="op-wrap">
+      <p><a href="../../">株式会社ハックラボ（HAKKU LABO, K.K.）</a><br>〒150-0002 東京都渋谷区渋谷2丁目19番19号 ワコー宮益坂ビル5階</p>
+      <nav class="op-footer__nav" aria-label="フッターメニュー">
+        <a href="../../">ホーム</a>
+        <a href="../version-up/">バージョンアップ・Cloudflare 設定</a>
+        <a href="../../privacy/">プライバシーポリシー</a>
+      </nav>
+      <small>WordPress は WordPress Foundation の商標です。その他記載の会社名・製品名は各社の商標または登録商標です。© 2026 HAKKU LABO, K.K.</small>
+    </div>
+  </footer>
+
+  <script src="../../js/lp-contact.js" defer></script>
+</body>
+</html>

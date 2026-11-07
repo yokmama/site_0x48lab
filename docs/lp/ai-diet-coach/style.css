@@ -618,3 +618,23 @@ html[lang="ja"] .en { display: none !important; }
 
   .adc-shots img { width: 220px; border-radius: 18px; }
 }
+
+/* --- Contact (form styles: ../../css/lp-contact.css) --- */
+.adc-contact .lpf {
+  --lpf-accent: var(--blue);
+  --lpf-text: var(--text);
+  --lpf-muted: var(--text-muted);
+  --lpf-border: rgba(15, 23, 42, 0.14);
+  --lpf-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+.adc-contact .lpf-submit { background: var(--grad); }
+
+/* --- FAQ --- */
+.adc-faq-list { max-width: 760px; margin: 0 auto; display: grid; gap: 10px; }
+.adc-faq-list details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 0 20px; }
+.adc-faq-list summary { cursor: pointer; font-weight: 700; padding: 16px 28px 16px 0; position: relative; list-style: none; }
+.adc-faq-list summary::-webkit-details-marker { display: none; }
+.adc-faq-list summary::after { content: "+"; position: absolute; right: 0; top: 12px; font-size: 1.4rem; color: var(--text-muted); }
+.adc-faq-list details[open] summary::after { content: "−"; }
+.adc-faq-list details p { margin: 0; padding: 0 0 16px; color: var(--text-muted); }
