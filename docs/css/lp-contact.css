@@ -1,0 +1,95 @@
+/* Contact form shared by the product LPs. Each page sets the --lpf-* colours. */
+.lpf {
+  --lpf-accent: #2490f3;
+  --lpf-text: #1f2a3d;
+  --lpf-muted: #5d6777;
+  --lpf-border: rgba(15, 23, 42, .14);
+  --lpf-surface: #fff;
+  --lpf-danger: #c43d3d;
+  --lpf-radius: 14px;
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 40px);
+  background: var(--lpf-surface);
+  border: 1px solid var(--lpf-border);
+  border-radius: calc(var(--lpf-radius) * 1.4);
+  color: var(--lpf-text);
+  text-align: left;
+}
+.lpf form { display: grid; gap: 20px; }
+.lpf-row { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) { .lpf-row { grid-template-columns: 1fr; } }
+
+.lpf-field { display: grid; gap: 6px; min-width: 0; }
+.lpf-label, .lpf legend {
+  font-weight: 700;
+  font-size: .95rem;
+  display: flex; align-items: center; gap: 8px;
+  padding: 0;
+}
+.lpf-tag {
+  font-size: .7rem; font-weight: 700;
+  padding: 2px 8px; border-radius: 999px;
+  background: var(--lpf-accent); color: #fff;
+}
+.lpf-tag--opt { background: transparent; color: var(--lpf-muted); border: 1px solid var(--lpf-border); }
+
+.lpf input[type=text], .lpf input[type=email], .lpf input[type=tel], .lpf select, .lpf textarea {
+  width: 100%;
+  font: inherit; font-size: 16px; /* 16px avoids iOS zoom on focus */
+  color: var(--lpf-text);
+  background: #fff;
+  border: 1.5px solid var(--lpf-border);
+  border-radius: var(--lpf-radius);
+  padding: 12px 14px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.lpf textarea { min-height: 150px; resize: vertical; }
+.lpf input:focus, .lpf select:focus, .lpf textarea:focus {
+  outline: none;
+  border-color: var(--lpf-accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--lpf-accent) 18%, transparent);
+}
+.lpf-error { display: none; margin: 0; font-size: .82rem; color: var(--lpf-danger); }
+.lpf-field.is-invalid input, .lpf-field.is-invalid textarea { border-color: var(--lpf-danger); }
+.lpf-field.is-invalid .lpf-error { display: block; }
+
+.lpf fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.lpf-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.lpf-chip { position: relative; cursor: pointer; }
+.lpf-chip input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.lpf-chip span {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1.5px solid var(--lpf-border);
+  border-radius: 999px;
+  font-size: .9rem;
+  background: #fff;
+  transition: background .2s, border-color .2s, color .2s;
+}
+.lpf-chip input:checked + span { background: var(--lpf-accent); border-color: var(--lpf-accent); color: #fff; font-weight: 700; }
+.lpf-chip input:focus-visible + span { box-shadow: 0 0 0 4px color-mix(in srgb, var(--lpf-accent) 25%, transparent); }
+
+.lpf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.lpf-submit {
+  appearance: none; border: 0; cursor: pointer;
+  font: inherit; font-weight: 700; font-size: 1.05rem;
+  color: #fff; background: var(--lpf-accent);
+  padding: 16px 24px; border-radius: 999px;
+  transition: transform .15s, filter .2s;
+}
+.lpf-submit:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.lpf-submit:disabled { opacity: .6; cursor: progress; transform: none; }
+.lpf.is-sending .lpf-submit::after { content: " …"; }
+
+.lpf-note { margin: 0; font-size: .82rem; color: var(--lpf-muted); line-height: 1.7; }
+.lpf-note a { color: inherit; }
+.lpf-status { margin: 0; color: var(--lpf-danger); font-weight: 700; }
+.lpf-status:empty { display: none; }
+
+.lpf-done { text-align: center; padding: 24px 0; outline: none; }
+.lpf-done h3 { margin: 0 0 8px; font-size: 1.3rem; }
+.lpf-done p { margin: 0 0 16px; color: var(--lpf-muted); line-height: 1.8; }
+.lpf-again { appearance: none; border: 0; background: none; font: inherit; color: var(--lpf-accent); cursor: pointer; text-decoration: underline; }
