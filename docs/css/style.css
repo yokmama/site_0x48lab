@@ -2375,6 +2375,16 @@ html:not(.js) .loader {
 .svc__link:hover {
   text-decoration: underline;
 }
+.svc__item .btn-row {
+  margin-top: auto;
+  padding-top: 18px;
+  column-gap: 20px;
+  row-gap: 4px;
+}
+.svc__item .btn-row .svc__link {
+  margin-top: 0;
+  padding-top: 0;
+}
 
 .product {
   display: grid;

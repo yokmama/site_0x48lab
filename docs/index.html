@@ -13,7 +13,7 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>株式会社ハックラボ | HAKKU LABO, K.K. — 受託開発のテクノロジースタジオ</title>
-  <meta name="description" content="16年の受託開発実績と生成AIを掛け合わせ、Webシステム・モバイルアプリ・AIシステムを高速かつ堅牢にかたちにする開発スタジオ、株式会社ハックラボ。WordPress・PHP・Laravel・Node.js のバージョンアップや PHP2Shell などの脆弱性対応、自社プロダクト「ほいくのわ」「AIダイエットコーチ」も。">
+  <meta name="description" content="16年の受託開発実績と生成AIを掛け合わせ、Webシステム・モバイルアプリ・AIシステムを高速かつ堅牢にかたちにする開発スタジオ、株式会社ハックラボ。WordPress・PHP・Laravel・Node.js・Flutter のバージョンアップや PHP2Shell などの脆弱性対応、自社プロダクト「ほいくのわ」「AIダイエットコーチ」も。">
   <meta property="og:title" content="株式会社ハックラボ | HAKKU LABO, K.K.">
   <meta property="og:description" content="16年の開発実績 × 生成AI。企画から設計・開発・運用まで一気通貫で支える受託開発スタジオ。">
   <meta property="og:type" content="website">
@@ -37,7 +37,7 @@
     "logo": "https://0x48lab.com/assets/brand/logo.svg",
     "foundingDate": "2010",
     "address": { "@type": "PostalAddress", "postalCode": "150-0002", "addressRegion": "東京都", "addressLocality": "渋谷区", "streetAddress": "渋谷2丁目19番19号 ワコー宮益坂ビル5階", "addressCountry": "JP" },
-    "knowsAbout": ["受託開発", "生成AI", "WordPress", "PHP", "Laravel", "Node.js", "Cloudflare", "PHP2Shell", "モバイルアプリ開発"],
+    "knowsAbout": ["受託開発", "生成AI", "WordPress", "PHP", "Laravel", "Node.js", "Flutter", "Cloudflare", "PHP2Shell", "モバイルアプリ開発"],
     "owns": [
       { "@type": "SoftwareApplication", "name": "ほいくのわ", "url": "https://0x48lab.com/lp/hoikunowa/" },
       { "@type": "MobileApplication", "name": "AIダイエットコーチ", "url": "https://0x48lab.com/lp/ai-diet-coach/" }
@@ -343,15 +343,18 @@
           </li>
           <li class="svc__item">
             <h3>保守・バージョンアップ</h3>
-            <p>WordPress・PHP・データベース・Laravel・Node.js を、サイトを動かしたまま最新版へ更新します。</p>
-            <p class="svc__tags">WordPress / PHP / Laravel / Node.js</p>
+            <p>WordPress・PHP・データベース・Laravel・Node.js を、サイトを動かしたまま最新版へ更新します。Flutter アプリの更新とストアへの再申請も行います。</p>
+            <p class="svc__tags">WordPress / PHP / Laravel / Node.js / Flutter</p>
             <a href="lp/version-up/" class="svc__link">詳しく見る →</a>
           </li>
           <li class="svc__item svc__item--alert">
             <h3>脆弱性への緊急対応</h3>
-            <p>PHP の重大な脆弱性「PHP2Shell」など、急いで直す必要があるときの更新と確認を行います。</p>
-            <p class="svc__tags">PHP2Shell / 侵害の痕跡確認</p>
-            <a href="lp/php2shell/" class="svc__link">詳しく見る →</a>
+            <p>PHP の重大な脆弱性「PHP2Shell」や、古い Flutter アプリの脆弱性など、急いで直す必要があるときの更新と確認を行います。</p>
+            <p class="svc__tags">PHP2Shell / Flutter / 侵害の痕跡確認</p>
+            <div class="btn-row">
+              <a href="lp/php2shell/" class="svc__link">PHP2Shell 対策 →</a>
+              <a href="lp/flutter/" class="svc__link">Flutter の更新 →</a>
+            </div>
           </li>
           <li class="svc__item">
             <h3>古いシステムの作り直し</h3>
@@ -571,6 +574,18 @@
               <div class="btn-row">
                 <a href="lp/php2shell/" class="work__link">PHP2Shell 対策 →</a>
                 <a href="lp/version-up/" class="work__link">バージョンアップ代行・Cloudflare 設定 →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work" data-anim="slide">
+            <div class="work__metric"><span class="work__big">3.47.8</span><span>Flutter を修正版へ更新し再配布</span></div>
+            <div class="work__body">
+              <p class="work__cat">保守・脆弱性対応 / Flutter</p>
+              <h3>認証局の侵害への対応として、Flutter アプリを修正版に</h3>
+              <p>2026年10月の eMudhra 認証局の侵害への対応として、Flutter アプリを修正版の 3.47.8 へ更新。Xcode 27 でビルドが通らない古い設定もあわせて直し、アプリを作り直してストアへ出し直すところまで実施しました。</p>
+              <div class="btn-row">
+                <a href="lp/flutter/" class="work__link">Flutter アップデート代行 →</a>
               </div>
             </div>
           </article>

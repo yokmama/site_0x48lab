@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Flutter アップデート代行・脆弱性対応（3.47.8 / eMudhra 認証局の侵害）｜株式会社ハックラボ</title>
+  <meta name="description" content="古い Flutter で作ったアプリは、OS を更新しても脆弱性が直りません。Flutter・Dart の更新、iOS・Android のビルド対応、ストアへの再申請までを代行します。eMudhra 認証局の侵害（Flutter 3.47.8 で修正）への対応にも。">
+  <link rel="canonical" href="https://0x48lab.com/lp/flutter/">
+  <meta property="og:title" content="Flutter アップデート代行・脆弱性対応｜株式会社ハックラボ">
+  <meta property="og:description" content="Flutter・Dart の更新から、iOS・Android のビルド対応、ストアへの再申請まで。古い Flutter アプリの脆弱性対応を代行します。">
+  <meta property="og:url" content="https://0x48lab.com/lp/flutter/">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="theme-color" content="#f6f9fd">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/lp-contact.css">
+  <link rel="stylesheet" href="../../css/lp-ops.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "name": "Flutter アップデート代行・脆弱性対応",
+        "serviceType": "モバイルアプリ保守・Flutterバージョンアップ",
+        "description": "Flutter・Dart を修正版へ更新し、iOS・Android のビルド対応、動作確認、App Store・Google Play への再申請までを代行します。",
+        "url": "https://0x48lab.com/lp/flutter/",
+        "areaServed": "JP",
+        "provider": { "@type": "Organization", "name": "株式会社ハックラボ", "alternateName": "HAKKU LABO, K.K.", "url": "https://0x48lab.com/" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "株式会社ハックラボ", "item": "https://0x48lab.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Flutter アップデート代行", "item": "https://0x48lab.com/lp/flutter/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "利用者がスマートフォンの OS を更新すれば、Flutter の脆弱性は直りますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "直りません。Flutter の多くの部品はアプリの中に組み込まれて配られるため、Flutter を更新してアプリを作り直し、ストアに出し直す必要があります。" } },
+          { "@type": "Question", "name": "他社が作った Flutter アプリでも対応できますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。ソースコードと、ストアの開発者アカウントへのアクセスをご用意いただければ対応します。制作会社と連絡が取れない場合もご相談ください。" } },
+          { "@type": "Question", "name": "Flutter を何世代も更新していません。対応できますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。Flutter・Dart と依存パッケージを段階的に上げ、非推奨になった書き方や、Xcode・Android Gradle Plugin の設定を直しながら進めます。" } },
+          { "@type": "Question", "name": "どのくらいの期間で対応できますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "アプリの規模と、どれだけ古い Flutter を使っているかによって変わります。ストアの審査にも日数がかかります。まずは現在の構成を確認して、作業日数とお見積りをお伝えします。" } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="op-header">
+    <div class="op-wrap op-header__inner">
+      <a href="../../" class="op-brand"><img src="../../assets/brand/logo.svg" alt="0x48 HackLab" width="110" height="32"><span>株式会社ハックラボ</span></a>
+      <nav class="op-nav" aria-label="ページ内メニュー">
+        <a href="#about">古いと何が危ないか</a>
+        <a href="#service">対応内容</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#contact" class="op-btn op-btn--sm">相談する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="op-wrap op-crumb">
+      <ol><li><a href="../../">ホーム</a></li><li>Flutter アップデート代行・脆弱性対応</li></ol>
+    </div>
+
+    <section class="op-hero">
+      <div class="op-wrap">
+        <p class="op-alert">eMudhra 認証局の侵害（2026年10月）・Flutter 3.47.8 で修正</p>
+        <h1>古い <em>Flutter</em> のアプリは、<br>OS を更新しても直りません。</h1>
+        <p class="op-lead">Flutter の多くの部品は<strong>アプリの中に組み込まれて配られます</strong>。そのため、利用者がスマートフォンの OS を更新しても、アプリの中の脆弱性は残ったままです。直すには、<strong>Flutter を更新してアプリを作り直し、ストアに出し直す</strong>必要があります。ハックラボは、Flutter の更新から iOS・Android のビルド対応、動作確認、ストアへの再申請までをまとめて引き受けます。</p>
+        <div class="op-cta">
+          <a href="#contact" class="op-btn">対応を相談する（無料）</a>
+          <a href="#about" class="op-btn op-btn--ghost">古いと何が危ないか</a>
+        </div>
+        <div class="op-proof">
+          <div><b>実績</b><span>Flutter アプリを修正版へ更新し、ストアへ再配布</span></div>
+          <div><b>iOS / Android</b><span>Xcode・Gradle のビルド対応から再申請まで</span></div>
+          <div><b>16<small>年</small></b><span>受託開発と運用保守の実績（2010年〜）</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="about">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">RISK</p>
+        <h2 class="op-title">Flutter のバージョンが古いと、何が危ないか</h2>
+        <p class="op-text">ブラウザや OS の部品はメーカーが自動で更新しますが、Flutter で作ったアプリは違います。通信や画像の処理に使う部品をアプリ自身が抱えているため、<strong>アプリを作り直さない限り、古い部品のまま動き続けます</strong>。</p>
+        <table class="op-facts">
+          <tr><th scope="row">通信の安全性</th><td>Android・Windows・Linux では、信頼する証明書の一覧をアプリの中に持っています。認証局が侵害されても、古いアプリは偽の証明書を信じ続け、<strong>通信を盗み見されたり書き換えられたりする</strong>おそれがあります。<br>例：2026年10月の eMudhra 認証局の侵害（Flutter 3.47.8 で修正、GHSA-frr6-h895-5pxp）</td></tr>
+          <tr><th scope="row">画像の処理</th><td>画像の読み込みや描画のためのライブラリ（Skia・libpng・libwebp など）を同梱しています。細工した画像を表示させるだけで、アプリが落ちたり、最悪の場合は任意のコードを実行されたりするおそれがあります。<br>例：WebP の脆弱性 CVE-2023-4863、Skia の CVE-2023-6345、libpng の脆弱性（Flutter 3.47.2 で修正）</td></tr>
+          <tr><th scope="row">Dart の標準ライブラリ</th><td>URL の解析や検証の不具合で、本来は弾くべき URL が通ってしまうことがあります。<br>例：dart:uri の認証回避の脆弱性</td></tr>
+          <tr><th scope="row">ストアの要件</th><td>Apple と Google は、新しい SDK でのビルドを定期的に義務づけています。Flutter が古すぎると、<strong>緊急の修正が必要なときにすぐ出せません</strong>。<br>例：Xcode 27 では古い設定のままではビルドが通らず、追加の対応が必要でした</td></tr>
+        </table>
+        <p class="op-fine">参考：Flutter の CHANGELOG とセキュリティ勧告（GitHub Security Advisories）。正確な情報は Flutter 公式の発表でご確認ください（2026年11月10日時点の情報です）。</p>
+      </div>
+    </section>
+
+    <section class="op-section" id="check">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">CHECK</p>
+        <h2 class="op-title">こんなアプリは、すぐに確認を</h2>
+        <ul class="op-checks">
+          <li>Flutter で作ったアプリを App Store・Google Play で公開している</li>
+          <li>アプリで使っている Flutter のバージョンを把握していない</li>
+          <li>公開してから、半年以上アプリを作り直していない</li>
+          <li>ログイン・決済・個人情報をアプリで扱っている</li>
+          <li>制作会社と連絡がつかず、保守する人がいない</li>
+          <li>ビルドが通らず、更新版を出せなくなっている</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="service">
+      <div class="op-wrap">
+        <p class="op-eyebrow">SERVICE</p>
+        <h2 class="op-title">対応内容</h2>
+        <div class="op-cards op-cards--3">
+          <div class="op-card">
+            <h3><span class="op-num">01</span>現状の確認</h3>
+            <p>Flutter・Dart のバージョン、依存パッケージ、iOS・Android のビルド設定を洗い出し、該当するセキュリティ勧告と更新の影響を見積もります。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">02</span>Flutter・Dart の更新</h3>
+            <p>Flutter を stable の修正版へ更新します。古いバージョンからは段階的に上げ、依存パッケージもあわせて更新します。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">03</span>ビルドの対応</h3>
+            <p>Xcode・CocoaPods、Android Gradle Plugin・SDK のバージョンなど、新しい環境でビルドが通らない箇所を直します。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">04</span>アプリの動作確認と修正</h3>
+            <p>iOS・Android の実機で主な画面と機能を確かめ、動かない箇所や非推奨になった書き方を修正します。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">05</span>ストアへの再申請</h3>
+            <p>App Store・Google Play へ更新版を申請し、審査で指摘があれば対応して、公開まで見届けます。</p>
+          </div>
+          <div class="op-card">
+            <h3><span class="op-num">06</span>今後の更新の仕組みづくり</h3>
+            <p>修正版をこまめに取り込む手順や、セキュリティ勧告を定期的に確認する運用をご提案します。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section" id="case">
+      <div class="op-wrap">
+        <p class="op-eyebrow">CASE</p>
+        <h2 class="op-title">対応実績</h2>
+        <div class="op-case">
+          <div class="op-case__metric"><b>3.47.8</b><span>修正版へ更新し<br>ストアへ再配布</span></div>
+          <div>
+            <h3>eMudhra 認証局の侵害への対応として、Flutter を修正版に</h3>
+            <p>Flutter で作ったアプリの脆弱性対応として、Flutter を修正版の 3.47.8 へ更新しました。Xcode 27 では古い設定のままではビルドが通らなかったため、ビルド設定の対応もあわせて行い、アプリを作り直してストアへ出し直すところまでを行いました。作業日数はアプリの規模や Flutter の古さ、ストアの審査によって変わります。</p>
+            <ul><li>Flutter</li><li>Dart</li><li>Xcode</li><li>ストア再申請</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="ops">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">OPERATION</p>
+        <h2 class="op-title">おすすめの運用</h2>
+        <ul class="op-checks">
+          <li>stable の修正版（3.47.x の x の部分）は、こまめに取り込む</li>
+          <li>Flutter の CHANGELOG の「Security advisory」を、少なくとも四半期に一度は確認する</li>
+          <li>セキュリティ勧告が出たら、アプリを作り直して再配布するまでを1つの対応として見積もる</li>
+        </ul>
+        <p class="op-text" style="margin-top:16px">社内で手が回らない場合は、定期的な確認と更新をまとめてお任せいただくこともできます。</p>
+      </div>
+    </section>
+
+    <section class="op-section" id="flow">
+      <div class="op-wrap">
+        <p class="op-eyebrow">FLOW</p>
+        <h2 class="op-title">ご依頼の流れ</h2>
+        <ol class="op-flow">
+          <li><b>ご相談</b><span>アプリ名と、わかる範囲で Flutter のバージョンをお知らせください</span></li>
+          <li><b>現状の確認・お見積り</b><span>ソースコードとビルド環境を確かめ、作業内容と費用をお伝えします</span></li>
+          <li><b>更新と動作確認</b><span>Flutter を更新し、iOS・Android の実機で動作を確かめます</span></li>
+          <li><b>再申請・報告</b><span>ストアへ申請して公開を見届け、今後の保守の進め方をご報告します</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="op-section op-section--white" id="faq">
+      <div class="op-wrap op-wrap--narrow">
+        <p class="op-eyebrow">FAQ</p>
+        <h2 class="op-title">よくある質問</h2>
+        <div class="op-faq">
+          <details><summary>利用者がスマートフォンの OS を更新すれば、Flutter の脆弱性は直りますか？</summary><p>直りません。Flutter の多くの部品はアプリの中に組み込まれて配られるため、Flutter を更新してアプリを作り直し、ストアに出し直す必要があります。</p></details>
+          <details><summary>他社が作った Flutter アプリでも対応できますか？</summary><p>はい。ソースコードと、ストアの開発者アカウントへのアクセスをご用意いただければ対応します。制作会社と連絡が取れない場合もご相談ください。</p></details>
+          <details><summary>Flutter を何世代も更新していません。対応できますか？</summary><p>はい。Flutter・Dart と依存パッケージを段階的に上げ、非推奨になった書き方や、Xcode・Android Gradle Plugin の設定を直しながら進めます。</p></details>
+          <details><summary>どのくらいの期間で対応できますか？</summary><p>アプリの規模と、どれだけ古い Flutter を使っているかによって変わります。ストアの審査にも日数がかかります。まずは現在の構成を確認して、作業日数とお見積りをお伝えします。</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section">
+      <div class="op-wrap">
+        <p class="op-eyebrow">RELATED</p>
+        <h2 class="op-title">あわせて承ります</h2>
+        <div class="op-related">
+          <a href="../version-up/">WordPress・PHP・Laravel・Node.js のバージョンアップ<small>アプリの裏側の API サーバーもまとめて</small></a>
+          <a href="../php2shell/">PHP2Shell 対策<small>PHP 本体の重大な脆弱性への対応</small></a>
+          <a href="../ai-development/">アプリ・システムの開発<small>Flutter による iOS・Android アプリ開発</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section op-contact" id="contact">
+      <div class="op-wrap">
+        <p class="op-eyebrow">CONTACT</p>
+        <h2 class="op-title">Flutter の更新を相談する</h2>
+        <p class="op-center">アプリ名やストアの URL と、わかる範囲で Flutter のバージョンをお知らせください。<br>担当者よりメールでご連絡します。</p>
+        <div class="lpf">
+          <form data-lp-contact data-product="Flutter アップデート" data-source="Flutter アップデート代行ページ（0x48lab.com）"
+                data-msg-error="送信できませんでした。通信状況をご確認のうえ、時間をおいて再度お試しください。" novalidate>
+            <label class="lpf-hp" aria-hidden="true"><input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
+            <fieldset>
+              <legend>対象のプラットフォーム <span class="lpf-tag lpf-tag--opt">任意・複数可</span></legend>
+              <div class="lpf-chips">
+                <label class="lpf-chip"><input type="checkbox" name="p-ios" value="iOS" data-label="対象：iOS"><span>iOS</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="p-android" value="Android" data-label="対象：Android"><span>Android</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="p-web" value="Web" data-label="対象：Web"><span>Web</span></label>
+                <label class="lpf-chip"><input type="checkbox" name="p-desktop" value="デスクトップ" data-label="対象：デスクトップ"><span>デスクトップ</span></label>
+              </div>
+            </fieldset>
+            <div class="lpf-row">
+              <div class="lpf-field">
+                <label class="lpf-label" for="fl-app">アプリ名・ストアの URL <span class="lpf-tag lpf-tag--opt">任意</span></label>
+                <input type="text" id="fl-app" name="app" placeholder="例：〇〇アプリ / https://apps.apple.com/..." data-label="アプリ名・ストアURL">
+              </div>
+              <div class="lpf-field">
+                <label class="lpf-label" for="fl-ver">Flutter のバージョン <span class="lpf-tag lpf-tag--opt">任意</span></label>
+                <input type="text" id="fl-ver" name="flutter_version" placeholder="例：3.22 / わからない" data-label="Flutterのバージョン">
+              </div>
+            </div>
+            <div class="lpf-row">
+              <div class="lpf-field">
+                <label class="lpf-label" for="fl-name">お名前 <span class="lpf-tag">必須</span></label>
+                <input type="text" id="fl-name" name="name" required autocomplete="name" placeholder="山田 太郎" aria-describedby="fl-name-err">
+                <p class="lpf-error" id="fl-name-err">お名前を入力してください</p>
+              </div>
+              <div class="lpf-field">
+                <label class="lpf-label" for="fl-org">会社名・団体名 <span class="lpf-tag lpf-tag--opt">任意</span></label>
+                <input type="text" id="fl-org" name="org" autocomplete="organization" placeholder="株式会社〇〇">
+              </div>
+            </div>
+            <div class="lpf-field">
+              <label class="lpf-label" for="fl-email">メールアドレス <span class="lpf-tag">必須</span></label>
+              <input type="email" id="fl-email" name="email" required autocomplete="email" inputmode="email" placeholder="you@example.com" aria-describedby="fl-email-err">
+              <p class="lpf-error" id="fl-email-err">正しいメールアドレスを入力してください</p>
+            </div>
+            <div class="lpf-field">
+              <label class="lpf-label" for="fl-msg">ご相談内容 <span class="lpf-tag">必須</span></label>
+              <textarea id="fl-msg" name="message" required maxlength="2000" rows="6" placeholder="急ぎ具合、ビルドが通らないなど困っていること、ソースコードの有無など、わかる範囲でご記入ください。" aria-describedby="fl-msg-err"></textarea>
+              <p class="lpf-error" id="fl-msg-err">ご相談内容を入力してください</p>
+            </div>
+            <button type="submit" class="lpf-submit">送信する</button>
+            <p class="lpf-note">送信をもって<a href="../../privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に同意いただいたものとみなします。ストアのアカウントのパスワードなどは、このフォームに書かないでください。</p>
+            <p class="lpf-status" role="status" aria-live="polite"></p>
+          </form>
+          <div class="lpf-done" hidden tabindex="-1">
+            <h3>送信が完了しました</h3>
+            <p>お問い合わせありがとうございます。<br>内容を確認のうえ、担当者よりご連絡いたします。</p>
+            <button type="button" class="lpf-again">別の内容を送る</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="op-footer">
+    <div class="op-wrap">
+      <p><a href="../../">株式会社ハックラボ（HAKKU LABO, K.K.）</a><br>〒150-0002 東京都渋谷区渋谷2丁目19番19号 ワコー宮益坂ビル5階</p>
+      <nav class="op-footer__nav" aria-label="フッターメニュー">
+        <a href="../../">ホーム</a>
+        <a href="../version-up/">バージョンアップ・Cloudflare 設定</a>
+        <a href="../php2shell/">PHP2Shell 対策</a>
+        <a href="../../privacy/">プライバシーポリシー</a>
+      </nav>
+      <small>Flutter・Dart・Android・Google Play は Google LLC の商標です。iOS・Xcode・App Store は Apple Inc. の商標です。その他記載の会社名・製品名は各社の商標または登録商標です。© 2026 HAKKU LABO, K.K.</small>
+    </div>
+  </footer>
+
+  <script src="../../js/lp-contact.js" defer></script>
+</body>
+</html>
