@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PHP2Shell 対策・PHPアップデート代行（CVE-2026-109618 / 109619）｜株式会社ハックラボ</title>
-  <meta name="description" content="PHPの重大な脆弱性「PHP2Shell」（CVE-2026-109618 / CVE-2026-109619）への対応を代行します。PHPを修正版へ更新し、WordPress・Laravelの動作確認、データベースの更新、侵害の痕跡確認まで。WordPress・PHP・データベースをまとめて最新化した実績があります。">
+  <meta name="description" content="PHPの重大な脆弱性「PHP2Shell」（CVE-2026-109618 / CVE-2026-109619）への対応を代行します。PHPを修正版へ更新し、WordPress・Laravelの動作確認、データベースの更新、侵害の痕跡確認まで。PHP 8.2は2026年12月31日にサポートが終了するため、8.3以降への移行もご相談ください。WordPress・PHP・データベースをまとめて最新化した実績があります。">
   <link rel="canonical" href="https://0x48lab.com/lp/php2shell/">
   <meta property="og:title" content="PHP2Shell 対策・PHPアップデート代行｜株式会社ハックラボ">
   <meta property="og:description" content="PHPの重大な脆弱性「PHP2Shell」への対応を代行。PHPの更新からWordPress・Laravelの動作確認、侵害の痕跡確認まで。">
@@ -45,6 +45,8 @@
             "acceptedAnswer": { "@type": "Answer", "text": "防げません。PHP2ShellはPHP本体の脆弱性なので、PHPそのものを修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 以降）に更新する必要があります。" } },
           { "@type": "Question", "name": "PHP 8.1以前を使っています。どうすればよいですか？",
             "acceptedAnswer": { "@type": "Answer", "text": "PHP 8.1以前はサポートが終了しており、修正版が提供されていません。サポート中のバージョンへの移行が必要です。WordPressやLaravel、プラグインが新しいPHPで動くかを確かめながら移行します。" } },
+          { "@type": "Question", "name": "PHP 8.2 を使っています。修正版（8.2.35）に更新すれば大丈夫ですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "PHP2Shell への対策としては有効です。ただし PHP 8.2 のセキュリティサポートは2026年12月31日に終了し、それ以降に見つかる脆弱性は修正されません。修正版への更新とあわせて、PHP 8.3 以降への移行を計画することをおすすめします。" } },
           { "@type": "Question", "name": "共用レンタルサーバーでも対応してもらえますか？",
             "acceptedAnswer": { "@type": "Answer", "text": "はい。サーバーの管理画面でPHPのバージョンを切り替えられる場合は、切り替えとサイトの動作確認を行います。サーバー会社側の対応状況もあわせて確認します。" } },
           { "@type": "Question", "name": "どのくらいの期間で対応できますか？",
@@ -99,6 +101,7 @@
           <tr><th scope="row">CVE</th><td>CVE-2026-109618 / CVE-2026-109619</td></tr>
           <tr><th scope="row">深刻度</th><td>CVSS v4.0 で 9.2</td></tr>
           <tr><th scope="row">修正版</th><td>PHP 8.2.35 / 8.3.36 / 8.4.27 / 8.5.12</td></tr>
+          <tr><th scope="row">8.2</th><td>修正版（8.2.35）はありますが、<strong>2026年12月31日にセキュリティサポートが終了</strong>します。8.3 以降への移行を計画してください（<a href="../version-up/#php82">PHP 8.2 のサポート終了について</a>）</td></tr>
           <tr><th scope="row">8.1 以前</th><td>サポートが終了しており、修正版は出ません。サポート中のバージョンへの移行が必要です</td></tr>
           <tr><th scope="row">影響が報告された構成</th><td>mod_php、php-fpm、WordPress、Laravel、Symfony など</td></tr>
           <tr><th scope="row">悪用の状況</th><td>攻撃コードが出回っていると報告されており、米国 CISA は悪用が確認された脆弱性の一覧（KEV）に登録しています</td></tr>
@@ -191,6 +194,7 @@
         <div class="op-faq">
           <details><summary>WordPress のプラグインを更新すれば PHP2Shell は防げますか？</summary><p>防げません。PHP2Shell は PHP 本体の脆弱性なので、PHP そのものを修正版（8.2.35 / 8.3.36 / 8.4.27 / 8.5.12 以降）に更新する必要があります。</p></details>
           <details><summary>PHP 8.1 以前を使っています。どうすればよいですか？</summary><p>PHP 8.1 以前はサポートが終了しており、修正版が提供されていません。サポート中のバージョンへの移行が必要です。WordPress や Laravel、プラグインが新しい PHP で動くかを確かめながら移行します。</p></details>
+          <details><summary>PHP 8.2 を使っています。修正版（8.2.35）に更新すれば大丈夫ですか？</summary><p>PHP2Shell への対策としては有効です。ただし PHP 8.2 のセキュリティサポートは2026年12月31日に終了し、それ以降に見つかる脆弱性は修正されません。修正版への更新とあわせて、PHP 8.3 以降への移行を計画することをおすすめします。詳しくは<a href="../version-up/#php82">PHP 8.2 のサポート終了について</a>をご覧ください。</p></details>
           <details><summary>共用レンタルサーバーでも対応してもらえますか？</summary><p>はい。サーバーの管理画面で PHP のバージョンを切り替えられる場合は、切り替えとサイトの動作確認を行います。サーバー会社側の対応状況もあわせて確認します。</p></details>
           <details><summary>どのくらいの期間で対応できますか？</summary><p>環境によって変わります。WordPress・PHP・データベースの更新は、状況によって2〜3日以上かかる場合もあります。まずは現在の環境を確認して、作業日数とお見積りをお伝えします。</p></details>
         </div>
@@ -287,5 +291,6 @@
   </footer>
 
   <script src="../../js/lp-contact.js" defer></script>
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0feaf78a96ca48649fdc2263f9fbb37c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
