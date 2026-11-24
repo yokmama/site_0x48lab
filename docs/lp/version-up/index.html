@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WordPress・PHP・Laravel・Node.js のバージョンアップ代行／Cloudflare 設定｜株式会社ハックラボ</title>
-  <meta name="description" content="WordPress・PHP・データベース・Laravel・Node.js のバージョンアップと、Cloudflare のドメイン設定・セキュリティ対策を代行します。サポート終了への対応や脆弱性対応も。WordPress・PHP・データベースをまとめて最新化した実績があります。">
+  <title>PHP 8.2 サポート終了対応・WordPress・PHP・Laravel・Node.js のバージョンアップ代行｜株式会社ハックラボ</title>
+  <meta name="description" content="PHP 8.2 のセキュリティサポートは2026年12月31日に終了します。WordPress・PHP・データベース・Laravel・Node.js のバージョンアップと、Cloudflare のドメイン設定・セキュリティ対策を代行します。WordPress・PHP・データベースをまとめて最新化した実績があります。">
   <link rel="canonical" href="https://0x48lab.com/lp/version-up/">
   <meta property="og:title" content="バージョンアップ代行・Cloudflare 設定｜株式会社ハックラボ">
   <meta property="og:description" content="WordPress・PHP・Laravel・Node.js の更新と、Cloudflare のドメイン設定・セキュリティ対策を代行します。">
@@ -53,6 +53,14 @@
       {
         "@type": "FAQPage",
         "mainEntity": [
+          { "@type": "Question", "name": "PHP 8.2 のサポートはいつ終わりますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "PHP 8.2 のセキュリティサポートは2026年12月31日に終了します。それ以降は、新しい脆弱性が見つかっても PHP 8.2 向けの修正版は提供されません。PHP 8.1 以前はすでにサポートが終了しています。" } },
+          { "@type": "Question", "name": "サポートが終わった PHP を使い続けるとどうなりますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "すぐにサイトが止まるわけではありませんが、新しい脆弱性が見つかっても修正されないため、改ざんや情報漏えいの危険が高まります。WordPress やプラグインを最新にしても、PHP 本体の脆弱性は防げません。" } },
+          { "@type": "Question", "name": "レンタルサーバーが PHP を自動で新しいバージョンに切り替えると聞きました。何か準備は必要ですか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "必要です。古いテーマやプラグイン、独自のプログラムが新しい PHP に対応していないと、切り替わった日に画面が崩れたり、エラーで表示されなくなったりすることがあります。切り替わる前に、新しい PHP で動くかを確かめておくのが安全です。" } },
+          { "@type": "Question", "name": "今使っている PHP のバージョンがわかりません。調べてもらえますか？",
+            "acceptedAnswer": { "@type": "Answer", "text": "はい。サイトの URL とサーバーの情報をもとに、PHP・WordPress・データベースのバージョンと構成を確認し、作業内容と費用をお伝えします。" } },
           { "@type": "Question", "name": "バージョンアップでサイトが壊れることはありませんか？",
             "acceptedAnswer": { "@type": "Answer", "text": "作業前にバックアップを取り、戻せる状態で進めます。可能な場合は本番と同じ構成の検証環境で先に試し、動かない箇所を直してから本番に反映します。" } },
           { "@type": "Question", "name": "自社で作っていないシステムでも対応できますか？",
@@ -72,6 +80,7 @@
     <div class="op-wrap op-header__inner">
       <a href="../../" class="op-brand"><img src="../../assets/brand/logo.svg" alt="0x48 HackLab" width="110" height="32"><span>株式会社ハックラボ</span></a>
       <nav class="op-nav" aria-label="ページ内メニュー">
+        <a href="#php82">PHP 8.2 サポート終了</a>
         <a href="#targets">対応範囲</a>
         <a href="#cloudflare">Cloudflare</a>
         <a href="#faq">よくある質問</a>
@@ -98,6 +107,43 @@
           <div><b>実績</b><span>WordPress・PHP・データベースをまとめて最新化</span></div>
           <div><b>6<small>領域</small></b><span>WordPress / PHP / DB / Laravel / Node.js / Cloudflare</span></div>
           <div><b>10<small>年+</small></b><span>大きなトラブルなく稼働を続けるシステムの運用実績</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="op-section" id="php82">
+      <div class="op-wrap">
+        <p class="op-eyebrow">PHP 8.2 END OF LIFE</p>
+        <h2 class="op-title">PHP 8.2 のサポートは、2026年12月31日に終わります</h2>
+        <p class="op-text" style="margin-bottom:24px">PHP 8.2 のセキュリティサポートは<strong>2026年12月31日</strong>に終了します。それ以降は、新しい脆弱性が見つかっても PHP 8.2 向けの修正版は出ません。PHP 8.1 以前はすでにサポートが終わっており、2026年10月に公開された重大な脆弱性（PHP2Shell）の修正版も提供されていません。WordPress やプラグインを最新にしても、PHP 本体の脆弱性は防げないため、<strong>PHP そのものをサポート中のバージョンへ移行する</strong>必要があります。</p>
+        <div class="op-cards op-cards--3">
+          <div class="op-card">
+            <h3>放置するとどうなるか</h3>
+            <ul>
+              <li>新しい脆弱性が見つかっても修正されない</li>
+              <li>改ざん・情報漏えい・不正なプログラムの設置などの危険が高まる</li>
+              <li>レンタルサーバーが PHP を自動で切り替えた日に、画面が崩れたり表示されなくなったりすることがある</li>
+            </ul>
+          </div>
+          <div class="op-card">
+            <h3>移行の進め方</h3>
+            <ul>
+              <li>今の PHP・WordPress・プラグイン・データベースのバージョンを確認</li>
+              <li>新しい PHP で動かないテーマ・プラグイン・独自プログラムを洗い出す</li>
+              <li>バックアップを取り、検証環境で試してから本番を移行</li>
+            </ul>
+          </div>
+          <div class="op-card">
+            <h3>こんな方はご相談ください</h3>
+            <ul>
+              <li>サーバー会社から PHP の更新を求める連絡が来た</li>
+              <li>今の PHP のバージョンがわからない</li>
+              <li>サイトを作った制作会社と連絡が取れない</li>
+            </ul>
+          </div>
+        </div>
+        <div class="op-cta" style="margin-top:24px">
+          <a href="#contact" class="op-btn">PHP 8.2 の移行を相談する</a>
         </div>
       </div>
     </section>
@@ -210,6 +256,10 @@
         <p class="op-eyebrow">FAQ</p>
         <h2 class="op-title">よくある質問</h2>
         <div class="op-faq">
+          <details><summary>PHP 8.2 のサポートはいつ終わりますか？</summary><p>PHP 8.2 のセキュリティサポートは2026年12月31日に終了します。それ以降は、新しい脆弱性が見つかっても PHP 8.2 向けの修正版は提供されません。PHP 8.1 以前はすでにサポートが終了しています。</p></details>
+          <details><summary>サポートが終わった PHP を使い続けるとどうなりますか？</summary><p>すぐにサイトが止まるわけではありませんが、新しい脆弱性が見つかっても修正されないため、改ざんや情報漏えいの危険が高まります。WordPress やプラグインを最新にしても、PHP 本体の脆弱性は防げません。</p></details>
+          <details><summary>レンタルサーバーが PHP を自動で新しいバージョンに切り替えると聞きました。何か準備は必要ですか？</summary><p>必要です。古いテーマやプラグイン、独自のプログラムが新しい PHP に対応していないと、切り替わった日に画面が崩れたり、エラーで表示されなくなったりすることがあります。切り替わる前に、新しい PHP で動くかを確かめておくのが安全です。</p></details>
+          <details><summary>今使っている PHP のバージョンがわかりません。調べてもらえますか？</summary><p>はい。サイトの URL とサーバーの情報をもとに、PHP・WordPress・データベースのバージョンと構成を確認し、作業内容と費用をお伝えします。</p></details>
           <details><summary>バージョンアップでサイトが壊れることはありませんか？</summary><p>作業前にバックアップを取り、戻せる状態で進めます。可能な場合は本番と同じ構成の検証環境で先に試し、動かない箇所を直してから本番に反映します。</p></details>
           <details><summary>自社で作っていないシステムでも対応できますか？</summary><p>はい。制作会社と連絡が取れないサイトや、引き継ぎ資料がないシステムも、ソースコードとサーバーを確認したうえで対応します。</p></details>
           <details><summary>Laravel を何世代も上げる必要があります。対応できますか？</summary><p>はい。一度に飛ばさず、メジャーバージョンを1つずつ上げながら、依存パッケージとテストを確認して進めます。</p></details>
@@ -263,6 +313,21 @@
               <textarea id="vu-msg" name="message" required maxlength="2000" rows="6" placeholder="今のバージョン、希望の時期、困っていることなど、わかる範囲でご記入ください。" aria-describedby="vu-msg-err"></textarea>
               <p class="lpf-error" id="vu-msg-err">ご相談内容を入力してください</p>
             </div>
+            <div class="lpf-field">
+              <label class="lpf-label" for="vu-ref">当社を何で知りましたか？ <span class="lpf-tag lpf-tag--opt">任意</span></label>
+              <select id="vu-ref" name="referral" data-label="当社を知ったきっかけ">
+                <option value="">選択してください</option>
+                <option value="ChatGPT">ChatGPT</option>
+                <option value="Gemini">Gemini</option>
+                <option value="Perplexity">Perplexity</option>
+                <option value="その他のAI">その他の AI（Copilot・Claude など）</option>
+                <option value="Google検索">Google 検索</option>
+                <option value="Googleマップ">Google マップ</option>
+                <option value="SNS">SNS（X・Instagram・Threads など）</option>
+                <option value="紹介">知人・取引先からの紹介</option>
+                <option value="その他">その他</option>
+              </select>
+            </div>
             <button type="submit" class="lpf-submit">送信する</button>
             <p class="lpf-note">送信をもって<a href="../../privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>に同意いただいたものとみなします。サーバーのパスワードなどは、このフォームに書かないでください。</p>
             <p class="lpf-status" role="status" aria-live="polite"></p>
@@ -291,5 +356,6 @@
   </footer>
 
   <script src="../../js/lp-contact.js" defer></script>
+  <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0feaf78a96ca48649fdc2263f9fbb37c"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
